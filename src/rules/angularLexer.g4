@@ -74,7 +74,6 @@ mode TEMPLATE_MODE;
 SCRIPT                  : 'script';
 SRC                     : 'src';
 IMG                     : 'img';
-
 DIRECTIVE_NAME          : '*ngIf' | '*ngFor';
 TAGS                    : 'div' | 'ul' | 'li' | 'ng-container' | 'ng-template' | 'h1' | 'h2' | 'h3' | 'span';
 STANDARD_ATTRIBUTE      : 'class' | 'key' | 'title' | 'style' | 'alt' | 'href';

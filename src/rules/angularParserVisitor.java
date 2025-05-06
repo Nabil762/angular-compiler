@@ -113,6 +113,12 @@ public interface angularParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitClassDeclaration(angularParser.ClassDeclarationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link angularParser#listDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitListDeclaration(angularParser.ListDeclarationContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link angularParser#listStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -208,12 +214,6 @@ public interface angularParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitValueExpression(angularParser.ValueExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link angularParser#literal}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLiteral(angularParser.LiteralContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link angularParser#propertyDeclaration}.
 	 * @param ctx the parse tree

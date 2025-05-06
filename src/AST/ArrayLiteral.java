@@ -16,6 +16,6 @@ public class ArrayLiteral {
 
     @Override
     public String toString() {
-        return "\nArrayLiteral [" + identifiers + "]";
+        return "\nimported components from angular library [" + identifiers + "]";
     }
 }

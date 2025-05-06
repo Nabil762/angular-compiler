@@ -23,8 +23,8 @@ public class BodyFor {
     @Override
     public String toString() {
         return "\nBodyFor{" +
-                "array_name='" + array_name + '\'' +
-                "\n element_of_array='" + element_of_array + '\'' +
+                "variable='" + array_name + '\'' +
+                "\n iterator of array='" + element_of_array + '\'' +
                 "\n}";
     }
 }

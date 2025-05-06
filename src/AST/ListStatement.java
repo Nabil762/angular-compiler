@@ -2,6 +2,16 @@ package AST;
 
 public class ListStatement {
     String array_name;
+    String name_object;
+
+    public String getName_object() {
+        return name_object;
+    }
+
+    public void setName_object(String name_object) {
+        this.name_object = name_object;
+    }
+
     ArrayExpression arrayExpression;
 
     public String getArray_name() {
@@ -24,6 +34,7 @@ public class ListStatement {
     public String toString() {
         return "\nListStatement{" +
                 "\narray_name : '" + array_name + '\'' +
+                "\nname of object : '" + name_object + '\'' +
                 "\narrayExpression=" + arrayExpression +
                 "\n}";
     }

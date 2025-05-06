@@ -221,6 +221,18 @@ public class angularParserBaseListener implements angularParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterListDeclaration(angularParser.ListDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitListDeclaration(angularParser.ListDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterListStatement(angularParser.ListStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -408,18 +420,6 @@ public class angularParserBaseListener implements angularParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitValueExpression(angularParser.ValueExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterLiteral(angularParser.LiteralContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLiteral(angularParser.LiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

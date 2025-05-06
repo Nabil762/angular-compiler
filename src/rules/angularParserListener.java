@@ -178,6 +178,16 @@ public interface angularParserListener extends ParseTreeListener {
 	 */
 	void exitClassDeclaration(angularParser.ClassDeclarationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link angularParser#listDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterListDeclaration(angularParser.ListDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link angularParser#listDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitListDeclaration(angularParser.ListDeclarationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link angularParser#listStatement}.
 	 * @param ctx the parse tree
 	 */
@@ -337,16 +347,6 @@ public interface angularParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValueExpression(angularParser.ValueExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link angularParser#literal}.
-	 * @param ctx the parse tree
-	 */
-	void enterLiteral(angularParser.LiteralContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link angularParser#literal}.
-	 * @param ctx the parse tree
-	 */
-	void exitLiteral(angularParser.LiteralContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link angularParser#propertyDeclaration}.
 	 * @param ctx the parse tree

@@ -14,7 +14,7 @@ public class Interpolation {
     @Override
     public String toString() {
         return "\nInterpolation{" +
-                "string_literal= '" + string_literal + '\'' +
+                "angular component= '" + string_literal + '\'' +
                 "\n}";
     }
 }
