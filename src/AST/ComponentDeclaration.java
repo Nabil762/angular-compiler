@@ -1,0 +1,20 @@
+package AST;
+
+public class ComponentDeclaration {
+    ComponentConfig componentConfig;
+
+    public ComponentConfig getComponentConfig() {
+        return componentConfig;
+    }
+
+    public void setComponentConfig(ComponentConfig componentConfig) {
+        this.componentConfig = componentConfig;
+    }
+
+    @Override
+    public String toString() {
+        return "\nComponentDeclaration{" +
+                "\ncomponentConfig=" + componentConfig +
+                "\n}";
+    }
+}
