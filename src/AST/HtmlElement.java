@@ -26,7 +26,7 @@ public class HtmlElement {
     @Override
     public String toString() {
         return "\nHtmlElement{ Tag = div" +
-                "\nattributeList=" + attributeList +
+                "\nattributeList for main div=" + attributeList +
                 "\nelements=" + elements +
                 "\n}";
     }

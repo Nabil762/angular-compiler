@@ -5,9 +5,17 @@ import java.util.List;
 
 public class TagStatement {
     List<Attribute> attributeList = new ArrayList<Attribute>();
-    List<Element> elements = new ArrayList<Element>();
 
+    List<Element> elementList = new ArrayList<Element>();
     String tag;
+
+    public List<Element> getElementList() {
+        return elementList;
+    }
+
+    public void setElementList(List<Element> elementList) {
+        this.elementList = elementList;
+    }
 
     public String getTag() {
         return tag;
@@ -25,19 +33,12 @@ public class TagStatement {
         this.attributeList = attributeList;
     }
 
-    public List<Element> getElements() {
-        return elements;
-    }
-
-    public void setElements(List<Element> elements) {
-        this.elements = elements;
-    }
 
     @Override
     public String toString() {
         return "\nTagStatement{ tag:" + tag +
                 "\nattributeList=" + attributeList +
-                "\nelements=" + elements +
+                "\nelements=" + elementList +
                 "\n}";
     }
 }

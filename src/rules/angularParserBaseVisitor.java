@@ -1,5 +1,7 @@
 // Generated from /home/nabil_al-hamza/IdeaProjects/angular-compiler/src/rules/angularParser.g4 by ANTLR 4.13.1
 package rules;
+import AST.Element;
+import AST.SingleType;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -11,7 +13,7 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
  * operations with no return type.
  */
 @SuppressWarnings("CheckReturnValue")
-public class angularParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements angularParserVisitor<T> {
+public abstract class angularParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements angularParserVisitor<T> {
 	/**
 	 * {@inheritDoc}
 	 *
@@ -89,6 +91,9 @@ public class angularParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> imp
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitElements(angularParser.ElementsContext ctx) { return visitChildren(ctx); }
+
+	public abstract Element visitElement(angularParser.ElementsContext ctx);
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -215,6 +220,9 @@ public class angularParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> imp
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitSingle_type(angularParser.Single_typeContext ctx) { return visitChildren(ctx); }
+
+	public abstract SingleType visitSingleType(angularParser.Single_typeContext ctx);
+
 	/**
 	 * {@inheritDoc}
 	 *

@@ -23,7 +23,7 @@ public class PropertyAssignment {
     @Override
     public String toString() {
         return "\nPropertyAssignment{" +
-                "\nproperty : " + property + "propertyValue : " + propertyValue +
+                "\nproperty : " + property + propertyValue +
                 "\n}";
     }
 }
