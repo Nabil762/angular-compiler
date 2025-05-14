@@ -1,7 +1,6 @@
 package AST;
 
-public class Interpolation {
-
+public class ClosingTag {
     String NAME_HTML ;
 
     public String getNAME_HTML() {
@@ -14,8 +13,8 @@ public class Interpolation {
 
     @Override
     public String toString() {
-        return "\nInterpolation{" +
-                "\nNAME_HTML='" + NAME_HTML +
-                 "\n}"; }
+        return "\nClosingTag{" +
+                "\nNAME_HTML='" + NAME_HTML + '\'' +
+                "\n}";
     }
-
+}

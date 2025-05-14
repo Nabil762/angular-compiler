@@ -14,30 +14,48 @@ interfaceDeclaration : INTERFACE IDENTIFIER LBRACE interfaceBody RBRACE;
 
 interfaceBody: (propertyDeclaration SEMICOLON)*;
 
-componentDeclaration: AD COMPONENT LPAREN componentConfig RPAREN;
+componentDeclaration: AD COMPONENT LPAREN LBRACE componentConfig RBRACE RPAREN;  //edited
 
-componentConfig: LBRACE (propertyAssignment (COMMA propertyAssignment)*)? RBRACE;
+componentConfig: (propertyAssignment (COMMA propertyAssignment)*)? ;     //edited
 
-propertyAssignment: IDENTIFIER COLON propertyValue;
+propertyAssignment: selector | standalone | styles | importDeclaration | template ;
 
-propertyValue: valueExpression | arrayLiteral |  htmlElement ;
+importDeclaration : IMPORTS COLON LBRACKET IDENTIFIER? RBRACKET;
 
-htmlElement:   BACKTICK  (attribute)* TAG_CLOSE (elements)* CLOSING_TAG_CLOSE  BACKTICK1;
+selector :SELECTOR COLON STRING ;
 
-elements: tagStatement | comment | interpolation | imgTag | STRING_LITERAL;
+standalone : STANDALONE COLON BOOLEAN ;
 
-tagStatement: OPEN_TAG TAGS (attribute)* TAG_CLOSE (elements)* CLOSING_TAG_CLOSE TAGS TAG_CLOSE;
+template : TEMPLATE COLON1 BACKTICK  element* BACKTICK1;
 
-imgTag: OPEN_TAG IMG (attribute)* SELF_CLOSING_TAG_CLOSE;
+element : tag | TAG_NAME (COLON1)? | interpolation;
 
-comment: OPEN_COMMENT .*? CLOSE_COMMENT;
+tag: openingTag element* closingTag | selfClosingTag;
 
-attribute:  (propertyBinding EQUALH attributeValue)
-           | (eventBinding EQUALH attributeValue)
-           | (DIRECTIVE_NAME EQUALH attributeValue)
-           | (STANDARD_ATTRIBUTE EQUALH attributeValue);
+openingTag : TAG_OPEN attributes* TAG_CLOSE;
 
-attributeValue: STRING_LITERAL | interpolation  ;
+closingTag : OPEN_TAG_CLOSE TAG_NAME TAG_CLOSE;
+
+selfClosingTag : TAG_OPEN attributes* TAG_SELF_CLOSE;
+
+attributes : TAG_NAME EQUALH STRING1 | DIRECTIVE_NAME EQUALH STRING1 | BINDING_PROPERTY EQUALH STRING1
+             | STANDARD_EVENT EQUALH STRING1;
+
+interpolation : OPEN_TS TAG_NAME CLOSE_TS;
+
+styles :STYLES COLON2 OPEN_SQUARE bodyOfCss CLOSE_SQUARE COMMA2? ;
+
+bodyOfCss : BACKTICK2  objects  BACKTICK2 COMMA2?;
+
+objects : elementCss? (COMMA2? elementCss)*;
+
+elementCss : DOT2 ID+ LBRACE2 bodyOfelement+ RBRACE2;
+
+bodyOfelement : ID COLON2 valueCss SEMICOLON2;
+
+valueCss : (PERCENT | ID) (ID ID?)? ;
+
+// KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
 
 classDeclaration: EXPORT CLASS1 IDENTIFIER LBRACE (listDeclaration)* RBRACE;
 
@@ -55,6 +73,8 @@ propertyList : property (COMMA property)* ;
 
 property : IDENTIFIER COLON valueExpression ;
 
+valueExpression : STRING | NUMBER | BOOLEAN;
+
 property_declaration: IDENTIFIER COLON type (EQUAL type)? SEMICOLON;
 
 type: single_type (OR single_type)*;
@@ -64,15 +84,5 @@ forDeclaration: IDENTIFIER LPAREN IDENTIFIER COLON IDENTIFIER RPAREN COLON TYPE 
 bodyFor: THIS DOT IDENTIFIER EQUAL IDENTIFIER SEMICOLON;
 
 single_type: IDENTIFIER | TYPE;
-
-arrayLiteral: LBRACKET (IDENTIFIER (COMMA IDENTIFIER)*)? RBRACKET;
-
-eventBinding: OPEN_PAREN STANDARD_EVENT CLOSE_PAREN ;
-
-interpolation: OPEN_TS STRING_LITERAL CLOSE_TS;
-
-propertyBinding: OPEN_SQUARE_TAG SRC CLOSE_SQUARE_TAG ;
-
-valueExpression : STRING | NUMBER | BOOLEAN;
 
 propertyDeclaration: IDENTIFIER COLON TYPE;

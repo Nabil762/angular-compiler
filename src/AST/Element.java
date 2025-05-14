@@ -1,26 +1,24 @@
 package AST;
 
 public class Element {
-    TagStatement tagStatement;
-    Comment comment;
+    Tag tag ;
+    String htmlName ;
     Interpolation interpolation;
-    ImgTag imgTag;
-    String text;
 
-    public TagStatement getTagStatement() {
-        return tagStatement;
+    public Tag getTag() {
+        return tag;
     }
 
-    public void setTagStatement(TagStatement tagStatement) {
-        this.tagStatement = tagStatement;
+    public void setTag(Tag tag) {
+        this.tag = tag;
     }
 
-    public Comment getComment() {
-        return comment;
+    public String getHtmlName() {
+        return htmlName;
     }
 
-    public void setComment(Comment comment) {
-        this.comment = comment;
+    public void setHtmlName(String htmlName) {
+        this.htmlName = htmlName;
     }
 
     public Interpolation getInterpolation() {
@@ -31,33 +29,20 @@ public class Element {
         this.interpolation = interpolation;
     }
 
-    public ImgTag getImgTag() {
-        return imgTag;
-    }
-
-    public void setImgTag(ImgTag imgTag) {
-        this.imgTag = imgTag;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     @Override
     public String toString() {
-        if(tagStatement != null)
-            return "\n Element{ tagStatement:" + tagStatement + "\n }";
-        else if (comment != null) {
-            return "\n Element{ comment:" + comment + "\n }";
-        } else if (interpolation != null) {
-            return "\n Element{ interpolation:" + interpolation + "\n }";
-        } else if (imgTag != null) {
-            return "\n Element{ imaTag:" + imgTag + "\n }";
-        }
-        return "\n Element{ " + text + "\n }";
+        if (htmlName!=null)
+            return  "\nElement{" +
+                    "\n"+htmlName
+                    +"\n}";
+       else if (interpolation!=null)
+            return  "\nElement{" +
+                    "\n"+interpolation
+                    +"\n}";
+
+        return  "\nElement{" +
+                "\n"+tag
+                +"\n}";
+
     }
 }

@@ -5,6 +5,7 @@ import rules.angularParserBaseVisitor;
 
 
 public class AngularVisitor extends angularParserBaseVisitor {
+
     @Override
     public Program visitProgram (angularParser.ProgramContext ctx){
         Program program = new Program();
@@ -67,105 +68,275 @@ public class AngularVisitor extends angularParserBaseVisitor {
     @Override
     public PropertyAssignment visitPropertyAssignment (angularParser.PropertyAssignmentContext ctx) {
         PropertyAssignment propertyAssignment = new PropertyAssignment();
-        propertyAssignment.setProperty(ctx.IDENTIFIER().getText());
-        propertyAssignment.setPropertyValue(visitPropertyValue(ctx.propertyValue()));
+        if(ctx.selector()!=null){
+            propertyAssignment.setSelector(visitSelector(ctx.selector()));
+
+        }
+        if(ctx.standalone()!=null){
+            propertyAssignment.setStandalone(visitStandalone(ctx.standalone()));
+        }
+        if(ctx.importDeclaration()!=null){
+            propertyAssignment.setImportDeclaration(visitImportDeclaration(ctx.importDeclaration()));
+        }
+        if(ctx.template()!=null){
+            propertyAssignment.setTemplate(visitTemplate(ctx.template()));
+        }
+        if(ctx.styles()!=null){
+            propertyAssignment.setStyle(visitStyle(ctx.styles()));
+        }
         return propertyAssignment;
     }
     @Override
-    public PropertyValue visitPropertyValue (angularParser.PropertyValueContext ctx){
-        PropertyValue propertyValue = new PropertyValue();
-        if(ctx.valueExpression() != null){
-            propertyValue.setValueExpression(visitValueExpression(ctx.valueExpression()));
+    public ImportDeclaration visitImportDeclaration (angularParser.ImportDeclarationContext ctx) {
+        ImportDeclaration importDeclaration = new ImportDeclaration();
+        importDeclaration.setId(ctx.IDENTIFIER().getText());
+        return importDeclaration;
+    }
+
+    @Override
+    public Selector visitSelector(angularParser.SelectorContext ctx) {
+        Selector selector = new Selector();
+        if(ctx.STRING()!=null){
+            selector.setSTRING_LIT(ctx.STRING().getText());
+//            Row row =new Row() ;
+//            row.setType("STRING");
+//            row.setValue(selector.getSTRING_LIT());
+//            symbolTable.getRows().add(row);
+
         }
-        if(ctx.arrayLiteral() != null) {
-            propertyValue.setArrayLiteral(visitArrayLiteral(ctx.arrayLiteral()));
-        }
-        if(ctx.htmlElement() != null) {
-            propertyValue.setHtmlElement(visitHtmlElement(ctx.htmlElement()));
-        }
-        return propertyValue;
+        return selector;
     }
     @Override
-    public HtmlElement visitHtmlElement (angularParser.HtmlElementContext ctx){
-        HtmlElement htmlElement = new HtmlElement();
-        for( int i=0;i < ctx.attribute().size();i++){
-            htmlElement.getAttributeList().add(visitAttribute(ctx.attribute(i)));
+    public Standalone visitStandalone(angularParser.StandaloneContext ctx) {
+        Standalone standalone = new Standalone();
+        if(ctx.BOOLEAN()!=null){
+            standalone.setIsboolean(ctx.BOOLEAN().getText());
         }
-        for(int i=0;i < ctx.elements().size();i++){
-            htmlElement.getElements().add(visitElement(ctx.elements(i)));
-        }
-        return htmlElement;
+
+        return standalone;
     }
     @Override
-    public Element visitElement (angularParser.ElementsContext ctx){
+    public Template visitTemplate(angularParser.TemplateContext ctx) {
+        Template template = new Template();
+        for (int i=0 ;i<ctx.element().size() ;i++){
+            if (ctx.element(i) != null) {
+                template.getElement().add(visitElement(ctx.element(i)));
+            }
+        }
+
+        return template;
+    }
+    @Override
+    public Element visitElement(angularParser.ElementContext ctx) {
         Element element = new Element();
-        if(ctx.tagStatement() != null){
-            element.setTagStatement(visitTagStatement(ctx.tagStatement()));
+        if(ctx.tag()!=null){
+            element.setTag(visitTag(ctx.tag()));
         }
-        if(ctx.interpolation() != null) {
+        if(ctx.interpolation()!=null){
             element.setInterpolation(visitInterpolation(ctx.interpolation()));
         }
-        if(ctx.imgTag() != null) {
-            element.setImgTag(visitImgTag(ctx.imgTag()));
-        }
-        if(ctx.STRING_LITERAL() != null) {
-            element.setText(ctx.STRING_LITERAL().getText());
+        if(ctx.TAG_NAME()!=null && ctx.TAG_NAME().getText()!=null){
+            element.setHtmlName(ctx.TAG_NAME().getText());
+//                Row row =new Row() ;
+//                row.setType("HTML_KEYWORD");
+//                row.setValue(element.getHtmlName());
+//                symbolTable.getRows().add(row);
         }
         return element;
     }
     @Override
-    public TagStatement visitTagStatement (angularParser.TagStatementContext ctx) {
-        TagStatement tagStatement = new TagStatement();
-        tagStatement.setTag(ctx.TAGS(1).getText());
-        for( int i=0;i < ctx.attribute().size();i++){
-            tagStatement.getAttributeList().add(visitAttribute(ctx.attribute(i)));
+    public Tag visitTag(angularParser.TagContext ctx) {
+        Tag tag = new Tag();
+        if (ctx.openingTag() != null && ctx.openingTag().getText()!=null) {
+            tag.setOpeningTag(visitOpeningTag(ctx.openingTag()));
+
         }
-//        for(int i=0;i < ctx.elements().size();i++){
-//            tagStatement.getElementList().add(visitElements(ctx.elements(i)));
-//        }
-        return tagStatement;
+        if (ctx.closingTag() != null) {
+            tag.setClosingTag(visitClosingTag(ctx.closingTag()));
+        }
+        if (ctx.selfClosingTag() != null) {
+            tag.setSelfClosingTag(visitSelfClosingTag(ctx.selfClosingTag()));
+        }
+        if (ctx.element() != null) {
+            for (angularParser.ElementContext elementCtx : ctx.element()) {
+                if (elementCtx != null) {
+                    tag.getElements().add(visitElement(elementCtx));
+                }
+            }
+        }
+        return tag;
     }
     @Override
-    public ImgTag visitImgTag (angularParser.ImgTagContext ctx){
-        ImgTag imgTag = new ImgTag();
-        imgTag.setTag(ctx.IMG().getText());
-        for(int i=0;i < ctx.attribute().size(); i++){
-            imgTag.getAttributeList().add(visitAttribute(ctx.attribute(i)));
+    public OpeningTag visitOpeningTag(angularParser.OpeningTagContext ctx) {
+        OpeningTag openingTag = new OpeningTag();
+        if(ctx.attributes()!=null){
+            for (int i =0 ; i<ctx.attributes().size();i++){
+                if (ctx.attributes(i) != null && ctx.attributes(i).getText()!=null) {
+                    openingTag.getAttributes().add(visitAttributes(ctx.attributes(i)));
+                }
+            }
         }
-        return imgTag;
+        return  openingTag;
     }
     @Override
-    public Attribute visitAttribute (angularParser.AttributeContext ctx){
-        Attribute attribute = new Attribute();
-        if(ctx.propertyBinding() != null && ctx.attributeValue() != null){
-            attribute.setPropertyBinding(visitPropertyBinding(ctx.propertyBinding()));
-            attribute.setAttributeValue(visitAttributeValue(ctx.attributeValue()));
+    public ClosingTag visitClosingTag(angularParser.ClosingTagContext ctx) {
+        ClosingTag closingTag = new ClosingTag();
+        if(ctx.OPEN_TAG_CLOSE()!=null){
+            closingTag.setNAME_HTML(ctx.OPEN_TAG_CLOSE().getText());
+//            Row row =new Row() ;
+//            row.setType("HTML_KEYWORD");
+//            row.setValue(closingTag.getNAME_HTML());
+//            symbolTable.getRows().add(row);
+
         }
-        if(ctx.eventBinding() != null && ctx.attributeValue() != null) {
-            attribute.setEventBinding(visitEventBinding(ctx.eventBinding()));
-            attribute.setAttributeValue(visitAttributeValue(ctx.attributeValue()));
-        }
-        if(ctx.STANDARD_ATTRIBUTE() != null && ctx.attributeValue() != null) {
-            attribute.setStandard_attribute(ctx.STANDARD_ATTRIBUTE().getText());
-            attribute.setAttributeValue(visitAttributeValue(ctx.attributeValue()));
-        }
-        if(ctx.DIRECTIVE_NAME() != null && ctx.attributeValue() != null){
-            attribute.setDirective_name(ctx.DIRECTIVE_NAME().getText());
-            attribute.setAttributeValue(visitAttributeValue(ctx.attributeValue()));
-        }
-        return attribute;
+
+        return  closingTag;
     }
     @Override
-    public AttributeValue visitAttributeValue (angularParser.AttributeValueContext ctx) {
-        AttributeValue attributeValue = new AttributeValue();
-        if(ctx.STRING_LITERAL() != null) {
-            attributeValue.setCssText(ctx.STRING_LITERAL().getText());
+    public SelfClosingTag visitSelfClosingTag(angularParser.SelfClosingTagContext ctx) {
+        SelfClosingTag selfClosingTag = new SelfClosingTag();
+        if(ctx.attributes()!=null){
+            for (int i =0 ; i<ctx.attributes().size();i++){
+                if (ctx.attributes(i) != null) {
+                    selfClosingTag.getAttributes().add(visitAttributes(ctx.attributes(i)));
+                }
+            }
         }
-        if(ctx.interpolation() != null) {
-            attributeValue.setInterpolation(visitInterpolation(ctx.interpolation()));
-        }
-        return attributeValue;
+        return  selfClosingTag;
     }
+    @Override
+    public Attributes visitAttributes(angularParser.AttributesContext ctx) {
+        Attributes attributes = new Attributes();
+
+        if (ctx.STRING1() != null && ctx.STRING1().getText()!=null) {
+            attributes.setText(ctx.STRING1().getText()); // S
+//            Row row =new Row() ;
+//            row.setType("STRING");
+//            row.setValue(attributes.getHtmlString());
+//            symbolTable.getRows().add(row);
+
+            // et standard HTML attribute
+        }
+        if (ctx.TAG_NAME() != null && ctx.TAG_NAME().getText() != null) {
+            attributes.setHtmlName(ctx.TAG_NAME().getText());
+//            Row row =new Row() ;
+//            row.setType("NAME HTML");
+//            row.setValue(attributes.getHtmlName());
+//            symbolTable.getRows().add(row);
+
+        }
+        if (ctx.BINDING_PROPERTY() != null && ctx.BINDING_PROPERTY().getText()!=null) {
+            attributes.setBinding(ctx.BINDING_PROPERTY().getText());
+//            Row row =new Row() ;
+//            row.setType("RESOURCE BINDING");
+//            row.setValue(attributes.getBinding());
+//            symbolTable.getRows().add(row);
+
+        }
+        if (ctx.DIRECTIVE_NAME() != null && ctx.DIRECTIVE_NAME().getText()!=null) {
+            attributes.setStructuralDir(ctx.DIRECTIVE_NAME().getText());
+//            Row row =new Row() ;
+//            row.setType("ANGULAR ID");
+//            row.setValue(attributes.getStructuralDir());
+//            symbolTable.getRows().add(row);
+
+        }
+        if (ctx.STANDARD_EVENT() != null && ctx.STANDARD_EVENT()!=null) { // Make sure your grammar has EVENT_BINDING
+            attributes.setEvent(ctx.STANDARD_EVENT().getText());
+//            Row row =new Row() ;
+//            row.setType("EVENT");
+//            row.setValue(attributes.getEvent());
+//            symbolTable.getRows().add(row);
+
+        }
+
+        return attributes;
+    }
+    @Override
+    public Interpolation visitInterpolation(angularParser.InterpolationContext ctx) {
+        Interpolation interpolation = new Interpolation();
+
+        if(ctx.TAG_NAME()!=null){
+            interpolation.setNAME_HTML(ctx.TAG_NAME().getText());
+//            Row row =new Row() ;
+//            row.setType("ID");
+//            row.setValue(interpolation.getNAME_HTML());
+//            symbolTable.getRows().add(row);
+
+        }
+        return interpolation;
+    }
+
+    public Style visitStyle(angularParser.StylesContext ctx) {
+        Style style = new Style();
+        if(ctx.bodyOfCss()!=null){
+            style.setBodyOfcss(visitBodyOfCss(ctx.bodyOfCss()));
+        }
+        return style;
+    }
+    @Override
+    public BodyOfCss visitBodyOfCss(angularParser.BodyOfCssContext ctx) {
+        BodyOfCss bodyOfCss = new BodyOfCss();
+        if(ctx.objects()!=null){
+            bodyOfCss.setObjecte(visitObjecte(ctx.objects()));
+        }
+        return  bodyOfCss;
+    }
+
+    public Objecte visitObjecte(angularParser.ObjectsContext ctx) {
+        Objecte objecte = new Objecte();
+        if(ctx.elementCss()!=null){
+            for (int i =0 ; i<ctx.elementCss().size();i++){
+                if (ctx.elementCss(i) != null) {
+                    objecte.getElementCssList().add(visitElementCss(ctx.elementCss(i)));
+                }
+            }
+        }
+        return objecte;
+    }
+    @Override
+    public ElementCss visitElementCss(angularParser.ElementCssContext ctx) {
+        ElementCss elementCss = new ElementCss();
+        if(ctx.bodyOfelement()!=null){
+            for (int i =0 ; i<ctx.bodyOfelement().size();i++){
+                if (ctx.bodyOfelement(i) != null) {
+                    elementCss.getBodyOfelementList().add(visitBodyOfelement(ctx.bodyOfelement(i)));
+                }
+            }
+        }
+        return elementCss;
+    }
+    @Override
+    public BodyOfelement visitBodyOfelement(angularParser.BodyOfelementContext ctx) {
+        BodyOfelement bodyOfelement = new BodyOfelement();
+        if(ctx.ID()!=null && ctx.ID().getText()!=null) {
+            bodyOfelement.setIdentifier(ctx.ID().getText());
+//            Row row =new Row() ;
+//            row.setType("ID CSS");
+//            row.setValue(bodyelement.getId_css());
+//            symbolTable.getRows().add(row);
+
+        }
+        if(ctx.valueCss()!=null){
+            bodyOfelement.setValueCss(visitValueCss(ctx.valueCss()));
+        }
+        return bodyOfelement;
+
+    }
+    @Override
+    public ValueCss visitValueCss(angularParser.ValueCssContext ctx) {
+        ValueCss valueCss = new ValueCss();
+        if(ctx.ID()!=null ){
+            for (int i =0 ; i<ctx.ID().size();i++){
+                if (ctx.ID(i) != null) {
+                    valueCss.getIdentifiers().add(ctx.ID(i).getText());
+                }
+            }
+        }
+        return valueCss;
+    }
+
+
     @Override
     public ClassDeclaration visitClassDeclaration (angularParser.ClassDeclarationContext ctx) {
         ClassDeclaration classDeclaration = new ClassDeclaration();
@@ -265,42 +436,15 @@ public class AngularVisitor extends angularParserBaseVisitor {
         bodyFor.setElement_of_array(ctx.IDENTIFIER(1).getText());
         return bodyFor;
     }
-    @Override
     public SingleType visitSingleType (angularParser.Single_typeContext ctx) {
         SingleType singleType = new SingleType();
-        if(ctx.IDENTIFIER() != null) {
+        if (ctx.IDENTIFIER() != null) {
             singleType.setID(ctx.IDENTIFIER().getText());
         }
-        if(ctx.TYPE() != null) {
+        if (ctx.TYPE() != null) {
             singleType.setType(ctx.TYPE().getText());
         }
         return singleType;
-    }
-    @Override
-    public ArrayLiteral visitArrayLiteral (angularParser.ArrayLiteralContext ctx){
-        ArrayLiteral arrayLiteral = new ArrayLiteral();
-        for(int i = 0; i < ctx.IDENTIFIER().size();i++){
-            arrayLiteral.getIdentifiers().add(ctx.IDENTIFIER().get(i).getText());
-        }
-        return arrayLiteral;
-    }
-    @Override
-    public EventBinding visitEventBinding (angularParser.EventBindingContext ctx) {
-        EventBinding eventBinding = new EventBinding();
-        eventBinding.setStandard_event(ctx.STANDARD_EVENT().getText());
-        return eventBinding;
-    }
-    @Override
-    public Interpolation visitInterpolation (angularParser.InterpolationContext ctx){
-        Interpolation interpolation = new Interpolation();
-        interpolation.setString_literal(ctx.STRING_LITERAL().getText());
-        return interpolation;
-    }
-    @Override
-    public PropertyBinding visitPropertyBinding (angularParser.PropertyBindingContext ctx){
-        PropertyBinding propertyBinding = new PropertyBinding();
-        propertyBinding.setSrc(ctx.SRC().getText());
-        return propertyBinding;
     }
     @Override
     public ValueExpression visitValueExpression (angularParser.ValueExpressionContext ctx) {

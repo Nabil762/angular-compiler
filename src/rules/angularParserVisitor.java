@@ -59,53 +59,107 @@ public interface angularParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPropertyAssignment(angularParser.PropertyAssignmentContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link angularParser#propertyValue}.
+	 * Visit a parse tree produced by {@link angularParser#importDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPropertyValue(angularParser.PropertyValueContext ctx);
+	T visitImportDeclaration(angularParser.ImportDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link angularParser#htmlElement}.
+	 * Visit a parse tree produced by {@link angularParser#selector}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitHtmlElement(angularParser.HtmlElementContext ctx);
+	T visitSelector(angularParser.SelectorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link angularParser#elements}.
+	 * Visit a parse tree produced by {@link angularParser#standalone}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitElements(angularParser.ElementsContext ctx);
+	T visitStandalone(angularParser.StandaloneContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link angularParser#tagStatement}.
+	 * Visit a parse tree produced by {@link angularParser#template}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTagStatement(angularParser.TagStatementContext ctx);
+	T visitTemplate(angularParser.TemplateContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link angularParser#imgTag}.
+	 * Visit a parse tree produced by {@link angularParser#element}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitImgTag(angularParser.ImgTagContext ctx);
+	T visitElement(angularParser.ElementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link angularParser#comment}.
+	 * Visit a parse tree produced by {@link angularParser#tag}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitComment(angularParser.CommentContext ctx);
+	T visitTag(angularParser.TagContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link angularParser#attribute}.
+	 * Visit a parse tree produced by {@link angularParser#openingTag}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAttribute(angularParser.AttributeContext ctx);
+	T visitOpeningTag(angularParser.OpeningTagContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link angularParser#attributeValue}.
+	 * Visit a parse tree produced by {@link angularParser#closingTag}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAttributeValue(angularParser.AttributeValueContext ctx);
+	T visitClosingTag(angularParser.ClosingTagContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link angularParser#selfClosingTag}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSelfClosingTag(angularParser.SelfClosingTagContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link angularParser#attributes}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAttributes(angularParser.AttributesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link angularParser#interpolation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInterpolation(angularParser.InterpolationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link angularParser#styles}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStyles(angularParser.StylesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link angularParser#bodyOfCss}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBodyOfCss(angularParser.BodyOfCssContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link angularParser#objects}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitObjects(angularParser.ObjectsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link angularParser#elementCss}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElementCss(angularParser.ElementCssContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link angularParser#bodyOfelement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBodyOfelement(angularParser.BodyOfelementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link angularParser#valueCss}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitValueCss(angularParser.ValueCssContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link angularParser#classDeclaration}.
 	 * @param ctx the parse tree
@@ -184,30 +238,6 @@ public interface angularParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitSingle_type(angularParser.Single_typeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link angularParser#arrayLiteral}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArrayLiteral(angularParser.ArrayLiteralContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link angularParser#eventBinding}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEventBinding(angularParser.EventBindingContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link angularParser#interpolation}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterpolation(angularParser.InterpolationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link angularParser#propertyBinding}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPropertyBinding(angularParser.PropertyBindingContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link angularParser#valueExpression}.
 	 * @param ctx the parse tree

@@ -5,7 +5,6 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import rules.angularLexer;
 import rules.angularParser;
 import visitor.AngularVisitor;
-
 import static org.antlr.v4.runtime.CharStreams.fromFileName;
 import java.io.IOException;
 

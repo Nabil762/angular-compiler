@@ -12,10 +12,13 @@ VARIABLE_TYPE : 'var' | 'let' | 'const';
 ACCESS_TYPE : 'public' | 'private' | 'protected';
 NEW : 'new';
 IMPORT : 'import';
+IMPORTS : 'imports';
 EXPORT: 'export';
 COMPONENT: 'component';
 FROM : 'from';
 THIS:'this';
+SELECTOR: 'selector';
+STANDALONE: 'standalone';
 CLASS1: 'class' [ \t\r\n]*;
 DASH: '-';
 BOOLEAN: 'true' | 'false';
@@ -52,13 +55,11 @@ COLON: ':';
 DOT: '.';
 OR: '|';
 ARROW: '=>';
-BACKTICK: '`<div' ->pushMode(TEMPLATE_MODE);
-
-
-// Logical Operators
 AND: '&&';
 EQUAL_EQUAL: '==';
 NOT_EQUAL: '!=';
+STYLES : 'styles' ->pushMode(CSS);
+TEMPLATE: 'template' ->pushMode(TEMPLATE_MODE);
 
 // Identifiers and Literals
 IDENTIFIER: [*a-zA-Z_$][.a-zA-Z0-9_$]*;
@@ -69,39 +70,48 @@ COMMENT: '//' ~[ \r\n]* -> skip;
 BLOCK_COMMENT: '/*' .*? '*/' -> skip;
 fragment ESC : '\\'[nt"];
 
-mode TEMPLATE_MODE;
+mode CSS ;
+BACKTICK2: '`';
+COLON2 : ':';
+COMMA2: ',';
+// End of the template block
+OPEN_SQUARE : '[';
+CLOSE_SQUARE :']'->popMode;
+DOT2: '.';
+PX   : 'px';
+EM   : 'em';
+REM  : 'rem';
+SEMICOLON2 : ';';
+LBRACE2     : '{';
+RBRACE2    : '}';
+PERCENT : '%';
+WS2         : [ \t\r\n]+ -> skip;
+LINE_COMMENT2: '//' ~[\r\n]* -> skip;
+BLOCK_COMMENT2: '/*' .*? '*/' -> skip;
+ID  : [0-9]+ (PX | EM | REM | PERCENT)?
+    |'#'[a-zA-Z_][a-zA-Z0-9_]*
+    | [a-zA-Z_-][a-zA-Z0-9_-]*;
 
-SCRIPT                  : 'script';
-SRC                     : 'src';
-IMG                     : 'img';
-DIRECTIVE_NAME          : '*ngIf' | '*ngFor';
-TAGS                    : 'div' | 'ul' | 'li' | 'ng-container' | 'ng-template' | 'h1' | 'h2' | 'h3' | 'span';
-STANDARD_ATTRIBUTE      : 'class' | 'key' | 'title' | 'style' | 'alt' | 'href';
-STANDARD_EVENT          : 'click' | 'change' | 'submit' | 'keydown' | 'keyup' | 'input' | 'mouseleave' | 'focus';
-OPEN_COMMENT            : '<!--';
-CLOSE_COMMENT           : '-->';
-SLASH                   : '/';
-TAG_CLOSE               : '>';
-SELF_CLOSING_TAG_CLOSE  : '/>';
-CLOSING_TAG_CLOSE       : '</';
-ATTRIBUTE_VALUE         : '"' (~["\r\n])* '"';
-OPEN_TS                 : '{{';
-CLOSE_TS                : '}}';
-OPEN_PAREN              : '(';
-CLOSE_PAREN             : ')';
-OPEN_SQUARE_TAG         : '[';
-CLOSE_SQUARE_TAG        : ']';
-HASHTAG                 : '#';
-ELSEH                   : 'else';
-EQUALH                  : '=';
-ANGULAR_EVENT           : 'ng' [A-Za-z]+;
-STANDARD_PROP           : [a-zA-Z]+ ;
-OPEN_TAG                : '<';
-ATTRIBUTE_NAME: [a-zA-Z][a-zA-Z0-9-]*;
-ID: [*a-zA-Z_$][.a-zA-Z0-9_$]*;
-STRING_LITERAL: '"' (~["\\\r\n] | EscapeSequence)* '"'
-              | '\'' (~['\\\r\n] | EscapeSequence)* '\'';
-fragment EscapeSequence: '\\' [btnfr'"\\];
-TEXT                    : [#*+a-zA-Z0-9\-!.,:]+ ;
-WS: [ \t\r\n]+ -> skip;
-BACKTICK1: 'div>`' -> popMode;
+
+mode TEMPLATE_MODE ;
+
+BACKTICK:   '`';
+LINE_COMMENT_HTML: '//' ~[\r\n]* -> skip;
+BLOCK_COMMENT_HTML: '/*' .*? '*/' -> skip;
+TAG_OPEN   : '<' TAG_NAME;
+OPEN_TAG_CLOSE   : '</' ;
+TAG_CLOSE     : '>';
+TAG_SELF_CLOSE           : '/>';
+EQUALH  : '=';
+STRING1            : '"' (~["\r\n])* '"';
+DIRECTIVE_NAME   : '*' TAG_NAME;
+BINDING_PROPERTY           : '[' TAG_NAME ']';
+STANDARD_EVENT     : '(' TAG_NAME ')';
+COLON1             : ':';
+OPEN_TS : '{{';
+CLOSE_TS  : '}}';
+DOT1               : '.';
+TAG_NAME: [a-zA-Z_][a-zA-Z0-9_!.-]*;
+WS_HTML                : [ \t\r\n]+ -> skip;
+BACKTICK1 : '`,' -> popMode;
+
