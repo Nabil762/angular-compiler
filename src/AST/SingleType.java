@@ -32,3 +32,4 @@ public  class SingleType extends AstNode {
                 "\n}";
     }
 }
+
