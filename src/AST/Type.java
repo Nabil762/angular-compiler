@@ -3,7 +3,7 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Type {
+public class Type extends AstNode{
     List<SingleType> singleTypeList = new ArrayList<SingleType>();
 
     public List<SingleType> getSingleTypeList() {

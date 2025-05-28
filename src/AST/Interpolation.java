@@ -1,8 +1,8 @@
 package AST;
 
-public class Interpolation {
+public class Interpolation extends Element {
 
-    String NAME_HTML ;
+    String NAME_HTML;
 
     public String getNAME_HTML() {
         return NAME_HTML;
@@ -16,6 +16,7 @@ public class Interpolation {
     public String toString() {
         return "\nInterpolation{" +
                 "\nNAME_HTML='" + NAME_HTML +
-                 "\n}"; }
+                "\n}";
     }
+}
 

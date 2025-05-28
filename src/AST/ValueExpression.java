@@ -1,9 +1,12 @@
 package AST;
 
-public class ValueExpression {
+public class ValueExpression extends AstNode {
+
     String text;
     Integer integer;
     String isBoolean;
+
+    FunctionCall functionCall;
 
     public String getText() {
         return text;
@@ -29,14 +32,23 @@ public class ValueExpression {
         this.isBoolean = isBoolean;
     }
 
+    public FunctionCall getFunctionCall() {
+        return functionCall;
+    }
+
+    public void setFunctionCall(FunctionCall functionCall) {
+        this.functionCall = functionCall;
+    }
+
     @Override
     public String toString() {
-        if(text != null)
+        if (text != null)
             return "\n ValueExpression{ " + text + "\n }";
         else if (integer != null) {
             return "\n ValueExpression{ " + integer + "\n }";
+        } else if (functionCall != null) {
+            return "\n ValueExpression{ " + functionCall + "\n }";
         }
         return "\n ValueExpression{ " + isBoolean + "\n }";
     }
-
 }

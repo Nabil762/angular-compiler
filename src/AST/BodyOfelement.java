@@ -1,6 +1,6 @@
 package AST;
 
-public class BodyOfelement {
+public class BodyOfelement extends AstNode {
 
     String identifier;
     ValueCss valueCss;

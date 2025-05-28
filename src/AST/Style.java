@@ -1,7 +1,7 @@
 package AST;
 
-public class Style {
-   BodyOfCss bodyOfcss;
+public class Style extends PropertyAssignment {
+    BodyOfCss bodyOfcss;
 
     public BodyOfCss getBodyOfcss() {
         return bodyOfcss;

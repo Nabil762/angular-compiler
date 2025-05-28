@@ -1,8 +1,9 @@
 package AST;
+
 import java.util.List;
 import java.util.ArrayList;
 
-public class Property {
+public class Property extends AstNode {
     String ID;
     ValueExpression valueExpression;
 

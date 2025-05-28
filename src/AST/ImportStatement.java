@@ -3,7 +3,7 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImportStatement {
+public class ImportStatement extends AstNode {
     List<String> identifiers = new ArrayList<String>();
     String library;
 
@@ -22,12 +22,35 @@ public class ImportStatement {
     public void setLibrary(String library) {
         this.library = library;
     }
+//
+//    @Override
+//    public String toString() {
+//        return "\nImportStatement{" +
+//                "\n components =" + identifiers +
+//                "\n from library =" + library +
+//                "\n}";
+//    }
 
     @Override
     public String toString() {
-        return "\nImportStatement{" +
-                "\n components =" + identifiers +
-                "\n from library =" + library +
-                "\n}";
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("import ");
+        if (identifiers.isEmpty()) {
+            stringBuilder.append("*");
+        } else {
+            stringBuilder.append("{ ");
+            for (int i = 0; i < identifiers.size(); i++) {
+                stringBuilder.append(identifiers.get(i));
+                if (i < identifiers.size() - 1) {
+                    stringBuilder.append(", ");
+                }
+            }
+            stringBuilder.append(" }");
+        }
+        stringBuilder.append(" from '").append(library).append("';");
+
+        return stringBuilder.toString();
     }
 }
+

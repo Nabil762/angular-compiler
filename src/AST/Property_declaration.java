@@ -3,7 +3,7 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Property_declaration {
+public class Property_declaration extends ListDeclaration{
     String ID;
     List<Type> types = new ArrayList<Type>();
 

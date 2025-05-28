@@ -1,6 +1,6 @@
 package AST;
 
-public class ObjectExpression {
+public class ObjectExpression extends AstNode{
     PropertyList propertyList;
 
     public PropertyList getPropertyList() {

@@ -1,6 +1,6 @@
 package AST;
 
-public class ListStatement {
+public class ListStatement extends ListDeclaration{
     String array_name;
     String name_object;
 

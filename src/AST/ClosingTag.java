@@ -1,7 +1,7 @@
 package AST;
 
-public class ClosingTag {
-    String NAME_HTML ;
+public class ClosingTag extends Tag {
+    String NAME_HTML;
 
     public String getNAME_HTML() {
         return NAME_HTML;

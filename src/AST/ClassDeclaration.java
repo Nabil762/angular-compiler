@@ -3,7 +3,7 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassDeclaration {
+public class ClassDeclaration extends AstNode {
     String class_name;
     List<ListDeclaration> listDeclarations = new ArrayList<ListDeclaration>();
 

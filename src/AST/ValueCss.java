@@ -3,7 +3,7 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValueCss {
+public class ValueCss extends AstNode {
     List<String> identifiers = new ArrayList<String>();
 
     public List<String> getIdentifiers() {

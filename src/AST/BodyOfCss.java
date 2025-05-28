@@ -1,6 +1,6 @@
 package AST;
 
-public class BodyOfCss {
+public class BodyOfCss extends AstNode {
     Objecte objecte;
 
     public Objecte getObjecte() {

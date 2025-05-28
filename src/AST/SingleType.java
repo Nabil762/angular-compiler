@@ -1,6 +1,6 @@
 package AST;
 
-public class SingleType {
+public  class SingleType extends AstNode {
     String ID;
     String type;
 
@@ -22,8 +22,12 @@ public class SingleType {
 
     @Override
     public String toString() {
+        if (ID != null) {
+            return "\nSingleType{" +
+                    "ID= '" + ID + '\'' +
+                    "\n}";
+        }
         return "\nSingleType{" +
-                "ID= '" + ID + '\'' +
                 "\n type= '" + type + '\'' +
                 "\n}";
     }

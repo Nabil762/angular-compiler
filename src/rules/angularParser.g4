@@ -4,8 +4,9 @@ options {
   tokenVocab=angularLexer;
 }
 
-program: statement+ EOF;
+program: statement+ EOF ;
 
+// ANGULAR
 statement: importStatement+ (interfaceDeclaration)* componentDeclaration classDeclaration ;
 
 importStatement: IMPORT ( LBRACE IDENTIFIER (COMMA IDENTIFIER)* COMMA? RBRACE | TIMES) FROM  STRING SEMICOLON;
@@ -18,19 +19,34 @@ componentDeclaration: AD COMPONENT LPAREN LBRACE componentConfig RBRACE RPAREN; 
 
 componentConfig: (propertyAssignment (COMMA propertyAssignment)*)? ;     //edited
 
-propertyAssignment: selector | standalone | styles | importDeclaration | template ;
-
+propertyAssignment:
+    selector          # SelectorProperty
+  | standalone       # StandaloneProperty
+  | styles           # StylesProperty
+  | importDeclaration # ImportProperty
+  | template         # TemplateProperty
+  ;
 importDeclaration : IMPORTS COLON LBRACKET IDENTIFIER? RBRACKET;
 
 selector :SELECTOR COLON STRING ;
 
 standalone : STANDALONE COLON BOOLEAN ;
 
+// HTML MODE
 template : TEMPLATE COLON1 BACKTICK  element* BACKTICK1;
 
-element : tag | TAG_NAME (COLON1)? | interpolation;
+element :
+    tag                        # TagElement
+  | TAG_NAME (COLON1)?         # TagNameElement
+  | interpolation              # InterpolationElement
+  ;
 
-tag: openingTag element* closingTag | selfClosingTag;
+
+
+tag:
+    openingTag element* closingTag   # StandardTag
+  | selfClosingTag                   # SelfClosingTagElement
+  ;
 
 openingTag : TAG_OPEN attributes* TAG_CLOSE;
 
@@ -38,11 +54,16 @@ closingTag : OPEN_TAG_CLOSE TAG_NAME TAG_CLOSE;
 
 selfClosingTag : TAG_OPEN attributes* TAG_SELF_CLOSE;
 
-attributes : TAG_NAME EQUALH STRING1 | DIRECTIVE_NAME EQUALH STRING1 | BINDING_PROPERTY EQUALH STRING1
-             | STANDARD_EVENT EQUALH STRING1;
+attributes:
+    TAG_NAME EQUALH STRING1         # HtmlAttribute
+  | DIRECTIVE_NAME EQUALH STRING1   # DirectiveAttribute
+  | BINDING_PROPERTY EQUALH STRING1 # BindingAttribute
+  | STANDARD_EVENT EQUALH STRING1   # EventAttribute
+  ;
 
 interpolation : OPEN_TS TAG_NAME CLOSE_TS;
 
+// CSS MODE
 styles :STYLES COLON2 OPEN_SQUARE bodyOfCss CLOSE_SQUARE COMMA2? ;
 
 bodyOfCss : BACKTICK2  objects  BACKTICK2 COMMA2?;
@@ -55,11 +76,14 @@ bodyOfelement : ID COLON2 valueCss SEMICOLON2;
 
 valueCss : (PERCENT | ID) (ID ID?)? ;
 
-// KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-
+// ANGULAR CODE COMPLETION
 classDeclaration: EXPORT CLASS1 IDENTIFIER LBRACE (listDeclaration)* RBRACE;
 
-listDeclaration: listStatement | property_declaration | forDeclaration;
+listDeclaration:
+    listStatement        # ListStatement_Declaration
+  | property_declaration # DeclarationProperty
+  | functionDeclaration  # Function_Declaration
+  ;
 
 listStatement : IDENTIFIER COLON IDENTIFIER LBRACKET RBRACKET EQUAL arrayExpression SEMICOLON ;
 
@@ -73,16 +97,34 @@ propertyList : property (COMMA property)* ;
 
 property : IDENTIFIER COLON valueExpression ;
 
-valueExpression : STRING | NUMBER | BOOLEAN;
-
 property_declaration: IDENTIFIER COLON type (EQUAL type)? SEMICOLON;
 
 type: single_type (OR single_type)*;
 
-forDeclaration: IDENTIFIER LPAREN IDENTIFIER COLON IDENTIFIER RPAREN COLON TYPE LBRACE bodyFor RBRACE;
 
-bodyFor: THIS DOT IDENTIFIER EQUAL IDENTIFIER SEMICOLON;
+functionDeclaration: IDENTIFIER LPAREN parameters? RPAREN COLON type? LBRACE (functionBody)* RBRACE;
+parameters: parameter (COMMA parameter)*;
+parameter: IDENTIFIER COLON single_type;
 
-single_type: IDENTIFIER | TYPE;
 
+functionBody:
+    THIS DOT IDENTIFIER EQUAL IDENTIFIER SEMICOLON           # SimpleAssignment
+  | THIS DOT IDENTIFIER EQUAL valueExpression SEMICOLON     # ComplexAssignment
+  | valueExpression SEMICOLON                               # ExpressionStatement
+  ;
+functionCall: IDENTIFIER LPAREN valueExpression* RPAREN;
+
+valueExpression:
+    STRING      # StringValue
+  | NUMBER      # NumericValue
+  | BOOLEAN     # BooleanValue
+  | functionCall # FunctionCallValue
+  ;
+
+single_type:
+    IDENTIFIER  # IdentifierType
+  | TYPE        # ConcreteType
+  ;
 propertyDeclaration: IDENTIFIER COLON TYPE;
+
+

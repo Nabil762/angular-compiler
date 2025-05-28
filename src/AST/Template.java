@@ -3,22 +3,36 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Template {
-    List<Element> element =new ArrayList();
+public class Template extends PropertyAssignment {
+    List<Element> elements = new ArrayList<>();
 
     public List<Element> getElement() {
-        return element;
+        return elements;
     }
 
     public void setElement(List<Element> element) {
-        this.element = element;
+        this.elements = element;
     }
 
     @Override
     public String toString() {
-
-        return "\nTemplate{" +
-                "\n" + element +
-                "\n}";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("template: `");
+        for (Element element : elements) {
+            stringBuilder.append(element.toString());
+        }
+        stringBuilder.append("`");
+        return stringBuilder.toString();
     }
+    //    @Override
+//    public String toString() {
+//
+//        return "\nTemplate{" +
+//                "\n" + elements +
+//                "\n}";
+//    }
+
 }
+
+
+

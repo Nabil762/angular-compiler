@@ -3,8 +3,9 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelfClosingTag {
+public class SelfClosingTag extends Tag {
     List<Attributes> attributes = new ArrayList<>();
+
     public List<Attributes> getAttributes() {
         return attributes;
     }

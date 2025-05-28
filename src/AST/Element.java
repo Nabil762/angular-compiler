@@ -1,8 +1,8 @@
 package AST;
 
-public class Element {
-    Tag tag ;
-    String htmlName ;
+public class Element extends AstNode {
+    Tag tag;
+    String htmlName;
     Interpolation interpolation;
 
     public Tag getTag() {
@@ -31,18 +31,18 @@ public class Element {
 
     @Override
     public String toString() {
-        if (htmlName!=null)
-            return  "\nElement{" +
-                    "\n"+htmlName
-                    +"\n}";
-       else if (interpolation!=null)
-            return  "\nElement{" +
-                    "\n"+interpolation
-                    +"\n}";
+        if (htmlName != null)
+            return "\nElement{" +
+                    "\n" + htmlName
+                    + "\n}";
+        else if (interpolation != null)
+            return "\nElement{" +
+                    "\n" + interpolation
+                    + "\n}";
 
-        return  "\nElement{" +
-                "\n"+tag
-                +"\n}";
+        return "\nElement{" +
+                "\n" + tag
+                + "\n}";
 
     }
 }

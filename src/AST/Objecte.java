@@ -3,7 +3,7 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Objecte {
+public class Objecte extends AstNode {
     List<ElementCss> elementCssList = new ArrayList<ElementCss>();
 
     public List<ElementCss> getElementCssList() {

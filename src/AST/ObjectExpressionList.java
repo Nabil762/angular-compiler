@@ -3,7 +3,7 @@ package AST;
 import java.util.List;
 import java.util.ArrayList;
 
-public class ObjectExpressionList {
+public class ObjectExpressionList extends AstNode {
     List<ObjectExpression> objectExpression = new ArrayList<ObjectExpression>();
 
     public List<ObjectExpression> getObjectExpression() {

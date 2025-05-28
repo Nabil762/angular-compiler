@@ -2,7 +2,8 @@ package AST;
 
 import java.util.ArrayList;
 import java.util.List;
-public class Statement {
+
+public class Statement extends AstNode {
     List<ImportStatement> importStatementList = new ArrayList<ImportStatement>();
     List<InterfaceDeclaration> interfaceDeclarationList = new ArrayList<InterfaceDeclaration>();
     ComponentDeclaration componentDeclaration;
@@ -49,4 +50,34 @@ public class Statement {
                 "\nclassDeclaration=" + classDeclaration +
                 "\n}";
     }
+
+//    @Override
+//    public String toString() {
+//        StringBuilder stringBuilder = new StringBuilder();
+//        for (ImportStatement imp : importStatementList) {
+//            stringBuilder.append(imp);
+//            stringBuilder.append("\n");
+//        }
+//
+//        for (InterfaceDeclaration inter : interfaceDeclarationList) {
+//            stringBuilder.append(inter);
+//            stringBuilder.append("\n");
+//
+//        }
+//
+//        if (componentDeclaration != null) {
+//            stringBuilder.append(componentDeclaration);
+//            stringBuilder.append("\n");
+//        }
+//
+//        if (classDeclaration != null) {
+//            stringBuilder.append(classDeclaration);
+//            stringBuilder.append("\n");
+//        }
+//
+//        return stringBuilder.toString();
+//    }
 }
+
+
+

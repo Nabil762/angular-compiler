@@ -1,20 +1,27 @@
 package AST;
 
-public class Standalone {
-    String isboolean;
+public class Standalone extends PropertyAssignment {
+    String isStandalone;
+
 
     public String getIsboolean() {
-        return isboolean;
+        return isStandalone;
     }
 
     public void setIsboolean(String isboolean) {
-        this.isboolean = isboolean;
+        this.isStandalone = isboolean;
     }
 
     @Override
     public String toString() {
-        return "\nStandalone{" +
-                "\n" + isboolean +
-                "\n}";
+        return "standalone: " + isStandalone;
     }
+//    @Override
+//    public String toString() {
+//        return "\nStandalone{" +
+//                "\n" + isboolean +
+//                "\n}";
+//    }
 }
+
+

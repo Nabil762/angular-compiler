@@ -1,8 +1,9 @@
 package AST;
+
 import java.util.List;
 import java.util.ArrayList;
 
-public class PropertyList {
+public class PropertyList extends AstNode {
     List<Property> properties = new ArrayList<Property>();
 
     public List<Property> getProperties() {

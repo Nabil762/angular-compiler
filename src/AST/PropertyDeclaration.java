@@ -1,6 +1,6 @@
 package AST;
 
-public class PropertyDeclaration {
+public class PropertyDeclaration extends ListDeclaration {
     String property;
     String type;
 

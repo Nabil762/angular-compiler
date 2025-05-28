@@ -1,4 +1,4 @@
-// Generated from /home/nabil_al-hamza/IdeaProjects/angular-compiler/src/rules/angularParser.g4 by ANTLR 4.13.1
+// Generated from C:/Users/ASUS/Desktop/compiler-angular-end/src/rules/angularParser.g4 by ANTLR 4.13.2
 package rules;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -78,15 +78,65 @@ public interface angularParserListener extends ParseTreeListener {
 	 */
 	void exitComponentConfig(angularParser.ComponentConfigContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link angularParser#propertyAssignment}.
+	 * Enter a parse tree produced by the {@code SelectorProperty}
+	 * labeled alternative in {@link angularParser#propertyAssignment}.
 	 * @param ctx the parse tree
 	 */
-	void enterPropertyAssignment(angularParser.PropertyAssignmentContext ctx);
+	void enterSelectorProperty(angularParser.SelectorPropertyContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link angularParser#propertyAssignment}.
+	 * Exit a parse tree produced by the {@code SelectorProperty}
+	 * labeled alternative in {@link angularParser#propertyAssignment}.
 	 * @param ctx the parse tree
 	 */
-	void exitPropertyAssignment(angularParser.PropertyAssignmentContext ctx);
+	void exitSelectorProperty(angularParser.SelectorPropertyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StandaloneProperty}
+	 * labeled alternative in {@link angularParser#propertyAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterStandaloneProperty(angularParser.StandalonePropertyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StandaloneProperty}
+	 * labeled alternative in {@link angularParser#propertyAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitStandaloneProperty(angularParser.StandalonePropertyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StylesProperty}
+	 * labeled alternative in {@link angularParser#propertyAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterStylesProperty(angularParser.StylesPropertyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StylesProperty}
+	 * labeled alternative in {@link angularParser#propertyAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitStylesProperty(angularParser.StylesPropertyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ImportProperty}
+	 * labeled alternative in {@link angularParser#propertyAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterImportProperty(angularParser.ImportPropertyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ImportProperty}
+	 * labeled alternative in {@link angularParser#propertyAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitImportProperty(angularParser.ImportPropertyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code TemplateProperty}
+	 * labeled alternative in {@link angularParser#propertyAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterTemplateProperty(angularParser.TemplatePropertyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code TemplateProperty}
+	 * labeled alternative in {@link angularParser#propertyAssignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitTemplateProperty(angularParser.TemplatePropertyContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link angularParser#importDeclaration}.
 	 * @param ctx the parse tree
@@ -128,25 +178,65 @@ public interface angularParserListener extends ParseTreeListener {
 	 */
 	void exitTemplate(angularParser.TemplateContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link angularParser#element}.
+	 * Enter a parse tree produced by the {@code TagElement}
+	 * labeled alternative in {@link angularParser#element}.
 	 * @param ctx the parse tree
 	 */
-	void enterElement(angularParser.ElementContext ctx);
+	void enterTagElement(angularParser.TagElementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link angularParser#element}.
+	 * Exit a parse tree produced by the {@code TagElement}
+	 * labeled alternative in {@link angularParser#element}.
 	 * @param ctx the parse tree
 	 */
-	void exitElement(angularParser.ElementContext ctx);
+	void exitTagElement(angularParser.TagElementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link angularParser#tag}.
+	 * Enter a parse tree produced by the {@code TagNameElement}
+	 * labeled alternative in {@link angularParser#element}.
 	 * @param ctx the parse tree
 	 */
-	void enterTag(angularParser.TagContext ctx);
+	void enterTagNameElement(angularParser.TagNameElementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link angularParser#tag}.
+	 * Exit a parse tree produced by the {@code TagNameElement}
+	 * labeled alternative in {@link angularParser#element}.
 	 * @param ctx the parse tree
 	 */
-	void exitTag(angularParser.TagContext ctx);
+	void exitTagNameElement(angularParser.TagNameElementContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code InterpolationElement}
+	 * labeled alternative in {@link angularParser#element}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterpolationElement(angularParser.InterpolationElementContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code InterpolationElement}
+	 * labeled alternative in {@link angularParser#element}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterpolationElement(angularParser.InterpolationElementContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StandardTag}
+	 * labeled alternative in {@link angularParser#tag}.
+	 * @param ctx the parse tree
+	 */
+	void enterStandardTag(angularParser.StandardTagContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StandardTag}
+	 * labeled alternative in {@link angularParser#tag}.
+	 * @param ctx the parse tree
+	 */
+	void exitStandardTag(angularParser.StandardTagContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code SelfClosingTagElement}
+	 * labeled alternative in {@link angularParser#tag}.
+	 * @param ctx the parse tree
+	 */
+	void enterSelfClosingTagElement(angularParser.SelfClosingTagElementContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code SelfClosingTagElement}
+	 * labeled alternative in {@link angularParser#tag}.
+	 * @param ctx the parse tree
+	 */
+	void exitSelfClosingTagElement(angularParser.SelfClosingTagElementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link angularParser#openingTag}.
 	 * @param ctx the parse tree
@@ -178,15 +268,53 @@ public interface angularParserListener extends ParseTreeListener {
 	 */
 	void exitSelfClosingTag(angularParser.SelfClosingTagContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link angularParser#attributes}.
+	 * Enter a parse tree produced by the {@code HtmlAttribute}
+	 * labeled alternative in {@link angularParser#attributes}.
 	 * @param ctx the parse tree
 	 */
-	void enterAttributes(angularParser.AttributesContext ctx);
+	void enterHtmlAttribute(angularParser.HtmlAttributeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link angularParser#attributes}.
+	 * Exit a parse tree produced by the {@code HtmlAttribute}
+	 * labeled alternative in {@link angularParser#attributes}.
 	 * @param ctx the parse tree
 	 */
-	void exitAttributes(angularParser.AttributesContext ctx);
+	void exitHtmlAttribute(angularParser.HtmlAttributeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DirectiveAttribute}
+	 * labeled alternative in {@link angularParser#attributes}.
+	 * @param ctx the parse tree
+	 */
+	void enterDirectiveAttribute(angularParser.DirectiveAttributeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DirectiveAttribute}
+	 * labeled alternative in {@link angularParser#attributes}.
+	 * @param ctx the parse tree
+	 */
+	void exitDirectiveAttribute(angularParser.DirectiveAttributeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code BindingAttribute}
+	 * labeled alternative in {@link angularParser#attributes}.
+	 * @param ctx the parse tree
+	 */
+	void enterBindingAttribute(angularParser.BindingAttributeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code BindingAttribute}
+	 * labeled alternative in {@link angularParser#attributes}.
+	 * @param ctx the parse tree
+	 */
+	void exitBindingAttribute(angularParser.BindingAttributeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code EventAttribute}
+	 * labeled alternative in {@link angularParser#attributes}.
+	 * @param ctx the parse tree
+	 */
+	void enterEventAttribute(angularParser.EventAttributeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code EventAttribute}
+	 * labeled alternative in {@link angularParser#attributes}.
+	 * @param ctx the parse tree
+	 */
+	void exitEventAttribute(angularParser.EventAttributeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link angularParser#interpolation}.
 	 * @param ctx the parse tree
@@ -268,15 +396,41 @@ public interface angularParserListener extends ParseTreeListener {
 	 */
 	void exitClassDeclaration(angularParser.ClassDeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link angularParser#listDeclaration}.
+	 * Enter a parse tree produced by the {@code ListStatement_Declaration}
+	 * labeled alternative in {@link angularParser#listDeclaration}.
 	 * @param ctx the parse tree
 	 */
-	void enterListDeclaration(angularParser.ListDeclarationContext ctx);
+	void enterListStatement_Declaration(angularParser.ListStatement_DeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link angularParser#listDeclaration}.
+	 * Exit a parse tree produced by the {@code ListStatement_Declaration}
+	 * labeled alternative in {@link angularParser#listDeclaration}.
 	 * @param ctx the parse tree
 	 */
-	void exitListDeclaration(angularParser.ListDeclarationContext ctx);
+	void exitListStatement_Declaration(angularParser.ListStatement_DeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DeclarationProperty}
+	 * labeled alternative in {@link angularParser#listDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclarationProperty(angularParser.DeclarationPropertyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DeclarationProperty}
+	 * labeled alternative in {@link angularParser#listDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclarationProperty(angularParser.DeclarationPropertyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Function_Declaration}
+	 * labeled alternative in {@link angularParser#listDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_Declaration(angularParser.Function_DeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Function_Declaration}
+	 * labeled alternative in {@link angularParser#listDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_Declaration(angularParser.Function_DeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link angularParser#listStatement}.
 	 * @param ctx the parse tree
@@ -358,45 +512,153 @@ public interface angularParserListener extends ParseTreeListener {
 	 */
 	void exitType(angularParser.TypeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link angularParser#forDeclaration}.
+	 * Enter a parse tree produced by {@link angularParser#functionDeclaration}.
 	 * @param ctx the parse tree
 	 */
-	void enterForDeclaration(angularParser.ForDeclarationContext ctx);
+	void enterFunctionDeclaration(angularParser.FunctionDeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link angularParser#forDeclaration}.
+	 * Exit a parse tree produced by {@link angularParser#functionDeclaration}.
 	 * @param ctx the parse tree
 	 */
-	void exitForDeclaration(angularParser.ForDeclarationContext ctx);
+	void exitFunctionDeclaration(angularParser.FunctionDeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link angularParser#bodyFor}.
+	 * Enter a parse tree produced by {@link angularParser#parameters}.
 	 * @param ctx the parse tree
 	 */
-	void enterBodyFor(angularParser.BodyForContext ctx);
+	void enterParameters(angularParser.ParametersContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link angularParser#bodyFor}.
+	 * Exit a parse tree produced by {@link angularParser#parameters}.
 	 * @param ctx the parse tree
 	 */
-	void exitBodyFor(angularParser.BodyForContext ctx);
+	void exitParameters(angularParser.ParametersContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link angularParser#single_type}.
+	 * Enter a parse tree produced by {@link angularParser#parameter}.
 	 * @param ctx the parse tree
 	 */
-	void enterSingle_type(angularParser.Single_typeContext ctx);
+	void enterParameter(angularParser.ParameterContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link angularParser#single_type}.
+	 * Exit a parse tree produced by {@link angularParser#parameter}.
 	 * @param ctx the parse tree
 	 */
-	void exitSingle_type(angularParser.Single_typeContext ctx);
+	void exitParameter(angularParser.ParameterContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link angularParser#valueExpression}.
+	 * Enter a parse tree produced by the {@code SimpleAssignment}
+	 * labeled alternative in {@link angularParser#functionBody}.
 	 * @param ctx the parse tree
 	 */
-	void enterValueExpression(angularParser.ValueExpressionContext ctx);
+	void enterSimpleAssignment(angularParser.SimpleAssignmentContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link angularParser#valueExpression}.
+	 * Exit a parse tree produced by the {@code SimpleAssignment}
+	 * labeled alternative in {@link angularParser#functionBody}.
 	 * @param ctx the parse tree
 	 */
-	void exitValueExpression(angularParser.ValueExpressionContext ctx);
+	void exitSimpleAssignment(angularParser.SimpleAssignmentContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ComplexAssignment}
+	 * labeled alternative in {@link angularParser#functionBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterComplexAssignment(angularParser.ComplexAssignmentContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ComplexAssignment}
+	 * labeled alternative in {@link angularParser#functionBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitComplexAssignment(angularParser.ComplexAssignmentContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExpressionStatement}
+	 * labeled alternative in {@link angularParser#functionBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressionStatement(angularParser.ExpressionStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpressionStatement}
+	 * labeled alternative in {@link angularParser#functionBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressionStatement(angularParser.ExpressionStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link angularParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCall(angularParser.FunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link angularParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCall(angularParser.FunctionCallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StringValue}
+	 * labeled alternative in {@link angularParser#valueExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringValue(angularParser.StringValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StringValue}
+	 * labeled alternative in {@link angularParser#valueExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringValue(angularParser.StringValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code NumericValue}
+	 * labeled alternative in {@link angularParser#valueExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumericValue(angularParser.NumericValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code NumericValue}
+	 * labeled alternative in {@link angularParser#valueExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumericValue(angularParser.NumericValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code BooleanValue}
+	 * labeled alternative in {@link angularParser#valueExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterBooleanValue(angularParser.BooleanValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code BooleanValue}
+	 * labeled alternative in {@link angularParser#valueExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitBooleanValue(angularParser.BooleanValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code FunctionCallValue}
+	 * labeled alternative in {@link angularParser#valueExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCallValue(angularParser.FunctionCallValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code FunctionCallValue}
+	 * labeled alternative in {@link angularParser#valueExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCallValue(angularParser.FunctionCallValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code IdentifierType}
+	 * labeled alternative in {@link angularParser#single_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdentifierType(angularParser.IdentifierTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IdentifierType}
+	 * labeled alternative in {@link angularParser#single_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdentifierType(angularParser.IdentifierTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ConcreteType}
+	 * labeled alternative in {@link angularParser#single_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterConcreteType(angularParser.ConcreteTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ConcreteType}
+	 * labeled alternative in {@link angularParser#single_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitConcreteType(angularParser.ConcreteTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link angularParser#propertyDeclaration}.
 	 * @param ctx the parse tree

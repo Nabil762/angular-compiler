@@ -1,6 +1,6 @@
 package AST;
 
-public class ArrayExpression {
+public class ArrayExpression extends AstNode{
     ObjectExpressionList objectExpressionList;
 
     public ObjectExpressionList getObjectExpressionList() {

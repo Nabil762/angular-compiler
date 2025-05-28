@@ -3,9 +3,10 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OpeningTag {
+public class OpeningTag extends Tag {
 
     List<Attributes> attributes = new ArrayList<>();
+
     public List<Attributes> getAttributes() {
         return attributes;
     }
@@ -16,12 +17,12 @@ public class OpeningTag {
 
     @Override
     public String toString() {
-        if(attributes!=null){
+        if (attributes != null) {
             return "\nOpeningTag{" +
                     attributes +
                     "\n}";
         }
         return "";
-        }
+    }
 
 }
