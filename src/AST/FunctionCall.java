@@ -8,8 +8,9 @@ public class FunctionCall {
     List<ValueExpression> arguments;
 
     public void setFunctionName(String functionName) {
-        this.functionName=functionName;
+        this.functionName = functionName;
     }
+
     public void addArgument(ValueExpression argument) {
         arguments.add(argument);
     }
@@ -20,17 +21,18 @@ public class FunctionCall {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(functionName).append("(");
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(functionName).append("(");
 
-        for (int i = 0; i < arguments.size(); i++) {
-            sb.append(arguments.get(i).toString());
-            if (i < arguments.size() - 1) {
-                sb.append(", ");
-            }
-        }
+//        for (int i = 0; i < arguments.size(); i++) {
+//            sb.append(arguments.get(i).toString());
+//            if (i < arguments.size() - 1) {
+//                sb.append(", ");
+//            }
+//        }
 
-        sb.append(")");
-        return sb.toString();
+//        sb.append(")");
+//        return sb.toString();
+        return "fff";
     }
 }

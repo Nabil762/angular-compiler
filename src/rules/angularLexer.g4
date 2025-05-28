@@ -65,7 +65,8 @@ TEMPLATE: 'template' ->pushMode(TEMPLATE_MODE);
 // Identifiers and Literals
 IDENTIFIER: [*a-zA-Z_$][.a-zA-Z0-9_$]*;
 NUMBER: [0-9]+;
-STRING: '"' (~["\r\n])* '"' | '\'' (~["\r\n])* '\'' | '`' (~["\r\n])* '`' ;
+STRING: '\'' (~['\\])* '\''
+           | '"' (~["\\])* '"' ;
 WHITESPACE: [ \t\r\n]+ -> skip;
 COMMENT: '//' ~[ \r\n]* -> skip;
 BLOCK_COMMENT: '/*' .*? '*/' -> skip;

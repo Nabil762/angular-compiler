@@ -1,8 +1,9 @@
 package symbolTableAngular;
 
 public class Row {
-    String type ;
-    String value ;
+    String type;
+    String value;
+    int Line, position;
 
     public String getType() {
         return type;
@@ -18,5 +19,21 @@ public class Row {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public int getLine() {
+        return Line;
+    }
+
+    public void setLine(int line) {
+        Line = line;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

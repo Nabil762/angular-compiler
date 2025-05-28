@@ -21,7 +21,7 @@ public class SymbolTable {
     public void print() {
         for (int i = 0; i < rows.size(); i++) {
             if (rows.get(i) != null) {
-                System.out.println(rows.get(i).getType() + "\t\t\t\t " + rows.get(i).getValue());
+                System.out.println(rows.get(i).getType() + "\t\t\t\t " + rows.get(i).getValue() + "\t\t\t\t " + rows.get(i).getLine() + "\t\t\t\t " + rows.get(i).getPosition());
             }
         }
     }

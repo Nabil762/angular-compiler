@@ -87,9 +87,8 @@ export class AppComponent {
 
   selectedProduct: Product | null = null;
 
-      selectProduct(product: Product): void {
+      selectProduct(product: Product): int {
         this .selectedProduct = product;
 
       }
-
 }
