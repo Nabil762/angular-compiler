@@ -350,7 +350,6 @@ public class AngularVisitor extends angularParserBaseVisitor {
 
         return attributes;
     }
-
     @Override
     public Interpolation visitInterpolation(angularParser.InterpolationContext ctx) {
         Interpolation interpolation = new Interpolation();
