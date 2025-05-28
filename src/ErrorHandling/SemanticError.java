@@ -45,8 +45,18 @@ public class SemanticError {
             System.out.println();
             isValid = false;
         }
+        if (!DetectSelectorTemplateError(this.symbolTables)) {
+            error.getErrors().add("Exception Selector|Template Error");
+            System.out.println();
+            isValid = false;
+        }
         if (!RepeatedDeclarationFunction(this.symbolTables)) {
             error.getErrors().add("Exception RepeatedDeclarationFunction");
+            System.out.println();
+            isValid = false;
+        }
+        if (!RepeatedDeclarationObjectInInterface(this.symbolTables)) {
+            error.getErrors().add("Exception RepeatedDeclarationObjectInInterface");
             System.out.println();
             isValid = false;
         }
@@ -153,6 +163,26 @@ public class SemanticError {
                 checkError = false;
             }
         }
+        return checkError;
+    }
+
+    private boolean DetectSelectorTemplateError(List<SymbolTable> symbolTables) {
+        if (symbolTables == null || symbolTables.isEmpty()) {
+            error.getErrors().add("No symbol tables provided");
+            return false;
+        }
+        boolean checkError = true;
+        SymbolTable symbolTable = symbolTables.get(4);
+        List<String> listSelector = new ArrayList<>();
+        List<String> listTemplate = new ArrayList<>();
+        for (int i = 0; i < symbolTable.getRows().size(); i++) {
+            if (symbolTable.getRows().get(i) != null) {
+                if (symbolTable.getRows().get(i).getType().contains("StringTemplate"))
+                    listTemplate.add(symbolTable.getRows().get(i).getValue());
+                if (symbolTable.getRows().get(i).getType().contains("StringSelector"))
+                    listSelector.add(symbolTable.getRows().get(i).getValue());
+            }
+        }
         if (listTemplate.isEmpty()) {
             error.getErrors().add("template not found in Component Declaration");
             checkError = false;
@@ -196,6 +226,34 @@ public class SemanticError {
         return checkError;
     }
 
+    private boolean RepeatedDeclarationObjectInInterface(List<SymbolTable> symbolTables) {
+        if (symbolTables == null || symbolTables.isEmpty()) {
+            error.getErrors().add("No symbol tables provided");
+            return false;
+        }
+        boolean checkError = true;
+        SymbolTable symbolTable = symbolTables.get(0);
+        List<Row> listObjectName = new ArrayList<>();
+        List<Row> listCheck = new ArrayList<>();
+
+        for (int i = 0; i < symbolTable.getRows().size(); i++) {
+            if (symbolTable.getRows().get(i) != null) {
+                if (symbolTable.getRows().get(i).getType().contains("StringInterfaceDecl"))
+                    listObjectName.add(symbolTable.getRows().get(i));
+            }
+        }
+        if (!listObjectName.isEmpty())
+            listCheck.add(listObjectName.get(0));
+        for (int j = 1; j < listObjectName.size(); j++) {
+            for (int i = 0; i < listCheck.size(); i++) {
+                if (Objects.equals(listCheck.get(i).getValue(), listObjectName.get(j).getValue())) {
+                    error.getErrors().add("At Line " + listObjectName.get(i).getLine() + " in position " + listObjectName.get(i).getPosition() + " Object was Decelerated already ");
+                    checkError = false;
+                }
+            }
+        }
+        return checkError;
+    }
 
     private boolean IncorrectAttributeCss(List<SymbolTable> symbolTables) {
         if (symbolTables == null || symbolTables.isEmpty()) {
@@ -227,109 +285,3 @@ public class SemanticError {
         error.print();  // Using the print() method from your Error class
     }
 }
-
-
-//        if(!MissingClosingTags(this.symbolTable))
-//        {
-//            error.getErrors().add("Exception Missing_Closing_Tags");
-//            hasError = false;
-//        }
-//        if(!RepeatedDeclare(this.symbolTable)){
-//            error.getErrors().add("Exception Repeated_Declare");
-//            hasError = false;
-//        }
-//        if(!MissingKeyPropInList(this.symbolTable)){
-//            error.getErrors().add("missing key prop for list items");
-//            hasError = false;
-//        }
-//        error.print();
-        /*else if(!checkPassingIncorrectProps(this.symbolTable)){
-            System.out.println("Exception Passing Incorrect Props");
-            return false;
-        } else*/
-//            return hasError;
-//    }
-//    boolean MissingClosingTags(SymbolTable symbolTable){
-//        boolean is_error = true;
-//        int CountOfOpenTag = 0;
-//        int CountOfCloseTag = 0;
-//        for(int i = 0;i < symbolTable.getRows().size();i++){
-//            if(symbolTable.getRows().get(i) != null){
-//                    if(symbolTable.getRows().get(i).getValue().equals("<") )
-//                        CountOfOpenTag++;
-//                    if(symbolTable.getRows().get(i).getValue().equals(">") )
-//                        CountOfCloseTag++;
-//            }
-//        }
-//        if(CountOfOpenTag != CountOfCloseTag){
-//            is_error = false;
-//        }
-//        return is_error;
-//    }
-//    boolean IncorrectAttribute(SymbolTable symbolTable) {
-//        boolean is_error = true;
-//        List<String> listAttributeInInterface = new ArrayList<>();
-//        List<String> listAttributeInFunction = new ArrayList<>();
-//        for (int i = 0; i < symbolTable.getRows().size(); i++) {
-//            if (symbolTable.getRows().get(i) != null) {
-//                if (symbolTable.getRows().get(i).getType().contains("StringInterfaceDecl"))
-//                    listAttributeInInterface.add(symbolTable.getRows().get(i).getValue());
-//                if (symbolTable.getRows().get(i).getType().contains("StringInFunction"))
-//                    listAttributeInFunction.add(symbolTable.getRows().get(i).getValue());
-//            }
-//        }
-//
-//        for (String src : srcValues) {
-//            if (isValidAttributeName(src)) {
-//                is_error = false;
-//                System.err.println("Invalid attribute src: " + src);
-//            }
-//        }
-//
-//        for (String alt : altValues) {
-//            if (isValidAttributeName(alt)) {
-//                is_error = false;
-//                System.err.println("Invalid attribute alt: " + alt);
-//            }
-//        }
-//
-//        for (String className : classNameValues) {
-//            if (isValidAttributeName(className)) {
-//                is_error = false;
-//                System.err.println("using incorrect attribute instead of className");
-//            }
-//        }
-//        return is_error;
-//    }
-//
-//    boolean isValidAttributeName(String attributeName) {
-//        List<String> validAttributeNames = Arrays.asList("src", "alt", "className");
-//        return !validAttributeNames.contains(attributeName);
-//    }
-//    boolean RepeatedDeclare(SymbolTable symbolTable) {
-//        boolean is_error = true;
-//        for (int i = 0; i < symbolTable.getRows().size(); i++) {
-//            if (symbolTable.getRows().get(i) != null) {
-//                for (int j = 0; j < i; j++) {
-//                    if (symbolTable.getRows().get(j) != null &&
-//                            Objects.equals(symbolTable.getRows().get(j).getValue(), symbolTable.getRows().get(i).getValue())
-//                    && Objects.equals(symbolTable.getRows().get(i).getScope().getName(), "local scope")) {
-//                        is_error = false;
-//                    }
-//                }
-//            }
-//        }
-//        return is_error;
-//    }
-//    Boolean MissingKeyPropInList(SymbolTable symbolTable){
-//        boolean is_error = false;
-//        for(int i = 0;i < symbolTable.getRows().size(); i++){
-//            if(symbolTable.getRows().get(i) != null){
-//                if(symbolTable.getRows().get(i).getValue().equals("key")){
-//                    is_error = true;
-//                }
-//            }
-//        }
-//        return is_error;
-//    }
-

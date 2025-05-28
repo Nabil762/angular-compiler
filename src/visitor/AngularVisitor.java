@@ -10,16 +10,6 @@ import symbolTableAngular.SymbolTable;
 import java.util.ArrayList;
 import java.util.List;
 
-//            ctx.getStart().getLine();
-//            ctx.getStart().getCharPositionInLine();
-//            int line = ctx.getBegin().get().line;  // Gets the starting line number
-//            ctx.getLineNumber();  // Hypothetical method
-//            ctx.getSourcePosition().getLine();
-// For HTTP requests, use request.getRequestLine()
-//            String requestLine = request.getRequestLine();  // From HttpServletRequest
-//            System.out.println(Arrays.toString(ctx.getClass().getMethods()));
-//            System.out.println(ctx.getClass().getName());
-
 public class AngularVisitor extends angularParserBaseVisitor {
     List<SymbolTable> symbolTableList = new ArrayList<SymbolTable>();
 
@@ -37,11 +27,11 @@ public class AngularVisitor extends angularParserBaseVisitor {
             program.getStatementList().add(visitStatement(ctx.statement(i)));
         }
 
-        for (SymbolTable symbolTable : symbolTableList) {
-            symbolTable.print();
-            System.out.println();
-        }
-        System.out.println();
+//        for (SymbolTable symbolTable : symbolTableList) {
+//            symbolTable.print();
+//            System.out.println();
+//        }
+//        System.out.println();
         SemanticError semanticError = new SemanticError();
         semanticError.setSymbolTables(this.symbolTableList);
         semanticError.check();
@@ -167,7 +157,7 @@ public class AngularVisitor extends angularParserBaseVisitor {
             row.setValue(ctx.SELECTOR().getText());
             row.setLine(ctx.getStart().getLine());
             row.setPosition(ctx.getStart().getCharPositionInLine());
-            symbolTableList.get(1).setRow(row);
+            symbolTableList.get(4).setRow(row);
         }
         return selector;
     }
@@ -192,7 +182,7 @@ public class AngularVisitor extends angularParserBaseVisitor {
                 row.setValue(ctx.TEMPLATE().getText());
                 row.setLine(ctx.getStart().getLine());
                 row.setPosition(ctx.getStart().getCharPositionInLine());
-                symbolTableList.get(1).setRow(row);
+                symbolTableList.get(4).setRow(row);
             }
         }
 
@@ -280,6 +270,12 @@ public class AngularVisitor extends angularParserBaseVisitor {
             for (int i = 0; i < ctx.attributes().size(); i++) {
                 if (ctx.attributes(i) != null) {
                     selfClosingTag.getAttributes().add((Attributes) visit(ctx.attributes(i)));
+//                    Row row = new Row();
+//                    row.setType("SelfClosingTag");
+//                    row.setValue(ctx.TAG_OPEN().getText());
+//                    row.setLine(ctx.getStart().getLine());
+//                    row.setPosition(ctx.getStart().getCharPositionInLine());
+//                    symbolTableList.get(0).setRow(row);
                 }
             }
         }
@@ -293,17 +289,20 @@ public class AngularVisitor extends angularParserBaseVisitor {
         if (ctx.STRING1() != null && ctx.STRING1().getText() != null) {
             attributes.setText(ctx.STRING1().getText());
 //            Row row = new Row();
-//            row.setType("String");
-//            row.setValue(attributes.getText());
-//            symbolTable.getRows().add(row);
-
+//            row.setType("HtmlAttribute1");
+//            row.setValue(ctx.TAG_NAME().getText());
+//            row.setLine(ctx.getStart().getLine());
+//            row.setPosition(ctx.getStart().getCharPositionInLine());
+//            symbolTableList.get(0).setRow(row);
         }
         if (ctx.TAG_NAME() != null && ctx.TAG_NAME().getText() != null) {
             attributes.setHtmlName(ctx.TAG_NAME().getText());
 //            Row row = new Row();
-//            row.setType("Tag_name");
-//            row.setValue(attributes.getHtmlName());
-//            symbolTable.getRows().add(row);
+//            row.setType("HtmlAttribute2");
+//            row.setValue(ctx.TAG_NAME().getText());
+//            row.setLine(ctx.getStart().getLine());
+//            row.setPosition(ctx.getStart().getCharPositionInLine());
+//            symbolTableList.get(0).setRow(row);
         }
 
 
@@ -316,9 +315,11 @@ public class AngularVisitor extends angularParserBaseVisitor {
         if (ctx.DIRECTIVE_NAME() != null && ctx.DIRECTIVE_NAME().getText() != null) {
             attributes.setStructuralDir(ctx.DIRECTIVE_NAME().getText());
 //            Row row = new Row();
-//            row.setType("directive_name");
-//            row.setValue(attributes.getStructuralDir());
-//            symbolTable.getRows().add(row);
+//            row.setType("DirectiveAttribute");
+//            row.setValue(ctx.DIRECTIVE_NAME().getText());
+//            row.setLine(ctx.getStart().getLine());
+//            row.setPosition(ctx.getStart().getCharPositionInLine());
+//            symbolTableList.get(0).setRow(row);
         }
         return attributes;
     }
@@ -330,9 +331,10 @@ public class AngularVisitor extends angularParserBaseVisitor {
             attributes.setBinding(ctx.BINDING_PROPERTY().getText());
 //            Row row = new Row();
 //            row.setType("binding_property");
-//            row.setValue(attributes.getBinding());
-//            symbolTable.getRows().add(row);
-
+//            row.setValue(ctx.BINDING_PROPERTY().getText());
+//            row.setLine(ctx.getStart().getLine());
+//            row.setPosition(ctx.getStart().getCharPositionInLine());
+//            symbolTableList.get(0).setRow(row);
         }
         return attributes;
     }
@@ -343,9 +345,11 @@ public class AngularVisitor extends angularParserBaseVisitor {
         if (ctx.STANDARD_EVENT() != null && ctx.STANDARD_EVENT() != null) {
             attributes.setEvent(ctx.STANDARD_EVENT().getText());
 //            Row row = new Row();
-//            row.setType("standard_event");
-//            row.setValue(attributes.getEvent());
-//            symbolTable.getRows().add(row);
+//            row.setType("EventAttribute");
+//            row.setValue(ctx.STANDARD_EVENT().getText());
+//            row.setLine(ctx.getStart().getLine());
+//            row.setPosition(ctx.getStart().getCharPositionInLine());
+//            symbolTableList.get(0).setRow(row);
         }
 
         return attributes;
