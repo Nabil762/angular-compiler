@@ -3,8 +3,8 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParameterList {
- List<Parameter> parameters = new ArrayList<Parameter>();
+public class ParameterList extends AstNode {
+    List<Parameter> parameters = new ArrayList<Parameter>();
 
     public List<Parameter> getParameters() {
         return parameters;

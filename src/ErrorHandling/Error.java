@@ -30,6 +30,8 @@ public class Error {
             throw new RuntimeException(e);
         }
         try {
+            if (errors.isEmpty())
+                errors.add("No Error in this test");
             Files.write(Paths.get(filePath), errors, StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new RuntimeException(e);

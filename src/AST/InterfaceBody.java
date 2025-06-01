@@ -14,13 +14,6 @@ public class InterfaceBody extends AstNode {
         this.propertyDeclarationList = propertyDeclarationList;
     }
 
-    //
-//    @Override
-//    public String toString() {
-//        return "\nInterfaceBody{" +
-//                "\npropertyDeclarationList=" + propertyDeclarationList +
-//                "\n}";
-//    }
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

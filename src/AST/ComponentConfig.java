@@ -20,29 +20,6 @@ public class ComponentConfig extends AstNode {
                 "\npropertyAssignmentList=" + propertyAssignmentList +
                 "\n}";
     }
-
-
-//    @Override
-//    public String toString() {
-//        if (propertyAssignmentList.isEmpty()) {
-//            return "{}";
-//        }
-//
-//        StringBuilder stringBuilder = new StringBuilder();
-//        stringBuilder.append("{\n");
-//
-//        for (int i = 0; i < propertyAssignmentList.size(); i++) {
-//            stringBuilder.append("  ").append(propertyAssignmentList.get(i).toString());
-//            if (i < propertyAssignmentList.size() - 1) {
-//                stringBuilder.append(",");
-//            }
-//            stringBuilder.append("\n");
-//        }
-//
-//        stringBuilder.append("}");
-//        return stringBuilder.toString();
-//    }
-
 }
 
 

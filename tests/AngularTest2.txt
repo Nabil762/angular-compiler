@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
 
-interface Product {
+import { FirstModule } from '@angular/first';
+import { Component } from '';
+interface Element {
   id: number;
   name: string;
   imageUrl: string;
   description: string;
+  price:number;
 }
 
 @component({
   selector: 'app-root',
+  standalone:true,
+    imports: [FirstModule],
+
   styles : [`
-       .product-list li {
+       .element-list li {
                          display: flex;
                          align-items: center;
                          gap: 10px;
@@ -27,23 +32,24 @@ interface Product {
           class="rounded-md border bg-white p-2"
           [style.width]="'900px'"
         >
-          <img class="w-full" [src]="mainProduct.imageUrl" [alt]="mainProduct.name" />
+          <img class="w-full" [src]="mainElement.imageUrl" [alt]="mainElement.name" />
           <h1 class="text-start my-2 font-semibold" [style.fontSize]="'2em'">
-            {{mainProduct.name}}
+            {{mainElement.name}}
           </h1>
-          <p>{{mainProduct.description}}</p>
+          <p>{{mainElement.description}}</p>
+            <p>{{mainElement.price}}</p>
         </div>
 
         <div class="overflow-y-scroll bg-white p-2 rounded-md cursor-pointer flex flex-col gap-3 max-h-[90vh]">
           <div
-            *ngFor="let product of products"
+            *ngFor="let element of elements"
             class="rounded-md border bg-white p-2"
             [style.width]="'300px'"
-            (click)="setMainProduct(product)"
+            (click)="setMainElement(element)"
           >
-            <img class="w-full" [src]="product.imageUrl" [alt]="product.name" />
+            <img class="w-full" [src]="element.imageUrl" [alt]="element.name" />
             <h1 class="text-start my-2 font-semibold" [style.fontSize]="'1em'">
-              {{product.name}}
+              {{element.name}}
             </h1>
           </div>
         </div>
@@ -52,35 +58,38 @@ interface Product {
   `,
 })
 export class AppComponent {
-  products: Product[] = [
+  elements: Element[] = [
     {
       id: 1,
       name: "Vintage Leather Wallet",
       imageUrl: "https://plus.unsplash.com/premium_photo-1673480195253-dc2229c109ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "A handcrafted wallet made from premium leather, designed to last a lifetime. Features multiple card slots and a sleek, minimalist design."
+      ,price:555
     },
     {
       id: 2,
       name: "Bluetooth Noise-Cancelling Headphones",
       imageUrl: "https://images.unsplash.com/photo-1535397318751-32521c97e1c3?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "Experience immersive sound with these wireless Bluetooth headphones. Active noise cancellation and long battery life make them perfect for travel."
+      ,price:555
     },
     {
       id: 3,
       name: "Smart Fitness Tracker",
       imageUrl: "https://plus.unsplash.com/premium_photo-1719289799376-d3de0ca4ddbc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "Keep track of your health and fitness goals with this sleek and water-resistant fitness tracker. Monitors heart rate, sleep patterns, and more."
+      ,price:555
     },
     {
       id: 4,
       name: "Ergonomic Office Chair",
       imageUrl: "https://images.unsplash.com/photo-1617858123189-b26eb62d8eb4?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "Stay comfortable during long work hours with this adjustable ergonomic office chair. Features lumbar support and breathable mesh fabric."
+      ,price:555
     }
   ];
 
-
-  setMainProduct(product: Product): void {
-    this .mainProduct = product;
+  setMainElement(element: Element): void {
+    this .mainElement = element;
   }
 }

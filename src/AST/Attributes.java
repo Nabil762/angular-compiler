@@ -3,11 +3,9 @@ package AST;
 public class Attributes extends AstNode {
     private String text;
     private String htmlName;
-    // For standard HTML attributes like 'src', 'class', etc.
-    private String binding;       // For Angular property bindings, like '[src]'
-    private String structuralDir; // For Angular structural directives, like '*ngFor', '*ngIf'
+    private String binding;
+    private String structuralDir;
     private String event;
-    // For Angular event bindings, like '(click)'
 
 
     public String getText() {
@@ -50,7 +48,6 @@ public class Attributes extends AstNode {
         this.event = event;
     }
 
-    // ... Getters and setters for each attribute type
 
     @Override
     public String toString() {

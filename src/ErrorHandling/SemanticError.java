@@ -9,16 +9,16 @@ import java.util.*;
 
 public class SemanticError {
     private List<SymbolTable> symbolTables;
-    private final Error error;  // Make it final to ensure initialization
+    private final Error error;
 
-    // Constructors
+
     public SemanticError() {
         this(new ArrayList<>());
     }
 
     public SemanticError(List<SymbolTable> symbolTables) {
         this.symbolTables = symbolTables != null ? symbolTables : new ArrayList<>();
-        this.error = new Error();  // Always initialize error
+        this.error = new Error();
     }
 
     public List<SymbolTable> getSymbolTables() {
@@ -65,10 +65,14 @@ public class SemanticError {
             System.out.println();
             isValid = false;
         }
+        if (!ClassDeclarationAndStandalone(this.symbolTables)) {
+            error.getErrors().add("Exception IncorrectBodyComponent");
+            System.out.println();
+            isValid = false;
+        }
         return isValid;
     }
 
-    // Attribute validation method
     private boolean IncorrectAttribute(List<SymbolTable> symbolTables) {
         if (symbolTables == null || symbolTables.isEmpty()) {
             error.getErrors().add("No symbol tables provided");
@@ -80,7 +84,6 @@ public class SemanticError {
         List<Row> listAttributeInFunction = new ArrayList<>();
         Map<Row, Integer> Attr = new HashMap<>();
         int numberObjectExpressionList = 0;
-        // Collect attributes from symbol table
         for (int i = 0; i < symbolTable.getRows().size(); i++) {
             if (symbolTable.getRows().get(i) != null) {
                 if (symbolTable.getRows().get(i).getType().contains("StringInterfaceDecl"))
@@ -91,8 +94,6 @@ public class SemanticError {
                     if (!Attr.keySet().stream().anyMatch(key -> x.equals(key.getValue())) && listAttributeInInterface.stream().anyMatch(obj -> x.equals(obj.getValue()))) {
                         Attr.put(symbolTable.getRows().get(i), 1);
                     } else {
-//                                int currentValue = Attr;
-//                        Attr.computeIfPresent(symbolTable.getRows().get(i), (key, oldValue) -> oldValue + 1);
                         for (Map.Entry<Row, Integer> entry : Attr.entrySet()) {
                             String key = entry.getKey().getValue();
                             Integer value = entry.getValue();
@@ -106,11 +107,8 @@ public class SemanticError {
                     numberObjectExpressionList = Integer.parseInt(symbolTable.getRows().get(i).getValue());
             }
         }
-        // Check if all function attributes exist in interface attributes
         for (Row funcAttr : listAttributeInFunction) {
-//            listAttributeInInterface.stream().anyMatch(obj -> funcAttr.equals(obj.getValue()));
             if (!listAttributeInInterface.stream().anyMatch(obj -> funcAttr.getValue().equals(obj.getValue()))) {
-//                error.getErrors().add("At Line " + funcAttr.getLine() + " in position " + funcAttr.getPosition() + " Attribute " + funcAttr.getValue() + " not found in interface");
                 error.getErrors().add("At Line " + funcAttr.getLine() + " in position " + funcAttr.getPosition() + " Attribute " + funcAttr.getValue() + " not found in interface");
                 checkError = false;
             }
@@ -121,9 +119,7 @@ public class SemanticError {
             Integer value = entry.getValue();
             int line = entry.getKey().getLine();
             int pos = entry.getKey().getPosition();
-//            System.out.println(value);
             if (value != numberObjectExpressionList) {
-//                listAttributeInFunction.get(0).
                 error.getErrors().add("At Line " + line + " in position " + pos + " Attribute " + key + " not found in Assignment");
                 checkError = false;
             }
@@ -136,23 +132,20 @@ public class SemanticError {
             error.getErrors().add("No symbol tables provided");
             return false;
         }
-        boolean checkError = true;
+        boolean checkError = true, imp = false;
         SymbolTable symbolTable = symbolTables.get(1);
         List<Row> listImportStatement = new ArrayList<>();
         List<Row> listImportDecl = new ArrayList<>();
-        List<String> listSelector = new ArrayList<>();
-        List<String> listTemplate = new ArrayList<>();
-
         for (int i = 0; i < symbolTable.getRows().size(); i++) {
             if (symbolTable.getRows().get(i) != null) {
                 if (symbolTable.getRows().get(i).getType().contains("StringImportDecl"))
                     listImportDecl.add(symbolTable.getRows().get(i));
-                if (symbolTable.getRows().get(i).getType().contains("StringImportStatement"))
+                if (symbolTable.getRows().get(i).getType().contains("StringImportStatement")) {
                     listImportStatement.add(symbolTable.getRows().get(i));
-                if (symbolTable.getRows().get(i).getType().contains("StringTemplate"))
-                    listTemplate.add(symbolTable.getRows().get(i).getValue());
-                if (symbolTable.getRows().get(i).getType().contains("StringSelector"))
-                    listSelector.add(symbolTable.getRows().get(i).getValue());
+                    if (symbolTable.getRows().get(i).getValue().equals("Component")) {
+                        imp = true;
+                    }
+                }
             }
         }
 
@@ -163,7 +156,10 @@ public class SemanticError {
                 checkError = false;
             }
         }
-        return checkError;
+        if (!imp) {
+            error.getErrors().add("import Component not found in import statement");
+        }
+        return checkError && imp;
     }
 
     private boolean DetectSelectorTemplateError(List<SymbolTable> symbolTables) {
@@ -173,14 +169,14 @@ public class SemanticError {
         }
         boolean checkError = true;
         SymbolTable symbolTable = symbolTables.get(4);
-        List<String> listSelector = new ArrayList<>();
-        List<String> listTemplate = new ArrayList<>();
+        List<Row> listSelector = new ArrayList<>();
+        List<Row> listTemplate = new ArrayList<>();
         for (int i = 0; i < symbolTable.getRows().size(); i++) {
             if (symbolTable.getRows().get(i) != null) {
                 if (symbolTable.getRows().get(i).getType().contains("StringTemplate"))
-                    listTemplate.add(symbolTable.getRows().get(i).getValue());
+                    listTemplate.add(symbolTable.getRows().get(i));
                 if (symbolTable.getRows().get(i).getType().contains("StringSelector"))
-                    listSelector.add(symbolTable.getRows().get(i).getValue());
+                    listSelector.add(symbolTable.getRows().get(i));
             }
         }
         if (listTemplate.isEmpty()) {
@@ -191,6 +187,19 @@ public class SemanticError {
             error.getErrors().add("selector not found in Component Declaration");
             checkError = false;
         }
+        if (listSelector.size() > 1) {
+            for (int i = 1; i < listSelector.size(); i++) {
+                error.getErrors().add("At Line " + listSelector.get(i).getLine() + " in position " + listSelector.get(i).getPosition() + "selector Duplicated");
+            }
+            checkError = false;
+        }
+        if (listTemplate.size() > 1) {
+            for (int i = 1; i < listTemplate.size(); i++) {
+                error.getErrors().add("At Line " + listTemplate.get(i).getLine() + " in position " + listTemplate.get(i).getPosition() + "template Duplicated");
+            }
+            checkError = false;
+        }
+
         return checkError;
     }
 
@@ -273,15 +282,52 @@ public class SemanticError {
         for (Row Attr : listAttr) {
             if (!CssAttr.stream().anyMatch(obj -> Attr.getValue().equals(obj))) {
                 error.getErrors().add("At Line " + Attr.getLine() + " in position " + Attr.getPosition() + " Css attribute not found in Body of Css ");
-//                error.getErrors().add("Css attribute not found in Body of Css");
                 checkError = false;
             }
         }
         return checkError;
     }
 
+    private boolean ClassDeclarationAndStandalone(List<SymbolTable> symbolTables) {
+        if (symbolTables == null || symbolTables.isEmpty()) {
+            error.getErrors().add("No symbol tables provided");
+            return false;
+        }
+        boolean checkError = true;
+        List<Row> standlist = new ArrayList<>();
+        Row classlist = new Row();
+        SymbolTable symbolTable = symbolTables.get(5);
+        for (int i = 0; i < symbolTable.getRows().size(); i++) {
+            if (symbolTable.getRows().get(i) != null) {
+                if (symbolTable.getRows().get(i).getType().contains("StringStandalone"))
+                    standlist.add(symbolTable.getRows().get(i));
+                if (symbolTable.getRows().get(i).getType().contains("StringClassDeclaration"))
+                    classlist = symbolTable.getRows().get(i);
+            }
+        }
+        boolean checkStandalone = true;
+        if (standlist.isEmpty()) {
+            error.getErrors().add("standalone not found in Component Declaration");
+            checkError = false;
+            checkStandalone = false;
+        }
+        if (standlist.size() > 1) {
+            for (int i = 1; i < standlist.size(); i++) {
+                error.getErrors().add("At Line " + standlist.get(i).getLine() + " in position " + standlist.get(i).getPosition() + " standalone Duplicated");
+            }
+            checkError = false;
+        }
+        for (Row row : standlist) {
+            if (Objects.equals(row.getValue(), "false"))
+                checkStandalone = false;
+        }
+        if (!checkStandalone) {
+            error.getErrors().add("At Line " + classlist.getLine() + " in position " + classlist.getPosition() + " classDeclaration Error the standalone is false or not found");
+        }
+        return checkError && checkStandalone;
+    }
 
     public void printErrors() {
-        error.print();  // Using the print() method from your Error class
+        error.print();
     }
 }

@@ -127,4 +127,3 @@ single_type:
   ;
 propertyDeclaration: IDENTIFIER COLON TYPE;
 
-

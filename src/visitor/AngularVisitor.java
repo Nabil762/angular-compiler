@@ -13,15 +13,15 @@ import java.util.List;
 public class AngularVisitor extends angularParserBaseVisitor {
     List<SymbolTable> symbolTableList = new ArrayList<SymbolTable>();
 
-    public void addFiveSymbolTables() {
-        for (int i = 0; i < 5; i++) {
+    public void addSymbolTables() {
+        for (int i = 0; i < 6; i++) {
             symbolTableList.add(new SymbolTable());
         }
     }
 
     @Override
     public Program visitProgram(angularParser.ProgramContext ctx) {
-        addFiveSymbolTables();
+        addSymbolTables();
         Program program = new Program();
         for (int i = 0; i < ctx.statement().size(); i++) {
             program.getStatementList().add(visitStatement(ctx.statement(i)));
@@ -31,7 +31,7 @@ public class AngularVisitor extends angularParserBaseVisitor {
 //            symbolTable.print();
 //            System.out.println();
 //        }
-//        System.out.println();
+        System.out.println();
         SemanticError semanticError = new SemanticError();
         semanticError.setSymbolTables(this.symbolTableList);
         semanticError.check();
@@ -167,6 +167,12 @@ public class AngularVisitor extends angularParserBaseVisitor {
         Standalone standalone = new Standalone();
         if (ctx.BOOLEAN() != null) {
             standalone.setIsboolean(ctx.BOOLEAN().getText());
+            Row row = new Row();
+            row.setType("StringStandalone");
+            row.setValue(ctx.BOOLEAN().getText());
+            row.setLine(ctx.getStart().getLine());
+            row.setPosition(ctx.getStart().getCharPositionInLine());
+            symbolTableList.get(5).setRow(row);
         }
         return standalone;
     }
@@ -445,6 +451,12 @@ public class AngularVisitor extends angularParserBaseVisitor {
         classDeclaration.setClass_name(ctx.IDENTIFIER().getText());
         for (int i = 0; i < ctx.listDeclaration().size(); i++) {
             classDeclaration.getListDeclarations().add((ListDeclaration) visit(ctx.listDeclaration(i)));
+            Row row = new Row();
+            row.setType("StringClassDeclaration");
+            row.setValue(ctx.IDENTIFIER().getText());
+            row.setLine(ctx.getStart().getLine());
+            row.setPosition(ctx.getStart().getCharPositionInLine());
+            symbolTableList.get(5).setRow(row);
         }
         return classDeclaration;
     }
@@ -665,7 +677,6 @@ public class AngularVisitor extends angularParserBaseVisitor {
         }
         return numericValue;
     }
-
 
     @Override
     public ValueExpression visitBooleanValue(angularParser.BooleanValueContext ctx) {

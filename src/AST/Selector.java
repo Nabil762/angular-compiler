@@ -15,13 +15,6 @@ public class Selector extends PropertyAssignment {
     public String toString() {
         return "selector: '" + STRING_LIT + "'";
     }
-    //    @Override
-//    public String toString() {
-//        return "\nSelector{" +
-//                "\n'" + STRING_LIT + '\'' +
-//                "\n}";
-//    }
-
 }
 
 

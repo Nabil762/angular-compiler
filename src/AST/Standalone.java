@@ -16,12 +16,7 @@ public class Standalone extends PropertyAssignment {
     public String toString() {
         return "standalone: " + isStandalone;
     }
-//    @Override
-//    public String toString() {
-//        return "\nStandalone{" +
-//                "\n" + isboolean +
-//                "\n}";
-//    }
+
 }
 
 

@@ -1,7 +1,7 @@
 package AST;
 
 
-public class InterfaceDeclaration extends AstNode{
+public class InterfaceDeclaration extends AstNode {
     String interfaceName;
     InterfaceBody interfaceBody;
 
@@ -20,14 +20,6 @@ public class InterfaceDeclaration extends AstNode{
     public void setInterfaceBody(InterfaceBody interfaceBody) {
         this.interfaceBody = interfaceBody;
     }
-
-//    @Override
-//    public String toString() {
-//        return "\nInterfaceDeclaration{" +
-//                "\ninterfaceName=" + interfaceName +
-//                "\ninterfaceBody=" + interfaceBody +
-//                "\n}";
-//    }
 
     @Override
     public String toString() {

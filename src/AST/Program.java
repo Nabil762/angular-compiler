@@ -24,14 +24,4 @@ public class Program extends AstNode {
                 "\nstatementList=" + statementList +
                 "\n}";
     }
-//    @Override
-//    public String toString() {
-//        StringBuilder stringBuilder=new StringBuilder();
-//        for(Statement statement :this.statementList)
-//        {
-//            stringBuilder.append(statement);
-//            stringBuilder.append("\n");
-//        }
-//        return stringBuilder.toString();
-//    }
 }

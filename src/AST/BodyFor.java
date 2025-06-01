@@ -1,6 +1,6 @@
 package AST;
 
-public class BodyFor {
+public class BodyFor extends AstNode {
     String array_name;
     String element_of_array;
 

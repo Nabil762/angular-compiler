@@ -1,6 +1,6 @@
 package AST;
 
-public class ForDeclaration {
+public class ForDeclaration extends AstNode {
     String function_name;
     String instance_of_array;
     String array_name;
@@ -51,7 +51,7 @@ public class ForDeclaration {
     public String toString() {
         return "\nForDeclaration{" +
                 "\nfunction_name='" + function_name + '\'' +
-                "\ntype_of_function='" + type_of_function +'\'' +
+                "\ntype_of_function='" + type_of_function + '\'' +
                 "\ninstance_of_array='" + instance_of_array + '\'' +
                 "\narray_name='" + array_name + '\'' +
                 "\nbodyFor=" + bodyFor +

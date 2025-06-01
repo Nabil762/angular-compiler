@@ -13,7 +13,9 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String source = "tests/AngularTest.txt";
+//        String source = "tests/AngularTest.txt";
+//        String source = "tests/AngularTest2.txt";
+        String source = "tests/AngularTestErrors.txt";
         CharStream st = fromFileName(source);
         angularLexer lexer = new angularLexer(st);
         CommonTokenStream token = new CommonTokenStream(lexer);

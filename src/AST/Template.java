@@ -24,14 +24,6 @@ public class Template extends PropertyAssignment {
         stringBuilder.append("`");
         return stringBuilder.toString();
     }
-    //    @Override
-//    public String toString() {
-//
-//        return "\nTemplate{" +
-//                "\n" + elements +
-//                "\n}";
-//    }
-
 }
 
 

@@ -50,33 +50,6 @@ public class Statement extends AstNode {
                 "\nclassDeclaration=" + classDeclaration +
                 "\n}";
     }
-
-//    @Override
-//    public String toString() {
-//        StringBuilder stringBuilder = new StringBuilder();
-//        for (ImportStatement imp : importStatementList) {
-//            stringBuilder.append(imp);
-//            stringBuilder.append("\n");
-//        }
-//
-//        for (InterfaceDeclaration inter : interfaceDeclarationList) {
-//            stringBuilder.append(inter);
-//            stringBuilder.append("\n");
-//
-//        }
-//
-//        if (componentDeclaration != null) {
-//            stringBuilder.append(componentDeclaration);
-//            stringBuilder.append("\n");
-//        }
-//
-//        if (classDeclaration != null) {
-//            stringBuilder.append(classDeclaration);
-//            stringBuilder.append("\n");
-//        }
-//
-//        return stringBuilder.toString();
-//    }
 }
 
 

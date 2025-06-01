@@ -1,0 +1,74 @@
+import { FirstModule } from '@angular/first';
+
+interface Product {
+  id: number;
+  id: number;
+  name: string;
+  image: string;
+  details: string;
+}
+
+@component({
+  standalone: false,
+  imports: [CommonModule],
+  styles: [
+        `
+          .container {
+             jjjjjj: 30%;
+                       border-right: 1px solid #ddd;
+          }
+          .product-list {
+            width: 30%;
+            border-right: 1px solid #ddd;
+          }
+          .product-list ul {
+            list-style-type: none;
+            padding: 0;
+          }
+          .product-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+          }
+          .product-list img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+          }
+          .product-details {
+            width: 70%;
+            padding: 10px;
+          }
+          .product-details img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+          }
+        `,
+      ]
+}
+
+)
+export class AppComponent {
+  products: Product[] = [
+    { name: 'Product 1', image: 'https://via.placeholder.com/100', details: 'Details about Product 1',price:444 },
+    { id: 2, name: 'Product 2', image: 'https://via.placeholder.com/100', details: 'Details about Product 2' },
+    { id: 3, name: 'Product 3', image: 'https://via.placeholder.com/100', details: 'Details about Product 3' }
+  ];
+
+  selectedProduct: Product | null = null;
+
+      selectProduct(product: Product): int {
+        this .selectedProduct = product;
+
+      }
+       selectProduct(product: Product): int {
+        this .selectedProduct = product;
+
+      }
+
+}
