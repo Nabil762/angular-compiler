@@ -14,7 +14,11 @@ public class Style extends PropertyAssignment {
     @Override
     public String toString() {
         return "\nStyle{" +
-                "\nbodyOfcss=" + bodyOfcss +
+                bodyOfcss +
                 "\n}";
+    }
+    @Override
+    public String generatedCode() {
+        return bodyOfcss.generatedCode();
     }
 }

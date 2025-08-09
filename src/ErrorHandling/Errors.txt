@@ -1,17 +1,4 @@
-At Line 58 in position 102 Attribute price not found in interface
-At Line 59 in position 6 Attribute id not found in Assignment
-Exception Incorrect_Attribute
-At Line 13 in position 2 imports CommonModule not found in import statement
-import Component not found in import statement
-Exception Composition Error
-template not found in Component Declaration
-selector not found in Component Declaration
-Exception Selector|Template Error
-At Line 69 in position 7 Function was Decelerated already 
-Exception RepeatedDeclarationFunction
-At Line 4 in position 2 Object was Decelerated already 
-Exception RepeatedDeclarationObjectInInterface
-At Line 17 in position 13 Css attribute not found in Body of Css 
-Exception IncorrectAttributeCss
-At Line 56 in position 0 classDeclaration Error the standalone is false or not found
-Exception IncorrectBodyComponent
+AngularTestShowEnd
+No Error in this test
+AngularTestAdd
+No Error in this test

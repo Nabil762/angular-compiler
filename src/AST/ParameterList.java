@@ -20,4 +20,14 @@ public class ParameterList extends AstNode {
                 "\nparameters=" + parameters +
                 "\n}";
     }
+    @Override
+    public String generatedCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < parameters.size(); i++) {
+            stringBuilder.append(parameters.get(i).generatedCode());
+            if (i < parameters.size() - 1)
+                stringBuilder.append(",");
+        }
+        return stringBuilder.toString();
+    }
 }

@@ -44,5 +44,9 @@ public class ImportStatement extends AstNode {
 
         return stringBuilder.toString();
     }
+    @Override
+    public String generatedCode() {
+        return "";
+    }
 }
 

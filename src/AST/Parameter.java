@@ -39,4 +39,8 @@ public class Parameter extends AstNode {
                 ", Type=" + singleType +
                 "\n}";
     }
+    @Override
+    public String generatedCode() {
+        return identifier;
+    }
 }

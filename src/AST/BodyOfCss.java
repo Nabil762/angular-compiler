@@ -14,7 +14,11 @@ public class BodyOfCss extends AstNode {
     @Override
     public String toString() {
         return "\nBodyOfCss{" +
-                "\nobjecte=" + objecte +
-                "\n}";
+                objecte +
+                "}";
+    }
+    @Override
+    public String generatedCode() {
+        return objecte.generatedCode();
     }
 }

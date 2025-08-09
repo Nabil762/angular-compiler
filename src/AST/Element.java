@@ -1,5 +1,7 @@
 package AST;
 
+import java.util.Objects;
+
 public class Element extends AstNode {
     Tag tag;
     String htmlName;
@@ -33,16 +35,45 @@ public class Element extends AstNode {
     public String toString() {
         if (htmlName != null)
             return "\nElement{" +
-                    "\n" + htmlName
-                    + "\n}";
+                    this.getHtmlName()
+                    + "}";
         else if (interpolation != null)
             return "\nElement{" +
-                    "\n" + interpolation
-                    + "\n}";
+                    interpolation
+                    + "}";
 
         return "\nElement{" +
-                "\n" + tag
-                + "\n}";
-
+                tag
+                + "}";
     }
+
+    @Override
+    public String generatedCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (tag == null) {
+            return "";
+        }
+        if (tag instanceof StandardTag) {
+            StandardTag standardTag = (StandardTag) tag;
+            stringBuilder.append(standardTag.generatedCode());
+        }
+        return stringBuilder.toString();
+    }
+
+    public String getStructure(String fatherName) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (tag != null && tag instanceof StandardTag) {
+            stringBuilder.append(tag.getStructure(fatherName));
+        }
+        return stringBuilder.toString();
+    }
+
+    public String getRender(String fatherName) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (tag != null && tag instanceof StandardTag) {
+            stringBuilder.append(tag.getRender(fatherName));
+        }
+        return stringBuilder.toString();
+    }
+
 }

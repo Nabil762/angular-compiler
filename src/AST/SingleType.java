@@ -25,11 +25,15 @@ public  class SingleType extends AstNode {
         if (ID != null) {
             return "\nSingleType{" +
                     "ID= '" + ID + '\'' +
-                    "\n}";
+                    "}";
         }
         return "\nSingleType{" +
-                "\n type= '" + type + '\'' +
-                "\n}";
+                "type= '" + type + '\'' +
+                "}";
+    }
+    @Override
+    public String generatedCode() {
+        return "";
     }
 }
 

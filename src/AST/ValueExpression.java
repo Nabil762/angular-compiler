@@ -43,12 +43,47 @@ public class ValueExpression extends AstNode {
     @Override
     public String toString() {
         if (text != null)
-            return "\n ValueExpression{ " + text + "\n }";
+            return "\n ValueExpression{ " + text + "}";
         else if (integer != null) {
-            return "\n ValueExpression{ " + integer + "\n }";
+            return "\n ValueExpression{ " + integer + "}";
         } else if (functionCall != null) {
-            return "\n ValueExpression{ " + functionCall + "\n }";
+            return "\n ValueExpression{ " + functionCall + " }";
         }
-        return "\n ValueExpression{ " + isBoolean + "\n }";
+        return "\n ValueExpression{ " + isBoolean + " }";
+    }
+
+    public String val() {
+        if (text != null)
+            return text;
+        else if (integer != null) {
+            return integer + "";
+        } else if (functionCall != null) {
+            return functionCall + "";
+        }
+        return isBoolean + "";
+    }
+
+    @Override
+    public String generatedCode() {
+        if (text != null)
+            return text;
+        else if (integer != null) {
+            return integer.toString();
+        } else if (functionCall != null) {
+            return functionCall.generatedCode();
+        }
+        return isBoolean;
+    }
+
+
+    public String getInput() {
+        if (text != null)
+            return text;
+        else if (integer != null) {
+            return integer.toString();
+        } else if (functionCall != null) {
+//            functionCall.generatedCode();
+        }
+        return isBoolean;
     }
 }

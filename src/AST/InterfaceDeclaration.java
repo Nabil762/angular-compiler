@@ -28,8 +28,13 @@ public class InterfaceDeclaration extends AstNode {
         if (interfaceBody != null) {
             stringBuilder.append(interfaceBody.toString());
         }
-        stringBuilder.append("\n}");
+        stringBuilder.append("}");
         return stringBuilder.toString();
+    }
+
+    @Override
+    public String generatedCode() {
+        return "import PropTypes from 'prop-types';\nconst " + interfaceName + " = {\n" + interfaceBody.generatedCode() + "}";
     }
 }
 

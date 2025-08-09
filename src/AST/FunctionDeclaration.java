@@ -61,9 +61,23 @@ public class FunctionDeclaration extends ListDeclaration {
 
         return "\nFunctionDeclaration{" +
                 "\nname='" + functionName + '\'' +
-                ", \nlist of parameters=" + parameterList +
-                ",type = " + type +
-                ", {" + functionBodyList +
+                parameterList +
+                type +
+                "\n, {" + functionBodyList +
                 "\n}";
+    }
+
+    @Override
+    public String generatedCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(functionName).append("(");
+        if (parameterList != null)
+            stringBuilder.append(parameterList.generatedCode());
+        stringBuilder.append(") {\n");
+        for (FunctionBody functionBody : functionBodyList) {
+            stringBuilder.append(functionBody.generatedCode());
+        }
+        stringBuilder.append("}\n");
+        return stringBuilder.toString();
     }
 }

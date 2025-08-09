@@ -27,4 +27,8 @@ public class BodyFor extends AstNode {
                 "\n iterator of array='" + element_of_array + '\'' +
                 "\n}";
     }
+    @Override
+    public String generatedCode() {
+        return "";
+    }
 }

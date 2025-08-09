@@ -21,18 +21,9 @@ public class Error {
     public void print() {
         String filePath = "src/ErrorHandling/Errors.txt";
         try {
-            if (!Files.exists(Paths.get(filePath))) {
-                Files.createFile(Paths.get(filePath));
-            } else {
-                Files.write(Paths.get(filePath), new byte[0]);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             if (errors.isEmpty())
                 errors.add("No Error in this test");
-            Files.write(Paths.get(filePath), errors, StandardCharsets.UTF_8);
+            Files.write(Paths.get(filePath), errors, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

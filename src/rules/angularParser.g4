@@ -36,29 +36,24 @@ standalone : STANDALONE COLON BOOLEAN ;
 template : TEMPLATE COLON1 BACKTICK  element* BACKTICK1;
 
 element :
-    tag                        # TagElement
-  | TAG_NAME (COLON1)?         # TagNameElement
+      TAG_NAME (COLON1)?         # TagNameElement
+       |   tag                        # TagElement
   | interpolation              # InterpolationElement
   ;
+  tag:
+      standardTag  # StandardTagElement
+    | selfClosingTag                   # SelfClosingTagElement
+    ;
 
-
-
-tag:
-    openingTag element* closingTag   # StandardTag
-  | selfClosingTag                   # SelfClosingTagElement
-  ;
-
-openingTag : TAG_OPEN attributes* TAG_CLOSE;
-
-closingTag : OPEN_TAG_CLOSE TAG_NAME TAG_CLOSE;
-
-selfClosingTag : TAG_OPEN attributes* TAG_SELF_CLOSE;
+  standardTag :TAG_OPEN (H1| H2| H3| H4| H5| H6| STRONG|UL|P|DIV|LI|BUTTON|FORM|LABLE|INPUT) attributes* TAG_CLOSE element*   OPEN_TAG_CLOSE (H1| H2| H3| H4| H5| H6| STRONG|UL|P|DIV|LI|BUTTON|FORM|LABLE|INPUT) TAG_CLOSE;
+  selfClosingTag : TAG_OPEN IMG attributes* TAG_SELF_CLOSE;
 
 attributes:
     TAG_NAME EQUALH STRING1         # HtmlAttribute
   | DIRECTIVE_NAME EQUALH STRING1   # DirectiveAttribute
   | BINDING_PROPERTY EQUALH STRING1 # BindingAttribute
   | STANDARD_EVENT EQUALH STRING1   # EventAttribute
+  | TAG_NAME # HtmlAttribute2
   ;
 
 interpolation : OPEN_TS TAG_NAME CLOSE_TS;
@@ -108,7 +103,9 @@ parameter: IDENTIFIER COLON single_type;
 
 
 functionBody:
-    THIS DOT IDENTIFIER EQUAL IDENTIFIER SEMICOLON           # SimpleAssignment
+   THIS DOT IDENTIFIER EQUAL objectExpression SEMICOLON     # ComplexAssignment3
+  | THIS DOT IDENTIFIER EQUAL THIS DOT IDENTIFIER DOT IDENTIFIER LPAREN IDENTIFIER ARROW IDENTIFIER DOT IDENTIFIER NOT_EQUAL IDENTIFIER RPAREN SEMICOLON     # ComplexAssignment2
+   | THIS DOT IDENTIFIER EQUAL IDENTIFIER SEMICOLON           # SimpleAssignment
   | THIS DOT IDENTIFIER EQUAL valueExpression SEMICOLON     # ComplexAssignment
   | valueExpression SEMICOLON                               # ExpressionStatement
   ;

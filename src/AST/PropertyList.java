@@ -17,7 +17,34 @@ public class PropertyList extends AstNode {
     @Override
     public String toString() {
         return "\nPropertyList{ " +
-                "\nproperties=" + properties +
-                "\n}";
+                properties +
+                "}";
+    }
+
+    @Override
+    public String generatedCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < properties.size(); i++) {
+            stringBuilder.append(properties.get(i).generatedCode());
+            if (i < properties.size() - 1)
+                stringBuilder.append(",");
+        }
+        return stringBuilder.toString();
+    }
+
+    public String getInput() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Property property : properties) {
+            stringBuilder.append(property.getInput());
+        }
+        return stringBuilder.toString();
+    }
+
+    public String getAsinment() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Property property : properties) {
+            stringBuilder.append(property.getAsinment());
+        }
+        return stringBuilder.toString();
     }
 }

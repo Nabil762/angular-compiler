@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FunctionCall extends AstNode {
     String functionName;
-    List<ValueExpression> arguments;
+    List<ValueExpression> arguments = new ArrayList<>();
 
     public void setFunctionName(String functionName) {
         this.functionName = functionName;
@@ -23,7 +23,6 @@ public class FunctionCall extends AstNode {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(functionName).append("(");
-
         for (int i = 0; i < arguments.size(); i++) {
             sb.append(arguments.get(i).toString());
             if (i < arguments.size() - 1) {
@@ -33,5 +32,10 @@ public class FunctionCall extends AstNode {
 
         sb.append(")");
         return sb.toString();
+    }
+
+    @Override
+    public String generatedCode() {
+        return this.toString();
     }
 }

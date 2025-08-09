@@ -17,8 +17,22 @@ public class InterfaceBody extends AstNode {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\nPropertyDeclaration{");
         for (PropertyDeclaration prop : propertyDeclarationList) {
-            stringBuilder.append("\n  ").append(prop.toString()).append(";");
+            stringBuilder.append(prop.toString());
+        }
+        stringBuilder.append("\n}");
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public String generatedCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < propertyDeclarationList.size(); i++) {
+            stringBuilder.append(propertyDeclarationList.get(i).generatedCode());
+            if (i < propertyDeclarationList.size() - 1)
+                stringBuilder.append(",");
+            stringBuilder.append("\n");
         }
         return stringBuilder.toString();
     }

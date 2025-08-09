@@ -13,9 +13,14 @@ public class ComponentDeclaration extends AstNode {
 
     @Override
     public String toString() {
-        return "\nComponentDeclaration{" +
-                "\ncomponentConfig=" + componentConfig +
+        return "\nComponentDeclaration{\n"
+                + componentConfig +
                 "\n}";
+    }
+
+    @Override
+    public String generatedCode() {
+        return componentConfig.generatedCode();
     }
 }
 

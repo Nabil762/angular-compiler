@@ -3,7 +3,8 @@ package symbolTableAngular;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SymbolTable {
+
+public class DeclarationObjectInInterfaceSymbolTable {
     List<Row> rows = new ArrayList<>();
 
     public List<Row> getRows() {
@@ -19,9 +20,9 @@ public class SymbolTable {
     }
 
     public void print() {
-        for (int i = 0; i < rows.size(); i++) {
-            if (rows.get(i) != null) {
-                System.out.println(rows.get(i).getType() + "\t\t\t\t " + rows.get(i).getValue() + "\t\t\t\t " + rows.get(i).getLine() + "\t\t\t\t " + rows.get(i).getPosition());
+        for (Row row : rows) {
+            if (row != null) {
+                System.out.println(row.getType() + "\t\t\t\t " + row.getValue() + "\t\t\t\t " + row.getLine() + "\t\t\t\t " + row.getPosition());
             }
         }
     }

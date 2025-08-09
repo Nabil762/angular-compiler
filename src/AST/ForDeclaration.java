@@ -57,4 +57,8 @@ public class ForDeclaration extends AstNode {
                 "\nbodyFor=" + bodyFor +
                 "\n}";
     }
+    @Override
+    public String generatedCode() {
+        return "";
+    }
 }

@@ -1,6 +1,6 @@
 package AST;
 
-public class ArrayExpression extends AstNode{
+public class ArrayExpression extends AstNode {
     ObjectExpressionList objectExpressionList;
 
     public ObjectExpressionList getObjectExpressionList() {
@@ -14,7 +14,12 @@ public class ArrayExpression extends AstNode{
     @Override
     public String toString() {
         return "\nArrayExpression{ " +
-                "\nobjectExpressionList = " + objectExpressionList +
-                "\n}";
+                objectExpressionList +
+                "}";
+    }
+
+    @Override
+    public String generatedCode() {
+        return "= [\n" + objectExpressionList.generatedCode() + "];";
     }
 }

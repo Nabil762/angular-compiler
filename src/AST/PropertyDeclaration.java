@@ -22,9 +22,12 @@ public class PropertyDeclaration extends ListDeclaration {
 
     @Override
     public String toString() {
-        return "\nPropertyDeclaration{" +
-                "\nproperty=" + property +
-                "\ntype of property=" + type +
-                "\n}";
+        return "\nproperty=" + property +
+                "\ntype of property=" + type;
+    }
+
+    @Override
+    public String generatedCode() {
+        return property + ":PropTypes." + type + ".isRequired";
     }
 }

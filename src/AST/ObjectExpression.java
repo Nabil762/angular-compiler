@@ -1,6 +1,6 @@
 package AST;
 
-public class ObjectExpression extends AstNode{
+public class ObjectExpression extends AstNode {
     PropertyList propertyList;
 
     public PropertyList getPropertyList() {
@@ -14,7 +14,21 @@ public class ObjectExpression extends AstNode{
     @Override
     public String toString() {
         return "\nObjectExpression{ " +
-                "\npropertyList= " + propertyList +
+                propertyList +
                 "\n}";
     }
+
+    @Override
+    public String generatedCode() {
+        return "{" + propertyList.generatedCode() + "}";
+    }
+
+    public String getInput() {
+        return propertyList.getInput();
+    }
+
+    public String getAsinment() {
+        return propertyList.getAsinment();
+    }
+
 }

@@ -17,7 +17,17 @@ public class ObjectExpressionList extends AstNode {
     @Override
     public String toString() {
         return "\nObjectExpressionList{ " +
-                "\nobjectExpression=" + objectExpression +
-                "\n}";
+               objectExpression +
+                "}";
+    }
+    @Override
+    public String generatedCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < objectExpression.size(); i++) {
+            stringBuilder.append(objectExpression.get(i).generatedCode()).append("\n");
+            if (i < objectExpression.size() - 1)
+                stringBuilder.append(",");
+        }
+        return stringBuilder.toString();
     }
 }

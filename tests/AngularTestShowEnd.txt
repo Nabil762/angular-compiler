@@ -1,0 +1,180 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+interface Product {
+  id : number;
+  name : string;
+  image : string;
+  details : string;
+}
+
+@component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule],
+  styles: [
+    `
+  .body {
+          background: red;
+  margin: 0  ;
+  padding: 20px  ;
+  }
+  .container {
+  display: flex  ;
+  min-height: 80 vh  ;
+  gap: 20px  ;
+  }
+  .product-list {
+          background: purple;
+  width: 30%  ;
+  border-right: 1px solid #ddd  ;
+  padding-right: 20px  ;
+  }
+  .product {
+  display: flex  ;
+  align-items: center  ;
+  justify-content: space-between  ;
+  gap: 10px  ;
+  padding: 10px  ;
+  cursor: pointer  ;
+  border-bottom: 1px solid #eee  ;
+  }
+  .product-hover {
+  background: yellow  ;
+  }
+  .product-info {
+  display: flex  ;
+  align-items: center  ;
+  gap: 10px  ;
+  flex: 1  ;
+  }
+
+  .product img {
+  width: 50px  ;
+  height: 50px  ;
+  object-fit: cover  ;
+  border-radius: 4px  ;
+  }
+  .delete-btn {
+  background: #ff4d4d  ;
+  color: white  ;
+  border: none  ;
+  border-radius: 4px  ;
+  padding: 5px 10px  ;
+  cursor: pointer  ;
+  }
+  .delete-btn-hover {
+  background:#bae6fd   ;
+  }
+  .product-details {
+  background: blue ;
+  flex: 1  ;
+  padding: 30px  ;
+  display: flex  ;
+  flex-direction: column  ;
+  align-items: center  ;
+  }
+  .product-details img {
+ background: #f72585;
+ box-shadow: 0 2px 2px  ;
+ padding: 20px  ;
+ width: 800px  ;
+ height: auto  ;
+ border-radius: 4px  ;
+  }
+  .product-details h3 {
+  background: #ff1a1a  ;
+  box-shadow:0 2px 2px  ;
+  border-radius: 4px  ;
+  text-align: center  ;
+  width: 800px  ;
+  height: auto  ;
+}
+.product-details p {
+background: yellow  ;
+box-shadow: 0 2px 2px  ;
+border-radius: 4px  ;
+text-align: left  ;
+padding-left:20px;
+width: 800px  ;
+height: auto  ;
+}
+  .empty-message {
+  background: pink  ;
+  text-align: center  ;
+  padding: 40px  ;
+  font-size: 18px  ;
+  border: 1px dashed #ddd  ;
+  border-radius: 8px  ;
+  margin-top: 20px  ;
+  }
+
+    `,
+  ],
+
+
+   template: `
+        <div class="container">
+          <div class="product-list">
+            <h2 class="text-xl font-bold mb-4">
+            Products
+            </h2>
+            <ul>
+              <li *ngFor="let product of products" class="product">
+                <div class="product-info" (click)="selectProduct(product)">
+                  <img [src]="product.image" alt="{{ product.name }}" />
+                  <p>{{ product.name }}</p>
+                </div>
+                <button class="delete-btn" (click)="deleteProduct($event, product.id)">Delete</button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="product-details" *ngIf="selectedProduct; else empty">
+            <h2 class="text-xl font-bold mb-4">Product Details</h2>
+            <h3>{{ selectedProduct.name }}</h3>
+            <img [src]="selectedProduct.image" alt="{{selectedProduct.name}}" />
+            <p>Details : {{ selectedProduct.details }}</p>
+           </div>
+         </div>
+      `,
+})
+export class AppComponent {
+  products: Product[] = [
+       {
+          id: 1,
+          name: "Vintage Leather Wallet",
+          image:
+            "https://plus.unsplash.com/premium_photo-1673480195253-dc2229c109ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          details:
+            "A handcrafted wallet made from premium leather, designed to last a lifetime. Features multiple card slots and a sleek, minimalist design."
+        },
+        {
+          id: 2,
+          name: "Bluetooth Noise-Cancelling Headphones",
+          image:
+            "https://images.unsplash.com/photo-1535397318751-32521c97e1c3?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          details:
+            "Experience immersive sound with these wireless Bluetooth headphones. Active noise cancellation and long battery life make them perfect for travel."
+        },
+        {
+          id: 3,
+          name: "Smart Fitness Tracker",
+          image:
+            "https://plus.unsplash.com/premium_photo-1719289799376-d3de0ca4ddbc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          details:
+            "Keep track of your health and fitness goals with this sleek and water-resistant fitness tracker. Monitors heart rate, sleep patterns, and more."
+        }
+  ];
+
+  selectedProduct: Product | null = null;
+
+  selectProduct(product: Product): void {
+    this .selectedProduct = product;
+  }
+ deleteProduct( productId: number,event: MouseEvent): void {
+    event.stopPropagation();
+    this .products = this .products . filter (product => product . id != productId);
+  }
+
+}

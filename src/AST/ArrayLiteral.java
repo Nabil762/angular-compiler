@@ -18,4 +18,8 @@ public class ArrayLiteral extends AstNode {
     public String toString() {
         return "\nimported components from angular library [" + identifiers + "]";
     }
+    @Override
+    public String generatedCode() {
+        return "";
+    }
 }

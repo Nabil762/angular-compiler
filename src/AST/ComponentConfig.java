@@ -16,9 +16,19 @@ public class ComponentConfig extends AstNode {
 
     @Override
     public String toString() {
-        return "\nComponentConfig{" +
+        return "ComponentConfig{" +
                 "\npropertyAssignmentList=" + propertyAssignmentList +
                 "\n}";
+    }
+
+    @Override
+    public String generatedCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (PropertyAssignment propertyAssignment : propertyAssignmentList) {
+            if (propertyAssignment instanceof Template)
+                stringBuilder.append(propertyAssignment.generatedCode());
+        }
+        return stringBuilder.toString();
     }
 }
 

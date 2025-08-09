@@ -46,9 +46,21 @@ public class Statement extends AstNode {
         return "\nStatement{" +
                 "\nimportStatementList=" + importStatementList +
                 "\ninterfaceDeclarationList=" + interfaceDeclarationList +
-                "\ncomponentDeclaration=" + componentDeclaration +
-                "\nclassDeclaration=" + classDeclaration +
+                componentDeclaration +
+                classDeclaration +
                 "\n}";
+    }
+
+    @Override
+    public String generatedCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (componentDeclaration != null) {
+            stringBuilder.append(componentDeclaration.generatedCode());
+        }
+        if (classDeclaration != null) {
+            stringBuilder.append(classDeclaration.generatedCode());
+        }
+        return stringBuilder.toString();
     }
 }
 

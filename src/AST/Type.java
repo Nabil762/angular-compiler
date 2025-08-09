@@ -20,4 +20,8 @@ public class Type extends AstNode{
                 "\nsingleTypeList = " + singleTypeList +
                 "\n}";
     }
+    @Override
+    public String generatedCode() {
+        return "";
+    }
 }

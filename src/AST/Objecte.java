@@ -20,4 +20,12 @@ public class Objecte extends AstNode {
                 "\nelementCssList=" + elementCssList +
                 "\n}";
     }
+    @Override
+    public String generatedCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (ElementCss elementCss : elementCssList) {
+            stringBuilder.append(elementCss.generatedCode()).append("\n");
+        }
+        return stringBuilder.toString();
+    }
 }

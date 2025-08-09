@@ -209,18 +209,6 @@ public class angularParserBaseListener implements angularParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTagElement(angularParser.TagElementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTagElement(angularParser.TagElementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterTagNameElement(angularParser.TagNameElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -228,6 +216,18 @@ public class angularParserBaseListener implements angularParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTagNameElement(angularParser.TagNameElementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTagElement(angularParser.TagElementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTagElement(angularParser.TagElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -245,13 +245,13 @@ public class angularParserBaseListener implements angularParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStandardTag(angularParser.StandardTagContext ctx) { }
+	@Override public void enterStandardTagElement(angularParser.StandardTagElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStandardTag(angularParser.StandardTagContext ctx) { }
+	@Override public void exitStandardTagElement(angularParser.StandardTagElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -269,25 +269,13 @@ public class angularParserBaseListener implements angularParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOpeningTag(angularParser.OpeningTagContext ctx) { }
+	@Override public void enterStandardTag(angularParser.StandardTagContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOpeningTag(angularParser.OpeningTagContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterClosingTag(angularParser.ClosingTagContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitClosingTag(angularParser.ClosingTagContext ctx) { }
+	@Override public void exitStandardTag(angularParser.StandardTagContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -348,6 +336,18 @@ public class angularParserBaseListener implements angularParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitEventAttribute(angularParser.EventAttributeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterHtmlAttribute2(angularParser.HtmlAttribute2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHtmlAttribute2(angularParser.HtmlAttribute2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -612,6 +612,30 @@ public class angularParserBaseListener implements angularParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitParameter(angularParser.ParameterContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComplexAssignment3(angularParser.ComplexAssignment3Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComplexAssignment3(angularParser.ComplexAssignment3Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComplexAssignment2(angularParser.ComplexAssignment2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComplexAssignment2(angularParser.ComplexAssignment2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

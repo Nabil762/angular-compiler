@@ -112,19 +112,19 @@ public interface angularParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTemplate(angularParser.TemplateContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code TagElement}
-	 * labeled alternative in {@link angularParser#element}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTagElement(angularParser.TagElementContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code TagNameElement}
 	 * labeled alternative in {@link angularParser#element}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitTagNameElement(angularParser.TagNameElementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code TagElement}
+	 * labeled alternative in {@link angularParser#element}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTagElement(angularParser.TagElementContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code InterpolationElement}
 	 * labeled alternative in {@link angularParser#element}.
@@ -133,12 +133,12 @@ public interface angularParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInterpolationElement(angularParser.InterpolationElementContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code StandardTag}
+	 * Visit a parse tree produced by the {@code StandardTagElement}
 	 * labeled alternative in {@link angularParser#tag}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStandardTag(angularParser.StandardTagContext ctx);
+	T visitStandardTagElement(angularParser.StandardTagElementContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code SelfClosingTagElement}
 	 * labeled alternative in {@link angularParser#tag}.
@@ -147,17 +147,11 @@ public interface angularParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSelfClosingTagElement(angularParser.SelfClosingTagElementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link angularParser#openingTag}.
+	 * Visit a parse tree produced by {@link angularParser#standardTag}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOpeningTag(angularParser.OpeningTagContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link angularParser#closingTag}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClosingTag(angularParser.ClosingTagContext ctx);
+	T visitStandardTag(angularParser.StandardTagContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link angularParser#selfClosingTag}.
 	 * @param ctx the parse tree
@@ -192,6 +186,13 @@ public interface angularParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEventAttribute(angularParser.EventAttributeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code HtmlAttribute2}
+	 * labeled alternative in {@link angularParser#attributes}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHtmlAttribute2(angularParser.HtmlAttribute2Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link angularParser#interpolation}.
 	 * @param ctx the parse tree
@@ -327,6 +328,20 @@ public interface angularParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitParameter(angularParser.ParameterContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ComplexAssignment3}
+	 * labeled alternative in {@link angularParser#functionBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComplexAssignment3(angularParser.ComplexAssignment3Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ComplexAssignment2}
+	 * labeled alternative in {@link angularParser#functionBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComplexAssignment2(angularParser.ComplexAssignment2Context ctx);
 	/**
 	 * Visit a parse tree produced by the {@code SimpleAssignment}
 	 * labeled alternative in {@link angularParser#functionBody}.

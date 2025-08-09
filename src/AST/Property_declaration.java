@@ -26,7 +26,11 @@ public class Property_declaration extends ListDeclaration{
     @Override
     public String toString() {
         return "\nProperty_declaration{" +
-                "\nID='" + ID + '\'' + "   types=" + types +
-                "\n}";
+                "\nID='" + ID + '\'' + "\ntypes=" + types +
+                "}";
+    }
+    @Override
+    public String generatedCode() {
+        return "this."+ID+" = null;";
     }
 }

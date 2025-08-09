@@ -25,7 +25,12 @@ public class BodyOfelement extends AstNode {
     public String toString() {
         return "\nBodyOfelement{" +
                 "\nidentifier='" + identifier + '\'' +
-                "\nvalueCss=" + valueCss +
-                "\n}";
+                valueCss +
+                "}";
+    }
+
+    @Override
+    public String generatedCode() {
+        return identifier+ ": "+valueCss.generatedCode()+" ;";
     }
 }

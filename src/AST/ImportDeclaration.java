@@ -15,4 +15,8 @@ public class ImportDeclaration extends PropertyAssignment {
     public String toString() {
         return "imports: [" + (id != null ? id : "") + "]";
     }
+    @Override
+    public String generatedCode() {
+        return "";
+    }
 }

@@ -1,98 +1,170 @@
 package ErrorHandling;
 
-import symbolTableAngular.Row;
-import symbolTableAngular.SymbolTable;
+import symbolTableAngular.*;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.*;
 
 public class SemanticError {
-    private List<SymbolTable> symbolTables;
+    private AttributeSymbolTable attributeSymbolTable;
+    private DetectCompositionSymbolTable detectCompositionSymbolTable;
+    private DetectSelectorSymbolTable detectSelectorSymbolTable;
+    private DetectTemplateSymbolTable detectTemplateSymbolTable;
+    private DeclarationFunctionSymbolTable declarationFunctionSymbolTable;
+    private DeclarationObjectInInterfaceSymbolTable declarationObjectInInterfaceSymbolTable;
+    private AttributeCssSymbolTable attributeCssSymbolTable;
+    private ClassDeclarationAndStandaloneSymbolTable classDeclarationAndStandaloneSymbolTable;
     private final Error error;
 
-
     public SemanticError() {
-        this(new ArrayList<>());
-    }
-
-    public SemanticError(List<SymbolTable> symbolTables) {
-        this.symbolTables = symbolTables != null ? symbolTables : new ArrayList<>();
         this.error = new Error();
+        this.attributeSymbolTable = new AttributeSymbolTable();
+        this.detectCompositionSymbolTable = new DetectCompositionSymbolTable();
+        this.detectSelectorSymbolTable = new DetectSelectorSymbolTable();
+        this.detectTemplateSymbolTable = new DetectTemplateSymbolTable();
+        this.declarationFunctionSymbolTable = new DeclarationFunctionSymbolTable();
+        this.declarationObjectInInterfaceSymbolTable = new DeclarationObjectInInterfaceSymbolTable();
+        this.attributeCssSymbolTable = new AttributeCssSymbolTable();
+        this.classDeclarationAndStandaloneSymbolTable = new ClassDeclarationAndStandaloneSymbolTable();
     }
 
-    public List<SymbolTable> getSymbolTables() {
-        return new ArrayList<>(symbolTables);
+    public SemanticError(AttributeSymbolTable attributeSymbolTable, DetectCompositionSymbolTable detectCompositionSymbolTable, DetectSelectorSymbolTable detectSelectorSymbolTable, DetectTemplateSymbolTable detectTemplateSymbolTable, DeclarationFunctionSymbolTable declarationFunctionSymbolTable, DeclarationObjectInInterfaceSymbolTable declarationObjectInInterfaceSymbolTable, AttributeCssSymbolTable attributeCssSymbolTable, ClassDeclarationAndStandaloneSymbolTable classDeclarationAndStandaloneSymbolTable) {
+        this.error = new Error();
+        this.attributeSymbolTable = attributeSymbolTable;
+        this.detectCompositionSymbolTable = detectCompositionSymbolTable;
+        this.detectSelectorSymbolTable = detectSelectorSymbolTable;
+        this.detectTemplateSymbolTable = detectTemplateSymbolTable;
+        this.declarationFunctionSymbolTable = declarationFunctionSymbolTable;
+        this.declarationObjectInInterfaceSymbolTable = declarationObjectInInterfaceSymbolTable;
+        this.attributeCssSymbolTable = attributeCssSymbolTable;
+        this.classDeclarationAndStandaloneSymbolTable = classDeclarationAndStandaloneSymbolTable;
     }
 
     public Error getError() {
         return error;
     }
 
-    public void setSymbolTables(List<SymbolTable> symbolTables) {
-        this.symbolTables = symbolTables != null ? symbolTables : new ArrayList<>();
+    public AttributeSymbolTable getAttributeSymbolTable() {
+        return attributeSymbolTable;
+    }
+
+    public void setAttributeSymbolTable(AttributeSymbolTable attributeSymbolTable) {
+        this.attributeSymbolTable = attributeSymbolTable;
+    }
+
+    public DetectCompositionSymbolTable getDetectCompositionSymbolTable() {
+        return detectCompositionSymbolTable;
+    }
+
+    public void setDetectCompositionSymbolTable(DetectCompositionSymbolTable detectCompositionSymbolTable) {
+        this.detectCompositionSymbolTable = detectCompositionSymbolTable;
+    }
+
+    public DetectSelectorSymbolTable getDetectSelectorSymbolTable() {
+        return detectSelectorSymbolTable;
+    }
+
+    public void setDetectSelectorSymbolTable(DetectSelectorSymbolTable detectSelectorSymbolTable) {
+        this.detectSelectorSymbolTable = detectSelectorSymbolTable;
+    }
+
+    public DetectTemplateSymbolTable getDetectTemplateSymbolTable() {
+        return detectTemplateSymbolTable;
+    }
+
+    public void setDetectTemplateSymbolTable(DetectTemplateSymbolTable detectTemplateSymbolTable) {
+        this.detectTemplateSymbolTable = detectTemplateSymbolTable;
+    }
+
+    public DeclarationFunctionSymbolTable getDeclarationFunctionSymbolTable() {
+        return declarationFunctionSymbolTable;
+    }
+
+    public void setDeclarationFunctionSymbolTable(DeclarationFunctionSymbolTable declarationFunctionSymbolTable) {
+        this.declarationFunctionSymbolTable = declarationFunctionSymbolTable;
+    }
+
+    public DeclarationObjectInInterfaceSymbolTable getDeclarationObjectInInterfaceSymbolTable() {
+        return declarationObjectInInterfaceSymbolTable;
+    }
+
+    public void setDeclarationObjectInInterfaceSymbolTable(DeclarationObjectInInterfaceSymbolTable declarationObjectInInterfaceSymbolTable) {
+        this.declarationObjectInInterfaceSymbolTable = declarationObjectInInterfaceSymbolTable;
+    }
+
+    public AttributeCssSymbolTable getAttributeCssSymbolTable() {
+        return attributeCssSymbolTable;
+    }
+
+    public void setAttributeCssSymbolTable(AttributeCssSymbolTable attributeCssSymbolTable) {
+        this.attributeCssSymbolTable = attributeCssSymbolTable;
+    }
+
+    public ClassDeclarationAndStandaloneSymbolTable getClassDeclarationAndStandaloneSymbolTable() {
+        return classDeclarationAndStandaloneSymbolTable;
+    }
+
+    public void setClassDeclarationAndStandaloneSymbolTable(ClassDeclarationAndStandaloneSymbolTable classDeclarationAndStandaloneSymbolTable) {
+        this.classDeclarationAndStandaloneSymbolTable = classDeclarationAndStandaloneSymbolTable;
     }
 
     public boolean check() {
         boolean isValid = true;
-        if (!IncorrectAttribute(this.symbolTables)) {
+        if (!IncorrectAttribute(this.attributeSymbolTable)) {
             error.getErrors().add("Exception Incorrect_Attribute");
-            System.out.println();
             isValid = false;
         }
-        if (!DetectCompositionError(this.symbolTables)) {
+        if (!DetectCompositionError(this.detectCompositionSymbolTable)) {
             error.getErrors().add("Exception Composition Error");
-            System.out.println();
             isValid = false;
         }
-        if (!DetectSelectorTemplateError(this.symbolTables)) {
-            error.getErrors().add("Exception Selector|Template Error");
-            System.out.println();
+        if (!DetectSelectorError(this.detectSelectorSymbolTable)) {
+            error.getErrors().add("Exception Selector Error");
             isValid = false;
         }
-        if (!RepeatedDeclarationFunction(this.symbolTables)) {
+        if (!DetectTemplateError(this.detectTemplateSymbolTable)) {
+            error.getErrors().add("Exception Template Error");
+            isValid = false;
+        }
+        if (!RepeatedDeclarationFunction(this.declarationFunctionSymbolTable)) {
             error.getErrors().add("Exception RepeatedDeclarationFunction");
-            System.out.println();
             isValid = false;
         }
-        if (!RepeatedDeclarationObjectInInterface(this.symbolTables)) {
+        if (!RepeatedDeclarationObjectInInterface(this.declarationObjectInInterfaceSymbolTable)) {
             error.getErrors().add("Exception RepeatedDeclarationObjectInInterface");
-            System.out.println();
             isValid = false;
         }
-        if (!IncorrectAttributeCss(this.symbolTables)) {
+        if (!IncorrectAttributeCss(this.attributeCssSymbolTable)) {
             error.getErrors().add("Exception IncorrectAttributeCss");
-            System.out.println();
             isValid = false;
         }
-        if (!ClassDeclarationAndStandalone(this.symbolTables)) {
+        if (!ClassDeclarationAndStandalone(this.classDeclarationAndStandaloneSymbolTable)) {
             error.getErrors().add("Exception IncorrectBodyComponent");
-            System.out.println();
             isValid = false;
         }
         return isValid;
     }
 
-    private boolean IncorrectAttribute(List<SymbolTable> symbolTables) {
-        if (symbolTables == null || symbolTables.isEmpty()) {
-            error.getErrors().add("No symbol tables provided");
+    private boolean IncorrectAttribute(AttributeSymbolTable attributeSymbolTable) {
+        if (attributeSymbolTable == null) {
+            error.getErrors().add("No AttributeSymbolTable tables provided");
             return false;
         }
         boolean checkError = true;
-        SymbolTable symbolTable = symbolTables.get(0);
         List<Row> listAttributeInInterface = new ArrayList<>();
         List<Row> listAttributeInFunction = new ArrayList<>();
         Map<Row, Integer> Attr = new HashMap<>();
         int numberObjectExpressionList = 0;
-        for (int i = 0; i < symbolTable.getRows().size(); i++) {
-            if (symbolTable.getRows().get(i) != null) {
-                if (symbolTable.getRows().get(i).getType().contains("StringInterfaceDecl"))
-                    listAttributeInInterface.add(symbolTable.getRows().get(i));
-                if (symbolTable.getRows().get(i).getType().contains("StringInFunction")) {
-                    listAttributeInFunction.add(symbolTable.getRows().get(i));
-                    String x = symbolTable.getRows().get(i).getValue();
+        for (int i = 0; i < attributeSymbolTable.getRows().size(); i++) {
+            if (attributeSymbolTable.getRows().get(i) != null) {
+                if (attributeSymbolTable.getRows().get(i).getType().contains("StringInterfaceDecl"))
+                    listAttributeInInterface.add(attributeSymbolTable.getRows().get(i));
+                if (attributeSymbolTable.getRows().get(i).getType().contains("StringInFunction")) {
+                    listAttributeInFunction.add(attributeSymbolTable.getRows().get(i));
+                    String x = attributeSymbolTable.getRows().get(i).getValue();
                     if (!Attr.keySet().stream().anyMatch(key -> x.equals(key.getValue())) && listAttributeInInterface.stream().anyMatch(obj -> x.equals(obj.getValue()))) {
-                        Attr.put(symbolTable.getRows().get(i), 1);
+                        Attr.put(attributeSymbolTable.getRows().get(i), 1);
                     } else {
                         for (Map.Entry<Row, Integer> entry : Attr.entrySet()) {
                             String key = entry.getKey().getValue();
@@ -103,8 +175,8 @@ public class SemanticError {
                         }
                     }
                 }
-                if (symbolTable.getRows().get(i).getType().contains("numberObjectExpressionList"))
-                    numberObjectExpressionList = Integer.parseInt(symbolTable.getRows().get(i).getValue());
+                if (attributeSymbolTable.getRows().get(i).getType().contains("numberObjectExpressionList"))
+                    numberObjectExpressionList = Integer.parseInt(attributeSymbolTable.getRows().get(i).getValue());
             }
         }
         for (Row funcAttr : listAttributeInFunction) {
@@ -113,36 +185,36 @@ public class SemanticError {
                 checkError = false;
             }
         }
-        System.out.println();
         for (Map.Entry<Row, Integer> entry : Attr.entrySet()) {
             String key = entry.getKey().getValue();
             Integer value = entry.getValue();
             int line = entry.getKey().getLine();
             int pos = entry.getKey().getPosition();
+
             if (value != numberObjectExpressionList) {
                 error.getErrors().add("At Line " + line + " in position " + pos + " Attribute " + key + " not found in Assignment");
+
                 checkError = false;
             }
         }
         return checkError;
     }
 
-    private boolean DetectCompositionError(List<SymbolTable> symbolTables) {
-        if (symbolTables == null || symbolTables.isEmpty()) {
-            error.getErrors().add("No symbol tables provided");
+    private boolean DetectCompositionError(DetectCompositionSymbolTable detectCompositionSymbolTable) {
+        if (detectCompositionSymbolTable == null) {
+            error.getErrors().add("No DetectCompositionSymbolTable tables provided");
             return false;
         }
         boolean checkError = true, imp = false;
-        SymbolTable symbolTable = symbolTables.get(1);
         List<Row> listImportStatement = new ArrayList<>();
         List<Row> listImportDecl = new ArrayList<>();
-        for (int i = 0; i < symbolTable.getRows().size(); i++) {
-            if (symbolTable.getRows().get(i) != null) {
-                if (symbolTable.getRows().get(i).getType().contains("StringImportDecl"))
-                    listImportDecl.add(symbolTable.getRows().get(i));
-                if (symbolTable.getRows().get(i).getType().contains("StringImportStatement")) {
-                    listImportStatement.add(symbolTable.getRows().get(i));
-                    if (symbolTable.getRows().get(i).getValue().equals("Component")) {
+        for (int i = 0; i < detectCompositionSymbolTable.getRows().size(); i++) {
+            if (detectCompositionSymbolTable.getRows().get(i) != null) {
+                if (detectCompositionSymbolTable.getRows().get(i).getType().contains("StringImportDecl"))
+                    listImportDecl.add(detectCompositionSymbolTable.getRows().get(i));
+                if (detectCompositionSymbolTable.getRows().get(i).getType().contains("StringImportStatement")) {
+                    listImportStatement.add(detectCompositionSymbolTable.getRows().get(i));
+                    if (detectCompositionSymbolTable.getRows().get(i).getValue().equals("Component")) {
                         imp = true;
                     }
                 }
@@ -162,26 +234,18 @@ public class SemanticError {
         return checkError && imp;
     }
 
-    private boolean DetectSelectorTemplateError(List<SymbolTable> symbolTables) {
-        if (symbolTables == null || symbolTables.isEmpty()) {
-            error.getErrors().add("No symbol tables provided");
+    private boolean DetectSelectorError(DetectSelectorSymbolTable detectSelectorSymbolTable) {
+        if (detectSelectorSymbolTable == null) {
+            error.getErrors().add("No DetectSelectorSymbolTable tables provided");
             return false;
         }
         boolean checkError = true;
-        SymbolTable symbolTable = symbolTables.get(4);
         List<Row> listSelector = new ArrayList<>();
-        List<Row> listTemplate = new ArrayList<>();
-        for (int i = 0; i < symbolTable.getRows().size(); i++) {
-            if (symbolTable.getRows().get(i) != null) {
-                if (symbolTable.getRows().get(i).getType().contains("StringTemplate"))
-                    listTemplate.add(symbolTable.getRows().get(i));
-                if (symbolTable.getRows().get(i).getType().contains("StringSelector"))
-                    listSelector.add(symbolTable.getRows().get(i));
+        for (int i = 0; i < detectSelectorSymbolTable.getRows().size(); i++) {
+            if (detectSelectorSymbolTable.getRows().get(i) != null) {
+                if (detectSelectorSymbolTable.getRows().get(i).getType().contains("StringSelector"))
+                    listSelector.add(detectSelectorSymbolTable.getRows().get(i));
             }
-        }
-        if (listTemplate.isEmpty()) {
-            error.getErrors().add("template not found in Component Declaration");
-            checkError = false;
         }
         if (listSelector.isEmpty()) {
             error.getErrors().add("selector not found in Component Declaration");
@@ -191,6 +255,26 @@ public class SemanticError {
             for (int i = 1; i < listSelector.size(); i++) {
                 error.getErrors().add("At Line " + listSelector.get(i).getLine() + " in position " + listSelector.get(i).getPosition() + "selector Duplicated");
             }
+            checkError = false;
+        }
+        return checkError;
+    }
+
+    private boolean DetectTemplateError(DetectTemplateSymbolTable detectTemplateSymbolTable) {
+        if (detectTemplateSymbolTable == null) {
+            error.getErrors().add("No DetectTemplateSymbolTable tables provided");
+            return false;
+        }
+        boolean checkError = true;
+        List<Row> listTemplate = new ArrayList<>();
+        for (int i = 0; i < detectTemplateSymbolTable.getRows().size(); i++) {
+            if (detectTemplateSymbolTable.getRows().get(i) != null) {
+                if (detectTemplateSymbolTable.getRows().get(i).getType().contains("StringTemplate"))
+                    listTemplate.add(detectTemplateSymbolTable.getRows().get(i));
+            }
+        }
+        if (listTemplate.isEmpty()) {
+            error.getErrors().add("template not found in Component Declaration");
             checkError = false;
         }
         if (listTemplate.size() > 1) {
@@ -203,25 +287,24 @@ public class SemanticError {
         return checkError;
     }
 
-    private boolean RepeatedDeclarationFunction(List<SymbolTable> symbolTables) {
-        if (symbolTables == null || symbolTables.isEmpty()) {
-            error.getErrors().add("No symbol tables provided");
+    private boolean RepeatedDeclarationFunction(DeclarationFunctionSymbolTable declarationFunctionSymbolTable) {
+        if (declarationFunctionSymbolTable == null) {
+            error.getErrors().add("No DeclarationFunctionSymbolTable tables provided");
             return false;
         }
         boolean checkError = true;
-        SymbolTable symbolTable = symbolTables.get(2);
         List<Row> listParameter = new ArrayList<>();
         List<Row> listFunctionName = new ArrayList<>();
         List<Row> listReturnType = new ArrayList<>();
 
-        for (int i = 0; i < symbolTable.getRows().size(); i++) {
-            if (symbolTable.getRows().get(i) != null) {
-                if (symbolTable.getRows().get(i).getType().contains("StringReturnValue"))
-                    listReturnType.add(symbolTable.getRows().get(i));
-                if (symbolTable.getRows().get(i).getType().contains("StringFunctionName"))
-                    listFunctionName.add(symbolTable.getRows().get(i));
-                if (symbolTable.getRows().get(i).getType().contains("StringParameter"))
-                    listParameter.add(symbolTable.getRows().get(i));
+        for (int i = 0; i < declarationFunctionSymbolTable.getRows().size(); i++) {
+            if (declarationFunctionSymbolTable.getRows().get(i) != null) {
+                if (declarationFunctionSymbolTable.getRows().get(i).getType().contains("StringReturnValue"))
+                    listReturnType.add(declarationFunctionSymbolTable.getRows().get(i));
+                if (declarationFunctionSymbolTable.getRows().get(i).getType().contains("StringFunctionName"))
+                    listFunctionName.add(declarationFunctionSymbolTable.getRows().get(i));
+                if (declarationFunctionSymbolTable.getRows().get(i).getType().contains("StringParameter"))
+                    listParameter.add(declarationFunctionSymbolTable.getRows().get(i));
             }
         }
         for (int j = 0; j < listFunctionName.size(); j++) {
@@ -235,20 +318,19 @@ public class SemanticError {
         return checkError;
     }
 
-    private boolean RepeatedDeclarationObjectInInterface(List<SymbolTable> symbolTables) {
-        if (symbolTables == null || symbolTables.isEmpty()) {
-            error.getErrors().add("No symbol tables provided");
+    private boolean RepeatedDeclarationObjectInInterface(DeclarationObjectInInterfaceSymbolTable declarationObjectInInterfaceSymbolTable) {
+        if (declarationObjectInInterfaceSymbolTable == null) {
+            error.getErrors().add("No DeclarationObjectInInterfaceSymbolTable tables provided");
             return false;
         }
         boolean checkError = true;
-        SymbolTable symbolTable = symbolTables.get(0);
         List<Row> listObjectName = new ArrayList<>();
         List<Row> listCheck = new ArrayList<>();
 
-        for (int i = 0; i < symbolTable.getRows().size(); i++) {
-            if (symbolTable.getRows().get(i) != null) {
-                if (symbolTable.getRows().get(i).getType().contains("StringInterfaceDecl"))
-                    listObjectName.add(symbolTable.getRows().get(i));
+        for (int i = 0; i < declarationObjectInInterfaceSymbolTable.getRows().size(); i++) {
+            if (declarationObjectInInterfaceSymbolTable.getRows().get(i) != null) {
+                if (declarationObjectInInterfaceSymbolTable.getRows().get(i).getType().contains("StringInterfaceDecl"))
+                    listObjectName.add(declarationObjectInInterfaceSymbolTable.getRows().get(i));
             }
         }
         if (!listObjectName.isEmpty())
@@ -264,19 +346,18 @@ public class SemanticError {
         return checkError;
     }
 
-    private boolean IncorrectAttributeCss(List<SymbolTable> symbolTables) {
-        if (symbolTables == null || symbolTables.isEmpty()) {
-            error.getErrors().add("No symbol tables provided");
+    private boolean IncorrectAttributeCss(AttributeCssSymbolTable attributeCssSymbolTable) {
+        if (attributeCssSymbolTable == null) {
+            error.getErrors().add("No AttributeCssSymbolTable tables provided");
             return false;
         }
-        List<String> CssAttr = Arrays.asList("display", "width", "gap", "border-right", "list-style-type", "padding", "align-items", "border-bottom", "cursor", "height", "object-fit", "margin-bottom");
+        List<String> CssAttr = Arrays.asList("display", "width", "gap", "border-right", "list-style-type", "padding", "align-items", "border-bottom", "cursor", "height", "object-fit", "margin-bottom", "margin", "min-height", "padding-right", "background", "border-radius", "flex", "flex-direction", "border", "max-width", "font-size", "box-shadow", "text-align", "margin-top", "color", "justify-content", "direction", "overflow", "font-weight", "unicode-bidi", "outline", "resize", "padding-left", "padding-right");
         boolean checkError = true;
-        SymbolTable symbolTable = symbolTables.get(3);
         List<Row> listAttr = new ArrayList<>();
-        for (int i = 0; i < symbolTable.getRows().size(); i++) {
-            if (symbolTable.getRows().get(i) != null) {
-                if (symbolTable.getRows().get(i).getType().contains("StringAttCss"))
-                    listAttr.add(symbolTable.getRows().get(i));
+        for (int i = 0; i < attributeCssSymbolTable.getRows().size(); i++) {
+            if (attributeCssSymbolTable.getRows().get(i) != null) {
+                if (attributeCssSymbolTable.getRows().get(i).getType().contains("StringAttCss"))
+                    listAttr.add(attributeCssSymbolTable.getRows().get(i));
             }
         }
         for (Row Attr : listAttr) {
@@ -288,21 +369,20 @@ public class SemanticError {
         return checkError;
     }
 
-    private boolean ClassDeclarationAndStandalone(List<SymbolTable> symbolTables) {
-        if (symbolTables == null || symbolTables.isEmpty()) {
-            error.getErrors().add("No symbol tables provided");
+    private boolean ClassDeclarationAndStandalone(ClassDeclarationAndStandaloneSymbolTable classDeclarationAndStandaloneSymbolTable) {
+        if (classDeclarationAndStandaloneSymbolTable == null) {
+            error.getErrors().add("No ClassDeclarationAndStandaloneSymbolTable tables provided");
             return false;
         }
         boolean checkError = true;
         List<Row> standlist = new ArrayList<>();
         Row classlist = new Row();
-        SymbolTable symbolTable = symbolTables.get(5);
-        for (int i = 0; i < symbolTable.getRows().size(); i++) {
-            if (symbolTable.getRows().get(i) != null) {
-                if (symbolTable.getRows().get(i).getType().contains("StringStandalone"))
-                    standlist.add(symbolTable.getRows().get(i));
-                if (symbolTable.getRows().get(i).getType().contains("StringClassDeclaration"))
-                    classlist = symbolTable.getRows().get(i);
+        for (int i = 0; i < classDeclarationAndStandaloneSymbolTable.getRows().size(); i++) {
+            if (classDeclarationAndStandaloneSymbolTable.getRows().get(i) != null) {
+                if (classDeclarationAndStandaloneSymbolTable.getRows().get(i).getType().contains("StringStandalone"))
+                    standlist.add(classDeclarationAndStandaloneSymbolTable.getRows().get(i));
+                if (classDeclarationAndStandaloneSymbolTable.getRows().get(i).getType().contains("StringClassDeclaration"))
+                    classlist = classDeclarationAndStandaloneSymbolTable.getRows().get(i);
             }
         }
         boolean checkStandalone = true;
@@ -326,6 +406,7 @@ public class SemanticError {
         }
         return checkError && checkStandalone;
     }
+
 
     public void printErrors() {
         error.print();

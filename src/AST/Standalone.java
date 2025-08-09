@@ -16,7 +16,10 @@ public class Standalone extends PropertyAssignment {
     public String toString() {
         return "standalone: " + isStandalone;
     }
-
+    @Override
+    public String generatedCode() {
+        return "";
+    }
 }
 
 

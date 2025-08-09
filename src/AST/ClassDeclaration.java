@@ -27,7 +27,17 @@ public class ClassDeclaration extends AstNode {
     public String toString() {
         return "\nClassDeclaration{" +
                 "\nclass_name = '" + class_name + '\'' +
-                "\nlistDeclarations = " + listDeclarations +
+                listDeclarations +
                 "\n}";
+    }
+
+    @Override
+    public String generatedCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (ListDeclaration listDeclaration : listDeclarations) {
+            if (listDeclaration instanceof FunctionDeclaration)
+                stringBuilder.append(listDeclaration.generatedCode());
+        }
+        return stringBuilder.toString();
     }
 }

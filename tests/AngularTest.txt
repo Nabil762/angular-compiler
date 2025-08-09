@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Product {
-  id: number;
-  name: string;
-  image: string;
-  details: string;
+  id : number;
+  name : string;
+  image : string;
+  details : string;
 }
 
 @component({
@@ -52,41 +52,37 @@ interface Product {
         `,
       ],
   template: `
+
     <div class="container">
       <div class="product-list">
         <h3>Products</h3>
         <ul>
           <li *ngFor="let product of products" (click)="selectProduct(product)">
-            <img [src]="product.imageUrl" alt="{{ product.name }}" />
+            <img [src]="product.image" alt="{{ product.name }}" />
             <p>{{ product.name }}</p>
           </li>
         </ul>
       </div>
 
-      <div class="product-details" *ngIf="selectedProduct">
+      <div class="product-details" *ngIf="selectedProduct;">
         <h3>Product Details</h3>
-        <img [src]="selectedProduct!.imageUrl" alt="{{ selectedProduct!.name }}" />
+        <img [src]="selectedProduct!.image" alt="{{ selectedProduct!.name }}" />
         <h4>{{ selectedProduct!.name }}</h4>
         <p><strong>Price:</strong> {{ selectedProduct!.price  }}</p>
-        <p><strong>Type:</strong> {{ selectedProduct!.type }}</p>
+        <p><strong>Details:</strong> {{ selectedProduct!.details }}</p>
       </div>
     </div>
   `,
-
-
-
 }
 
 )
 export class AppComponent {
   products: Product[] = [
-    { id: 1, name: 'Product 1', image: 'https://via.placeholder.com/100', details: 'Details about Product 1' },
-    { id: 2, name: 'Product 2', image: 'https://via.placeholder.com/100', details: 'Details about Product 2' },
-    { id: 3, name: 'Product 3', image: 'https://via.placeholder.com/100', details: 'Details about Product 3' }
+       {id: 1, name: 'Product 1', image: '/images/1.jpg', details: 'Details about Product 1'},
+       {id: 2, name: 'Product 2', image: '/images/2.jpg', details: 'Details about Product 2'},
+       {id: 3, name: 'Product 3', image: '/images/3.jpg', details: 'Details about Product 3'}
   ];
-
   selectedProduct: Product | null = null;
-
       selectProduct(product: Product): int {
         this .selectedProduct = product;
 

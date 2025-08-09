@@ -93,17 +93,31 @@ BLOCK_COMMENT2: '/*' .*? '*/' -> skip;
 ID  : [0-9]+ (PX | EM | REM | PERCENT)?
     |'#'[a-zA-Z_][a-zA-Z0-9_]*
     | [a-zA-Z_-][a-zA-Z0-9_-]*;
-
-
 mode TEMPLATE_MODE ;
 
 BACKTICK:   '`';
 LINE_COMMENT_HTML: '//' ~[\r\n]* -> skip;
 BLOCK_COMMENT_HTML: '/*' .*? '*/' -> skip;
-TAG_OPEN   : '<' TAG_NAME;
+TAG_OPEN   : '<';
 OPEN_TAG_CLOSE   : '</' ;
 TAG_CLOSE     : '>';
 TAG_SELF_CLOSE           : '/>';
+H1 : 'h1';
+H2 : 'h2';
+H3 : 'h3';
+H4 : 'h4';
+H5 : 'h5';
+H6 : 'h6';
+P : 'p';
+UL : 'ul';
+STRONG: 'strong';
+IMG: 'img';
+LI: 'li';
+DIV: 'div';
+BUTTON: 'button';
+FORM: 'form';
+LABLE: 'label';
+INPUT: 'input';
 EQUALH  : '=';
 STRING1            : '"' (~["\r\n])* '"';
 DIRECTIVE_NAME   : '*' TAG_NAME;

@@ -36,4 +36,14 @@ public class Row {
     public void setPosition(int position) {
         this.position = position;
     }
+
+    @Override
+    public String toString() {
+        return "Row{" +
+                "type='" + type + '\'' +
+                ", value='" + value + '\'' +
+                ", Line=" + Line +
+                ", position=" + position +
+                '}'+'\n';
+    }
 }

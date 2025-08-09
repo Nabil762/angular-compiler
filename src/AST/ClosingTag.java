@@ -17,4 +17,8 @@ public class ClosingTag extends Tag {
                 "\nNAME_HTML='" + NAME_HTML + '\'' +
                 "\n}";
     }
+    @Override
+    public String generatedCode() {
+        return "";
+    }
 }
