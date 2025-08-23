@@ -92,6 +92,7 @@ LINE_COMMENT2: '//' ~[\r\n]* -> skip;
 BLOCK_COMMENT2: '/*' .*? '*/' -> skip;
 ID  : [0-9]+ (PX | EM | REM | PERCENT)?
     |'#'[a-zA-Z_][a-zA-Z0-9_]*
+    |'#'[a-zA-Z0-9_]+
     | [a-zA-Z_-][a-zA-Z0-9_-]*;
 mode TEMPLATE_MODE ;
 

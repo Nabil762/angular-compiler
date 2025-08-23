@@ -15,10 +15,10 @@ this.productdetails.className = 'product-details';
 this.container.appendChild(this.productdetails);
 }
 renderproductlist() {
-this.productlist.innerHTML = `<h2 class = "text-xl font-bold mb-4">Products </h2>`;
+this.productlist.innerHTML = `<h2 class = "text-xl font-bold mb-4 text-center"style = "color: #10b981;">Products </h2>`;
 if (this.products.length === 0) {
 this.productlist.innerHTML += `
-<h3>No products available<br>Add products to see them listed here</h3>`;
+<h3 class="mb-4 empty-message">No products available<br>Add products to see them listed here</h3>`;
 return;
 }
 this.productlist.innerHTML += this.products.map(product  => `
@@ -45,7 +45,7 @@ this.deleteProduct(parseInt(item.dataset.id), e);
 });
 }
 renderproductdetails() {
-this.productdetails.innerHTML = `<h2 class = "text-xl font-bold mb-4">Product Details </h2>`;
+this.productdetails.innerHTML = `<h2 class = "text-xl font-bold mb-4"style = "color: #10b981;">Product Details </h2>`;
 if (this.selectedProduct) {
 this.productdetails.innerHTML += `
 <div class = "product-details" >
@@ -91,8 +91,7 @@ const stored = localStorage.getItem('products');
 app.products = JSON.parse(localStorage.getItem('products')) || [
 {id: 1,name: "Vintage Leather Wallet",image: "https://plus.unsplash.com/premium_photo-1673480195253-dc2229c109ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",details: "A handcrafted wallet made from premium leather, designed to last a lifetime. Features multiple card slots and a sleek, minimalist design."},
 {id: 2,name: "Bluetooth Noise-Cancelling Headphones",image: "https://images.unsplash.com/photo-1535397318751-32521c97e1c3?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",details: "Experience immersive sound with these wireless Bluetooth headphones. Active noise cancellation and long battery life make them perfect for travel."},
-{id: 3,name: "Smart Fitness Tracker",image: "https://plus.unsplash.com/premium_photo-1719289799376-d3de0ca4ddbc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",details: "Keep track of your health and fitness goals with this sleek and water-resistant fitness tracker. Monitors heart rate, sleep patterns, and more."},
-{id: 4,name: "Ergonomic Office Chair",image: "https://images.unsplash.com/photo-1617858123189-b26eb62d8eb4?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",details: "Stay comfortable during long work hours with this adjustable ergonomic office chair. Features lumbar support and breathable mesh fabric."}
+{id: 3,name: "Smart Fitness Tracker",image: "https://plus.unsplash.com/premium_photo-1719289799376-d3de0ca4ddbc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",details: "Keep track of your health and fitness goals with this sleek and water-resistant fitness tracker. Monitors heart rate, sleep patterns, and more."}
 ];
 localStorage.setItem('products', JSON.stringify(app.products));
 app.render();

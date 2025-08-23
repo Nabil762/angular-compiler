@@ -36,6 +36,10 @@ public class ElementCss extends AstNode {
         StringBuilder stringBuilder = new StringBuilder();
         if (identifier.contains("-hover"))
             identifier = identifier.replace("-hover", ":hover");
+        if (identifier.contains("-placeholder"))
+            identifier = identifier.replace("-placeholder", "::placeholder");
+        if (identifier.contains("-focus"))
+            identifier = identifier.replace("-focus", ":focus");
         if (identifier.equals("app ")) {
             stringBuilder.append("#").append(identifier).append("{\n");
         } else if (!identifier.equals("body ")) {

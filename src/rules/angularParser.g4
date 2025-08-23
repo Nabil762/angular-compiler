@@ -47,7 +47,6 @@ element :
 
   standardTag :TAG_OPEN (H1| H2| H3| H4| H5| H6| STRONG|UL|P|DIV|LI|BUTTON|FORM|LABLE|INPUT) attributes* TAG_CLOSE element*   OPEN_TAG_CLOSE (H1| H2| H3| H4| H5| H6| STRONG|UL|P|DIV|LI|BUTTON|FORM|LABLE|INPUT) TAG_CLOSE;
   selfClosingTag : TAG_OPEN IMG attributes* TAG_SELF_CLOSE;
-
 attributes:
     TAG_NAME EQUALH STRING1         # HtmlAttribute
   | DIRECTIVE_NAME EQUALH STRING1   # DirectiveAttribute

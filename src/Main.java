@@ -34,10 +34,12 @@ public class Main {
             throw new RuntimeException(e);
         }
         String[] source = {"tests/AngularTestShowEnd.txt", "tests/AngularTestAdd.txt"};
+//        String[] source = {"tests/AngularTestShowEndCar.txt", "tests/AngularTestAddCar.txt"};
 //        String[] source = {"tests/AngularTest.txt"};
 //        String[] source = {"tests/AngularTest2.txt"};
 //        String[] source = {"tests/AngularTestErrors.txt"};
 //        String[] source = {"tests/t.txt"};
+//        String[] source = {"tests/ahmad.txt"};
         for (int i = 0; i < source.length; i++) {
             CharStream st = fromFileName(source[i]);
             angularLexer lexer = new angularLexer(st);

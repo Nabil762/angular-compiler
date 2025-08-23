@@ -351,7 +351,7 @@ public class SemanticError {
             error.getErrors().add("No AttributeCssSymbolTable tables provided");
             return false;
         }
-        List<String> CssAttr = Arrays.asList("display", "width", "gap", "border-right", "list-style-type", "padding", "align-items", "border-bottom", "cursor", "height", "object-fit", "margin-bottom", "margin", "min-height", "padding-right", "background", "border-radius", "flex", "flex-direction", "border", "max-width", "font-size", "box-shadow", "text-align", "margin-top", "color", "justify-content", "direction", "overflow", "font-weight", "unicode-bidi", "outline", "resize", "padding-left", "padding-right");
+        List<String> CssAttr = Arrays.asList("display", "width", "gap", "border-right", "list-style-type", "padding", "align-items", "border-bottom", "cursor", "height", "object-fit", "margin-bottom", "margin", "min-height", "padding-right", "background", "border-radius", "flex", "flex-direction", "border", "max-width", "font-size", "box-shadow", "text-align", "margin-top", "color", "justify-content", "direction", "overflow", "font-weight", "unicode-bidi", "outline", "resize", "padding-left", "padding-right","border-color");
         boolean checkError = true;
         List<Row> listAttr = new ArrayList<>();
         for (int i = 0; i < attributeCssSymbolTable.getRows().size(); i++) {

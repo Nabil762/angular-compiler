@@ -26,7 +26,7 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[red]}}, 
+identifiers=[#00008b]}}, 
 BodyOfelement{
 identifier='margin'
 ValueCss{
@@ -46,11 +46,7 @@ identifiers=[flex]}},
 BodyOfelement{
 identifier='min-height'
 ValueCss{
-identifiers=[80, vh]}}, 
-BodyOfelement{
-identifier='gap'
-ValueCss{
-identifiers=[20px]}}]
+identifiers=[100, vh]}}]
 }, 
 ElementCss{
 identifier='product-list 
@@ -58,23 +54,23 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[purple]}}, 
+identifiers=[#0000cd]}}, 
 BodyOfelement{
 identifier='width'
 ValueCss{
 identifiers=[30%]}}, 
 BodyOfelement{
-identifier='border-right'
-ValueCss{
-identifiers=[1px, solid, #ddd]}}, 
-BodyOfelement{
-identifier='padding-right'
+identifier='padding'
 ValueCss{
 identifiers=[20px]}}]
 }, 
 ElementCss{
 identifier='product 
 bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#4169e1]}}, 
 BodyOfelement{
 identifier='display'
 ValueCss{
@@ -102,7 +98,11 @@ identifiers=[pointer]}},
 BodyOfelement{
 identifier='border-bottom'
 ValueCss{
-identifiers=[1px, solid, #eee]}}]
+identifiers=[1px, solid, #eee]}}, 
+BodyOfelement{
+identifier='margin-top'
+ValueCss{
+identifiers=[10px]}}]
 }, 
 ElementCss{
 identifier='product-hover 
@@ -110,7 +110,7 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[yellow]}}]
+identifiers=[#4b5563]}}]
 }, 
 ElementCss{
 identifier='product-info 
@@ -158,7 +158,7 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[#ff4d4d]}}, 
+identifiers=[#10b981]}}, 
 BodyOfelement{
 identifier='color'
 ValueCss{
@@ -186,23 +186,23 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[#bae6fd]}}]
+identifiers=[#ff4d4d]}}]
 }, 
 ElementCss{
 identifier='product-details 
 bodyOfelementList=[
 BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[20px]}}, 
+BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[blue]}}, 
+identifiers=[#0000cd]}}, 
 BodyOfelement{
 identifier='flex'
 ValueCss{
 identifiers=[1]}}, 
-BodyOfelement{
-identifier='padding'
-ValueCss{
-identifiers=[30px]}}, 
 BodyOfelement{
 identifier='display'
 ValueCss{
@@ -222,43 +222,31 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[#f72585]}}, 
-BodyOfelement{
-identifier='box-shadow'
-ValueCss{
-identifiers=[0, 2px, 2px]}}, 
+identifiers=[#10b981]}}, 
 BodyOfelement{
 identifier='padding'
 ValueCss{
-identifiers=[20px]}}, 
+identifiers=[10px]}}, 
 BodyOfelement{
 identifier='width'
 ValueCss{
-identifiers=[800px]}}, 
+identifiers=[1000px]}}, 
 BodyOfelement{
 identifier='height'
 ValueCss{
-identifiers=[auto]}}, 
-BodyOfelement{
-identifier='border-radius'
-ValueCss{
-identifiers=[4px]}}]
+identifiers=[auto]}}]
 }, 
 ElementCss{
 identifier='product-details h3 
 bodyOfelementList=[
 BodyOfelement{
+identifier='color'
+ValueCss{
+identifiers=[#ffffff]}}, 
+BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[#ff1a1a]}}, 
-BodyOfelement{
-identifier='box-shadow'
-ValueCss{
-identifiers=[0, 2px, 2px]}}, 
-BodyOfelement{
-identifier='border-radius'
-ValueCss{
-identifiers=[4px]}}, 
+identifiers=[#4169e1]}}, 
 BodyOfelement{
 identifier='text-align'
 ValueCss{
@@ -266,7 +254,7 @@ identifiers=[center]}},
 BodyOfelement{
 identifier='width'
 ValueCss{
-identifiers=[800px]}}, 
+identifiers=[1000px]}}, 
 BodyOfelement{
 identifier='height'
 ValueCss{
@@ -278,15 +266,11 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[yellow]}}, 
+identifiers=[#4169e1]}}, 
 BodyOfelement{
 identifier='box-shadow'
 ValueCss{
 identifiers=[0, 2px, 2px]}}, 
-BodyOfelement{
-identifier='border-radius'
-ValueCss{
-identifiers=[4px]}}, 
 BodyOfelement{
 identifier='text-align'
 ValueCss{
@@ -298,11 +282,15 @@ identifiers=[20px]}},
 BodyOfelement{
 identifier='width'
 ValueCss{
-identifiers=[800px]}}, 
+identifiers=[1000px]}}, 
 BodyOfelement{
 identifier='height'
 ValueCss{
-identifiers=[auto]}}]
+identifiers=[auto]}}, 
+BodyOfelement{
+identifier='margin-top'
+ValueCss{
+identifiers=[10px]}}]
 }, 
 ElementCss{
 identifier='empty-message 
@@ -310,7 +298,7 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[pink]}}, 
+identifiers=[#bae6fd]}}, 
 BodyOfelement{
 identifier='text-align'
 ValueCss{
@@ -334,7 +322,11 @@ identifiers=[8px]}},
 BodyOfelement{
 identifier='margin-top'
 ValueCss{
-identifiers=[20px]}}]
+identifiers=[20px]}}, 
+BodyOfelement{
+identifier='color'
+ValueCss{
+identifiers=[red]}}]
 }]
 }}
 }, 
@@ -362,8 +354,12 @@ StandardTag{
 tag_name='h2'
 , attributes=[
 Attributes{
-text='"text-xl font-bold mb-4"'
+text='"text-xl font-bold mb-4 text-center"'
 htmlAttribute='class'
+}, 
+Attributes{
+text='"color: #10b981;"'
+htmlAttribute='style'
 }]
 , elements=[
 Element{Products}]}}, 
@@ -453,6 +449,10 @@ tag_name='h2'
 Attributes{
 text='"text-xl font-bold mb-4"'
 htmlAttribute='class'
+}, 
+Attributes{
+text='"color: #10b981;"'
+htmlAttribute='style'
 }]
 , elements=[
 Element{Product}, 
@@ -553,25 +553,6 @@ Property{
 property='details'
  value of property=
  ValueExpression{ "Keep track of your health and fitness goals with this sleek and water-resistant fitness tracker. Monitors heart rate, sleep patterns, and more."}}]}
-}, 
-ObjectExpression{ 
-PropertyList{ [
-Property{
-property='id'
- value of property=
- ValueExpression{ 4}}, 
-Property{
-property='name'
- value of property=
- ValueExpression{ "Ergonomic Office Chair"}}, 
-Property{
-property='image'
- value of property=
- ValueExpression{ "https://images.unsplash.com/photo-1617858123189-b26eb62d8eb4?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}}, 
-Property{
-property='details'
- value of property=
- ValueExpression{ "Stay comfortable during long work hours with this adjustable ergonomic office chair. Features lumbar support and breathable mesh fabric."}}]}
 }]}}
 }, 
 Property_declaration{
