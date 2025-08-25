@@ -64,12 +64,18 @@ public class Program extends AstNode {
 
         ListStatement listStatement = getList();
         if (listStatement == null) {
-            stringBuilder.append("const stored = localStorage.getItem('").append(n).append("');\n");
-            stringBuilder.append("if (stored) {\n" +
-                    "app.").append(n).append(" = JSON.parse(stored);\n" +
-                    "app.nextId = app.").append(n).append(".length > 0\n" +
-                    "? Math.max(...app.").append(n).append(".map(p => p.id)) + 1\n" +
-                    ": 1;\n}\n");
+            String json = getJson();
+
+            if (json != null && !json.equals("")) {
+                stringBuilder.append(json);
+            } else {
+                stringBuilder.append("const stored = localStorage.getItem('").append(n).append("');\n");
+                stringBuilder.append("if (stored) {\n" +
+                        "app.").append(n).append(" = JSON.parse(stored);\n" +
+                        "app.nextId = app.").append(n).append(".length > 0\n" +
+                        "? Math.max(...app.").append(n).append(".map(p => p.id)) + 1\n" +
+                        ": 1;\n}\n");
+            }
         } else {
 
             stringBuilder.append(listStatement.loadList());
@@ -95,6 +101,21 @@ public class Program extends AstNode {
                         return (ListStatement) statement.classDeclaration.listDeclarations.get(i);
                     }
                 }
+            }
+        }
+        return null;
+    }
+
+    public String getJson() {
+        for (Statement statement : statementList) {
+            if (statement.classDeclaration != null) {
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < statement.classDeclaration.listDeclarations.size(); i++) {
+                    if (statement.classDeclaration.listDeclarations.get(i) instanceof Property_declaration) {
+                        stringBuilder.append(((Property_declaration) statement.classDeclaration.listDeclarations.get(i)).getJson());
+                    }
+                }
+                return stringBuilder.toString();
             }
         }
         return null;

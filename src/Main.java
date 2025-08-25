@@ -35,6 +35,7 @@ public class Main {
         }
         String[] source = {"tests/AngularTestShowEnd.txt", "tests/AngularTestAdd.txt"};
 //        String[] source = {"tests/AngularTestShowEndCar.txt", "tests/AngularTestAddCar.txt"};
+//        String[] source = {"tests/AngularTestShowEndCaronly.txt", "tests/AngularTestShowEndCardetails.txt", "tests/AngularTestAddCar2.txt"};
 //        String[] source = {"tests/AngularTest.txt"};
 //        String[] source = {"tests/AngularTest2.txt"};
 //        String[] source = {"tests/AngularTestErrors.txt"};
@@ -56,8 +57,11 @@ public class Main {
             astStorage(doc.toString(), fileName);
             //        System.out.println(doc);
             String fileNameReplace = fileName;
-            if (source.length > 1) {
+            if (source.length == 2) {
                 fileNameReplace = source[1 - i].substring(6, source[1 - i].indexOf(".txt"));
+            } else if (source.length == 3) {
+                fileNameReplace = source[2 - i - i % 2].substring(6, source[2 - i - i % 2].indexOf(".txt"));
+
             }
 
             StringBuilder content = new StringBuilder();
@@ -177,23 +181,20 @@ public class Main {
 
     public static String jsGetContent(Program program, String fileNameReplace) {
         String js = program.generatedCode();
-        js = js.replace(String.valueOf("ignore"), fileNameReplace);
         String fileInput = getFileInput(program);
         if (!Objects.equals(fileInput, "")) {
             js = js.replace(fileInput + "Input.value.trim();", fileInput + "Input.files?.[0];");
-            js = js.replace("\nsetTimeout(() => {", "");
-            js = js.replace(", 0);", "");
             StringBuilder sb = new StringBuilder(js);
             String toInsert = "const reader = new FileReader();\n" + "reader.onload = (e) => { \n";
             sb.insert(sb.indexOf("const new"), toInsert);
-            sb.insert(sb.indexOf(".html';\n}") + 9,
-                    "}\nreader.readAsDataURL(" + fileInput + ");\n");
+            if (sb.indexOf(".html';\n}\n}\n}") != -1)
+                sb.insert(sb.indexOf(".html';\n}") + 9, "}\nreader.readAsDataURL(" + fileInput + ");\n");
+            else
+                sb.insert(sb.indexOf(".html';\n}") + 9, "\nreader.readAsDataURL(" + fileInput + ");\n}\n");
+
             js = sb.toString();
             js = js.replace(fileInput + ",", fileInput + ": e.target.result,");
-            js = js.replace("reader.readAsDataURL(" + fileInput + ");\n" +
-                    "\n" +
-                    "}", "reader.readAsDataURL(" + fileInput + ");\n" +
-                    "\n");
+            js = js.replace("reader.readAsDataURL(" + fileInput + ");\n" + "\n" + "}", "reader.readAsDataURL(" + fileInput + ");\n" + "\n}");
         }
         return js;
     }

@@ -61,3 +61,31 @@
 
 border-radius: 4px  ;
 border-right: 1px solid #ddd  ;
+
+this.router.navigate(['/product', productId]);
+
+
+ const carJson = sessionStorage.getItem('selectedCar');
+if (carJson) {
+app.selectedCar = JSON.parse(carJson);
+}
+
+
+  sessionStorage.setItem('selectedCar', JSON.stringify(car));
+  window.location.href = 'AngularTestShowEndCardetails.html';
+
+
+
+    const cars = JSON.parse(localStorage.getItem('cars') || '[]');
+    const index = cars.findIndex(car => car.id === updatedCar.id);
+    if (index !== -1) {
+      cars[index] = updatedCar;
+      localStorage.setItem('cars', JSON.stringify(cars));}
+
+
+
+          const cars = JSON.parse(localStorage.getItem('cars') || '[]');
+                    const carIndex = cars.findIndex(car => car.id === carId);
+                    if (carIndex !== -1) {
+              cars.splice(carIndex, 1);
+                            localStorage.setItem('cars', JSON.stringify(cars));}

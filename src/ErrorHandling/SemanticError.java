@@ -309,10 +309,10 @@ public class SemanticError {
         }
         for (int j = 0; j < listFunctionName.size(); j++) {
             for (int i = j + 1; i < listFunctionName.size(); i++) {
-                if (Objects.equals(listFunctionName.get(i).getValue(), listFunctionName.get(j).getValue()) && Objects.equals(listParameter.get(i).getValue(), listParameter.get(j).getValue()) && Objects.equals(listReturnType.get(i).getValue(), listReturnType.get(j).getValue())) {
-                    error.getErrors().add("At Line " + listFunctionName.get(i).getLine() + " in position " + listFunctionName.get(i).getPosition() + " Function was Decelerated already ");
-                    checkError = false;
-                }
+//                if (Objects.equals(listFunctionName.get(i).getValue(), listFunctionName.get(j).getValue()) && Objects.equals(listParameter.get(i).getValue(), listParameter.get(j).getValue()) && Objects.equals(listReturnType.get(i).getValue(), listReturnType.get(j).getValue())) {
+//                    error.getErrors().add("At Line " + listFunctionName.get(i).getLine() + " in position " + listFunctionName.get(i).getPosition() + " Function was Decelerated already ");
+//                    checkError = false;
+//                }
             }
         }
         return checkError;

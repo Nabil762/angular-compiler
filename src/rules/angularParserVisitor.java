@@ -350,6 +350,13 @@ public interface angularParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSimpleAssignment(angularParser.SimpleAssignmentContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code IFELSE}
+	 * labeled alternative in {@link angularParser#functionBody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIFELSE(angularParser.IFELSEContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code ComplexAssignment}
 	 * labeled alternative in {@link angularParser#functionBody}.
 	 * @param ctx the parse tree

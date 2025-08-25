@@ -95,7 +95,7 @@ details,
 this.products.push(newproducts);
 localStorage.setItem('products', JSON.stringify(this.products));
 event.stopPropagation();
-if (confirm('success added products\nDo you want to show List products?')) {
+if (confirm('success added products Do you want to show List products?')) {
 window.location.href = 'AngularTestShowEnd.html';
 }}
 reader.readAsDataURL(image);

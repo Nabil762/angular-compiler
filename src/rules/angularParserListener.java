@@ -580,6 +580,18 @@ public interface angularParserListener extends ParseTreeListener {
 	 */
 	void exitSimpleAssignment(angularParser.SimpleAssignmentContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code IFELSE}
+	 * labeled alternative in {@link angularParser#functionBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterIFELSE(angularParser.IFELSEContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IFELSE}
+	 * labeled alternative in {@link angularParser#functionBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitIFELSE(angularParser.IFELSEContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code ComplexAssignment}
 	 * labeled alternative in {@link angularParser#functionBody}.
 	 * @param ctx the parse tree

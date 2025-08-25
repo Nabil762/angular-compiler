@@ -73,13 +73,16 @@ this.selectedProduct = product;
 this.render();
 }
 deleteProduct(productId,event) {
-event.stopPropagation()
-if (confirm('Are you sure to do it ?')) {
+event.stopPropagation();
+if (confirm('Are you sure to delete this product from list ?')) {
 this.products = this.products.filter(product => product.id !== productId);
 localStorage.setItem('products', JSON.stringify(this.products));
 if (this.selectedProduct && this.selectedProduct.id === productId) {
 this.selectedProduct = null;
 }
+this.render();
+}
+else {
 this.render();
 }
 }

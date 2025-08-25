@@ -2,6 +2,9 @@ package AST;
 
 import com.sun.xml.internal.bind.v2.model.core.ID;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FunctionBody extends AstNode {
     String identifier1;
     String identifier2;
@@ -12,6 +15,8 @@ public class FunctionBody extends AstNode {
     String identifier7;
     ValueExpression valueExpression;
     ObjectExpression objectExpression;
+    List<FunctionBody> functionBody1 = new ArrayList<>();
+    List<FunctionBody> functionBody2 = new ArrayList<>();
 
     public String getIdentifier1() {
         return identifier1;
@@ -86,6 +91,22 @@ public class FunctionBody extends AstNode {
         this.valueExpression = valueExpression;
     }
 
+    public List<FunctionBody> getFunctionBody1() {
+        return functionBody1;
+    }
+
+    public void setFunctionBody1(List<FunctionBody> functionBody1) {
+        this.functionBody1 = functionBody1;
+    }
+
+    public List<FunctionBody> getFunctionBody2() {
+        return functionBody2;
+    }
+
+    public void setFunctionBody2(List<FunctionBody> functionBody2) {
+        this.functionBody2 = functionBody2;
+    }
+
     @Override
     public String toString() {
         return "FunctionBody{" +
@@ -98,13 +119,28 @@ public class FunctionBody extends AstNode {
                 ", identifier7='" + identifier7 + '\'' +
                 ", valueExpression=" + valueExpression +
                 ", objectExpression=" + objectExpression +
+                ", functionBody1=" + functionBody1 +
+                ", functionBode2=" + functionBody2 +
                 '}';
     }
 
     @Override
     public String generatedCode() {
         StringBuilder stringBuilder = new StringBuilder();
-        if (identifier1 != null) {
+        if (!functionBody1.isEmpty()) {
+            stringBuilder.append("if (").append(identifier1).append(") {\n");
+            for (FunctionBody functionBody : functionBody1) {
+                stringBuilder.append(functionBody.generatedCode());
+            }
+            stringBuilder.append("}\n");
+            if (!functionBody2.isEmpty()) {
+                stringBuilder.append("else {\n");
+                for (FunctionBody functionBody : functionBody2) {
+                    stringBuilder.append(functionBody.generatedCode());
+                }
+                stringBuilder.append("}\n");
+            }
+        } else if (identifier1 != null) {
             if (objectExpression != null) {
                 stringBuilder.append(objectExpression.getInput());
                 stringBuilder.append("const new").append(identifier1).append(" = {\n");
@@ -112,22 +148,21 @@ public class FunctionBody extends AstNode {
                 stringBuilder.append("};\n");
                 stringBuilder.append("this.").append(identifier1).append(".push(new").append(identifier1).append(");\n");
                 stringBuilder.append("localStorage.setItem('").append(identifier1).append("', JSON.stringify(this.").append(identifier1).append("));\n");
-                stringBuilder.append("event.stopPropagation();\n").append("if (confirm('success added ").append(identifier1).append("\\nDo you want to show List ").append(identifier1).append("?')) {\nsetTimeout(() => {\nwindow.location.href = '").append("ignore.html';\n}, 0);\n" + "}");
+//                stringBuilder.append("if (confirm('success added ").append(identifier1).append("\\nDo you want to show List ").append(identifier1).append("?')) {\nsetTimeout(() => {\nwindow.location.href = '").append("ignore.html';\n}, 0);\n" + "}");
             } else if (identifier7 != null) {
-                stringBuilder.append("if (confirm('Are you sure to do it ?')) {\n");
+//                stringBuilder.append("if (confirm('Are you sure to do it ?')) {\n");
                 stringBuilder.append("this.").append(identifier1).append(" = this.").append(identifier2).append(".").append(identifier3).append("(").append(identifier4).append(" => ").append(identifier5).append(".").append(identifier6).append(" !== ").append(identifier7).append(");\n");
                 stringBuilder.append("localStorage.setItem('").append(identifier1).append("', JSON.stringify(this.").append(identifier1).append("));\n");
                 StringBuilder sb = new StringBuilder(identifier4);
                 sb.setCharAt(0, Character.toUpperCase(sb.charAt(0)));
-                String xxx = sb.toString();
-                stringBuilder.append("if (this.selected").append(xxx).append(" && this.selected").append(xxx).append(".id === ").append(identifier7).append(") {\n").append("this.selected").append(xxx).append(" = null;\n}\n");
-                stringBuilder.append("this.render();\n");
-                stringBuilder.append("}\n");
+//                String xxx = sb.toString();
+//                stringBuilder.append("if (this.selected").append(xxx).append(" && this.selected").append(xxx).append(".id === ").append(identifier7).append(") {\n").append("this.selected").append(xxx).append(" = null;\n}\n");
+//                stringBuilder.append("}\n");
 
             } else if (identifier2 != null) {
-                stringBuilder.append("this.").append(identifier1).append(" = ").append(identifier2).append(";\nthis.render();\n");
+                stringBuilder.append("this.").append(identifier1).append(" = ").append(identifier2).append(";\n");
             }
-        } else {
+        } else if (valueExpression != null) {
             stringBuilder.append(valueExpression.generatedCode()).append("\n");
         }
         return stringBuilder.toString();

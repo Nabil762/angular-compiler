@@ -1,0 +1,687 @@
+Program{
+statementList=[
+Statement{
+importStatementList=[import { Component } from ''@angular/core'';, import { CommonModule } from ''@angular/common'';]
+interfaceDeclarationList=[interface Car {
+PropertyDeclaration{
+property=id
+type of property=number
+property=car_name
+type of property=string
+property=car_image
+type of property=string
+property=car_price
+type of property=number
+property=car_brand
+type of property=string
+property=car_model
+type of property=string
+property=car_year
+type of property=number
+property=car_category
+type of property=string
+property=car_color
+type of property=string
+property=car_engin_size
+type of property=string
+property=car_engin_type
+type of property=string
+property=car_horsepower
+type of property=number
+property=car_description
+type of property=string
+}}]
+ComponentDeclaration{
+ComponentConfig{
+propertyAssignmentList=[selector: ''app-root'', standalone: true, imports: [CommonModule], 
+Style{
+BodyOfCss{
+Objecte{
+elementCssList=[
+ElementCss{
+identifier='body 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#1e293b]}}, 
+BodyOfelement{
+identifier='margin'
+ValueCss{
+identifiers=[0]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[20px]}}]
+}, 
+ElementCss{
+identifier='container 
+bodyOfelementList=[
+BodyOfelement{
+identifier='display'
+ValueCss{
+identifiers=[flex]}}, 
+BodyOfelement{
+identifier='min-height'
+ValueCss{
+identifiers=[100, vh]}}]
+}, 
+ElementCss{
+identifier='car-list 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#334155]}}, 
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[100%]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[20px]}}]
+}, 
+ElementCss{
+identifier='car 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#4b5563]}}, 
+BodyOfelement{
+identifier='display'
+ValueCss{
+identifiers=[flex]}}, 
+BodyOfelement{
+identifier='align-items'
+ValueCss{
+identifiers=[center]}}, 
+BodyOfelement{
+identifier='justify-content'
+ValueCss{
+identifiers=[space-between]}}, 
+BodyOfelement{
+identifier='gap'
+ValueCss{
+identifiers=[10px]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[10px]}}, 
+BodyOfelement{
+identifier='cursor'
+ValueCss{
+identifiers=[pointer]}}, 
+BodyOfelement{
+identifier='border-bottom'
+ValueCss{
+identifiers=[1px, solid, #eee]}}, 
+BodyOfelement{
+identifier='margin-top'
+ValueCss{
+identifiers=[10px]}}]
+}, 
+ElementCss{
+identifier='car-hover 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#dcfce7]}}]
+}, 
+ElementCss{
+identifier='car-info 
+bodyOfelementList=[
+BodyOfelement{
+identifier='display'
+ValueCss{
+identifiers=[flex]}}, 
+BodyOfelement{
+identifier='align-items'
+ValueCss{
+identifiers=[center]}}, 
+BodyOfelement{
+identifier='gap'
+ValueCss{
+identifiers=[10px]}}, 
+BodyOfelement{
+identifier='flex'
+ValueCss{
+identifiers=[1]}}]
+}, 
+ElementCss{
+identifier='car img 
+bodyOfelementList=[
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[50px]}}, 
+BodyOfelement{
+identifier='height'
+ValueCss{
+identifiers=[50px]}}, 
+BodyOfelement{
+identifier='object-fit'
+ValueCss{
+identifiers=[cover]}}, 
+BodyOfelement{
+identifier='border-radius'
+ValueCss{
+identifiers=[4px]}}]
+}, 
+ElementCss{
+identifier='delete-btn 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#10b981]}}, 
+BodyOfelement{
+identifier='color'
+ValueCss{
+identifiers=[white]}}, 
+BodyOfelement{
+identifier='border'
+ValueCss{
+identifiers=[none]}}, 
+BodyOfelement{
+identifier='border-radius'
+ValueCss{
+identifiers=[4px]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[5px, 10px]}}, 
+BodyOfelement{
+identifier='cursor'
+ValueCss{
+identifiers=[pointer]}}]
+}, 
+ElementCss{
+identifier='delete-btn-hover 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#ff4d4d]}}]
+}, 
+ElementCss{
+identifier='empty-message 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#bae6fd]}}, 
+BodyOfelement{
+identifier='text-align'
+ValueCss{
+identifiers=[center]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[40px]}}, 
+BodyOfelement{
+identifier='font-size'
+ValueCss{
+identifiers=[18px]}}, 
+BodyOfelement{
+identifier='border'
+ValueCss{
+identifiers=[1px, dashed, #ddd]}}, 
+BodyOfelement{
+identifier='border-radius'
+ValueCss{
+identifiers=[8px]}}, 
+BodyOfelement{
+identifier='margin-top'
+ValueCss{
+identifiers=[20px]}}, 
+BodyOfelement{
+identifier='color'
+ValueCss{
+identifiers=[red]}}]
+}]
+}}
+}, 
+template: `
+Element{
+StandardTag{
+tag_name='div'
+, attributes=[
+Attributes{
+text='"container"'
+htmlAttribute='class'
+}]
+, elements=[
+Element{
+StandardTag{
+tag_name='div'
+, attributes=[
+Attributes{
+text='"car-list"'
+htmlAttribute='class'
+}]
+, elements=[
+Element{
+StandardTag{
+tag_name='h2'
+, attributes=[
+Attributes{
+text='"text-xl font-bold mb-4 text-center"'
+htmlAttribute='class'
+}, 
+Attributes{
+text='"color: #f5f7fa;"'
+htmlAttribute='style'
+}]
+, elements=[
+Element{Cars}]}}, 
+Element{
+StandardTag{
+tag_name='ul'
+, attributes=[]
+, elements=[
+Element{
+StandardTag{
+tag_name='li'
+, attributes=[
+Attributes{
+text='"let car of cars"'
+structuralDir='*ngFor'
+}, 
+Attributes{
+text='"car"'
+htmlAttribute='class'
+}]
+, elements=[
+Element{
+StandardTag{
+tag_name='div'
+, attributes=[
+Attributes{
+text='"car-info"'
+htmlAttribute='class'
+}, 
+Attributes{
+text='"selectCar(car)"'
+event='(click)'
+}]
+, elements=[
+Element{
+SelfClosingTag{tag_name='img'
+attributes=[
+Attributes{
+text='"car.car_image"'
+binding='[src]'
+}, 
+Attributes{
+text='"{{ car.car_name }}"'
+htmlAttribute='alt'
+}]
+}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{
+Interpolation{
+NAME_HTML='car.car_name
+}}]}}]}}, 
+Element{
+StandardTag{
+tag_name='button'
+, attributes=[
+Attributes{
+text='"delete-btn"'
+htmlAttribute='class'
+}, 
+Attributes{
+text='"deleteCar($event, car.id)"'
+event='(click)'
+}]
+, elements=[
+Element{Delete}]}}]}}]}}]}}]}}`]
+}
+}
+ClassDeclaration{
+class_name = 'AppComponent'[
+ListStatement{
+array_name : 'cars'
+name of object : 'Car'
+ArrayExpression{ 
+ObjectExpressionList{ [
+ObjectExpression{ 
+PropertyList{ [
+Property{
+property='id'
+ value of property=
+ ValueExpression{ 1}}, 
+Property{
+property='car_name'
+ value of property=
+ ValueExpression{ "M5"}}, 
+Property{
+property='car_image'
+ value of property=
+ ValueExpression{ "/images/8.jpg"}}, 
+Property{
+property='car_price'
+ value of property=
+ ValueExpression{ 4444000}}, 
+Property{
+property='car_brand'
+ value of property=
+ ValueExpression{ "BMW"}}, 
+Property{
+property='car_model'
+ value of property=
+ ValueExpression{ "M5 series"}}, 
+Property{
+property='car_year'
+ value of property=
+ ValueExpression{ 2025}}, 
+Property{
+property='car_category'
+ value of property=
+ ValueExpression{ "Sport"}}, 
+Property{
+property='car_color'
+ value of property=
+ ValueExpression{ "Black"}}, 
+Property{
+property='car_engin_size'
+ value of property=
+ ValueExpression{ "2.5L"}}, 
+Property{
+property='car_engin_type'
+ value of property=
+ ValueExpression{ "Gasoline"}}, 
+Property{
+property='car_horsepower'
+ value of property=
+ ValueExpression{ 400}}, 
+Property{
+property='car_description'
+ value of property=
+ ValueExpression{ "Is very famous and Modern Car"}}]}
+}, 
+ObjectExpression{ 
+PropertyList{ [
+Property{
+property='id'
+ value of property=
+ ValueExpression{ 2}}, 
+Property{
+property='car_name'
+ value of property=
+ ValueExpression{ "G class"}}, 
+Property{
+property='car_image'
+ value of property=
+ ValueExpression{ "/images/12.jpg"}}, 
+Property{
+property='car_price'
+ value of property=
+ ValueExpression{ 50544}}, 
+Property{
+property='car_brand'
+ value of property=
+ ValueExpression{ "Mercedes"}}, 
+Property{
+property='car_model'
+ value of property=
+ ValueExpression{ "G class series"}}, 
+Property{
+property='car_year'
+ value of property=
+ ValueExpression{ 2018}}, 
+Property{
+property='car_category'
+ value of property=
+ ValueExpression{ "Jeep"}}, 
+Property{
+property='car_color'
+ value of property=
+ ValueExpression{ "Purple"}}, 
+Property{
+property='car_engin_size'
+ value of property=
+ ValueExpression{ "3L"}}, 
+Property{
+property='car_engin_type'
+ value of property=
+ ValueExpression{ "Diesel"}}, 
+Property{
+property='car_horsepower'
+ value of property=
+ ValueExpression{ 450}}, 
+Property{
+property='car_description'
+ value of property=
+ ValueExpression{ "Is very famous Car"}}]}
+}, 
+ObjectExpression{ 
+PropertyList{ [
+Property{
+property='id'
+ value of property=
+ ValueExpression{ 3}}, 
+Property{
+property='car_name'
+ value of property=
+ ValueExpression{ "Land Cruiser"}}, 
+Property{
+property='car_image'
+ value of property=
+ ValueExpression{ "/images/7.jpg"}}, 
+Property{
+property='car_price'
+ value of property=
+ ValueExpression{ 25944}}, 
+Property{
+property='car_brand'
+ value of property=
+ ValueExpression{ "Toyota"}}, 
+Property{
+property='car_model'
+ value of property=
+ ValueExpression{ "Land Cruiser series"}}, 
+Property{
+property='car_year'
+ value of property=
+ ValueExpression{ 2022}}, 
+Property{
+property='car_category'
+ value of property=
+ ValueExpression{ "Jeep"}}, 
+Property{
+property='car_color'
+ value of property=
+ ValueExpression{ "White"}}, 
+Property{
+property='car_engin_size'
+ value of property=
+ ValueExpression{ "2L"}}, 
+Property{
+property='car_engin_type'
+ value of property=
+ ValueExpression{ "Gasoline"}}, 
+Property{
+property='car_horsepower'
+ value of property=
+ ValueExpression{ 350}}, 
+Property{
+property='car_description'
+ value of property=
+ ValueExpression{ " Modern Car"}}]}
+}, 
+ObjectExpression{ 
+PropertyList{ [
+Property{
+property='id'
+ value of property=
+ ValueExpression{ 4}}, 
+Property{
+property='car_name'
+ value of property=
+ ValueExpression{ "Lexus TX"}}, 
+Property{
+property='car_image'
+ value of property=
+ ValueExpression{ "/images/9.jpg"}}, 
+Property{
+property='car_price'
+ value of property=
+ ValueExpression{ 345435}}, 
+Property{
+property='car_brand'
+ value of property=
+ ValueExpression{ "Lexus"}}, 
+Property{
+property='car_model'
+ value of property=
+ ValueExpression{ "TX series"}}, 
+Property{
+property='car_year'
+ value of property=
+ ValueExpression{ 2019}}, 
+Property{
+property='car_category'
+ value of property=
+ ValueExpression{ "Jeep"}}, 
+Property{
+property='car_color'
+ value of property=
+ ValueExpression{ "White"}}, 
+Property{
+property='car_engin_size'
+ value of property=
+ ValueExpression{ "2.5L"}}, 
+Property{
+property='car_engin_type'
+ value of property=
+ ValueExpression{ "Electrical"}}, 
+Property{
+property='car_horsepower'
+ value of property=
+ ValueExpression{ 410}}, 
+Property{
+property='car_description'
+ value of property=
+ ValueExpression{ "Is very famous and Modern Car"}}]}
+}, 
+ObjectExpression{ 
+PropertyList{ [
+Property{
+property='id'
+ value of property=
+ ValueExpression{ 5}}, 
+Property{
+property='car_name'
+ value of property=
+ ValueExpression{ "GLE"}}, 
+Property{
+property='car_image'
+ value of property=
+ ValueExpression{ "/images/10.jpg"}}, 
+Property{
+property='car_price'
+ value of property=
+ ValueExpression{ 4444000}}, 
+Property{
+property='car_brand'
+ value of property=
+ ValueExpression{ "Mercedes"}}, 
+Property{
+property='car_model'
+ value of property=
+ ValueExpression{ "GLE series"}}, 
+Property{
+property='car_year'
+ value of property=
+ ValueExpression{ 2023}}, 
+Property{
+property='car_category'
+ value of property=
+ ValueExpression{ "SUV"}}, 
+Property{
+property='car_color'
+ value of property=
+ ValueExpression{ "Black"}}, 
+Property{
+property='car_engin_size'
+ value of property=
+ ValueExpression{ "3.5L"}}, 
+Property{
+property='car_engin_type'
+ value of property=
+ ValueExpression{ "Gasoline"}}, 
+Property{
+property='car_horsepower'
+ value of property=
+ ValueExpression{ 550}}, 
+Property{
+property='car_description'
+ value of property=
+ ValueExpression{ "Is very famous and Modern Car"}}]}
+}]}}
+}, 
+Property_declaration{
+ID='selectedCar'
+types=[
+Type{ 
+singleTypeList = [
+SingleType{ID= 'Car'}, 
+SingleType{type= 'null'}]
+}, 
+Type{ 
+singleTypeList = [
+SingleType{type= 'null'}]
+}]}, 
+FunctionDeclaration{
+name='selectCar'
+ParameterList{
+parameters=[
+Parameter{
+parameterName='car', Type=
+SingleType{ID= 'Car'}
+}]
+}
+Type{ 
+singleTypeList = [
+SingleType{type= 'void'}]
+}
+, {[FunctionBody{identifier1='selectedCar', identifier2='car', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ car.sessionStorage.setItem(
+ ValueExpression{ 'selectedCar'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ this.router.navigate(
+ ValueExpression{ 'AngularTestShowEndCardetails'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}]
+}, 
+FunctionDeclaration{
+name='deleteCar'
+ParameterList{
+parameters=[
+Parameter{
+parameterName='carId', Type=
+SingleType{type= 'number'}
+}, 
+Parameter{
+parameterName='event', Type=
+SingleType{ID= 'MouseEvent'}
+}]
+}
+Type{ 
+singleTypeList = [
+SingleType{type= 'void'}]
+}
+, {[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ event.stopPropagation() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='confirm('Are you sure to delete this car from list ?')', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='cars', identifier2='cars', identifier3='filter', identifier4='car', identifier5='car', identifier6='id', identifier7='carId', valueExpression=null, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='this.selectedCar && this.selectedCar.id === carId', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='selectedCar', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ sessionStorage.clear() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ this.render() }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ this.render() }, objectExpression=null, functionBody1=[], functionBode2=[]}]}]
+}]
+}
+}]
+}

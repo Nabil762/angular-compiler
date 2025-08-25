@@ -27,7 +27,6 @@ INTERFACE : 'interface';
 EXTEND : 'extends';
 IMPLEMENT : 'implement';
 AD : '@';
-
 // Operators and Symbols
 PLUS: '+';
 TIMES: '*';
@@ -61,7 +60,7 @@ EQUAL_EQUAL: '==';
 NOT_EQUAL: '!=';
 STYLES : 'styles' ->pushMode(CSS);
 TEMPLATE: 'template' ->pushMode(TEMPLATE_MODE);
-
+  CONFIRM :'confirm';
 // Identifiers and Literals
 IDENTIFIER: [*a-zA-Z_$][.a-zA-Z0-9_$]*;
 NUMBER: [0-9]+;

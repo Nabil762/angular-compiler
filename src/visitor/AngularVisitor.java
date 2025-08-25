@@ -622,6 +622,9 @@ public class AngularVisitor extends angularParserBaseVisitor {
         if (ctx.IDENTIFIER(1) != null && ctx.IDENTIFIER(0) != null) {
             simpleAssignment.setIdentifier1(ctx.IDENTIFIER(0).getText());
             simpleAssignment.setIdentifier2(ctx.IDENTIFIER(1).getText());
+        } else if (ctx.TYPE() != null && ctx.IDENTIFIER(0) != null) {
+            simpleAssignment.setIdentifier1(ctx.IDENTIFIER(0).getText());
+            simpleAssignment.setIdentifier2(ctx.TYPE().getText());
         }
         return simpleAssignment;
     }
@@ -660,6 +663,26 @@ public class AngularVisitor extends angularParserBaseVisitor {
 
         }
         return complexAssignment3;
+    }
+
+    @Override
+    public FunctionBody visitIFELSE(angularParser.IFELSEContext ctx) {
+        FunctionBody functionBody = new FunctionBody();
+        if (ctx.functionBody(0) != null) {
+            for (int i = 0; i < ctx.functionBody().size(); i++) {
+                if (Objects.equals(ctx.functionBody(i).toString(), ctx.functionBody(0).toString())) {
+                    functionBody.getFunctionBody1().add((FunctionBody) visit(ctx.functionBody(i)));
+                } else {
+                    functionBody.getFunctionBody2().add((FunctionBody) visit(ctx.functionBody(i)));
+                }
+            }
+        }
+        if (ctx.CONFIRM() != null) {
+            functionBody.setIdentifier1(ctx.CONFIRM().getText() + "(" + ctx.STRING().getText() + ")");
+        } else {
+            functionBody.setIdentifier1(ctx.STRING().getText().substring(1,ctx.STRING().getText().length()-1));
+        }
+        return functionBody;
     }
 
     @Override
@@ -750,5 +773,6 @@ public class AngularVisitor extends angularParserBaseVisitor {
         declarationObjectInInterfaceSymbolTable.setRow(row);
         return propertyDeclaration;
     }
+
 
 }

@@ -653,6 +653,18 @@ public class angularParserBaseListener implements angularParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIFELSE(angularParser.IFELSEContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIFELSE(angularParser.IFELSEContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterComplexAssignment(angularParser.ComplexAssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}

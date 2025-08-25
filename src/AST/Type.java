@@ -3,7 +3,7 @@ package AST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Type extends AstNode{
+public class Type extends AstNode {
     List<SingleType> singleTypeList = new ArrayList<SingleType>();
 
     public List<SingleType> getSingleTypeList() {
@@ -20,8 +20,13 @@ public class Type extends AstNode{
                 "\nsingleTypeList = " + singleTypeList +
                 "\n}";
     }
+
     @Override
     public String generatedCode() {
-        return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < singleTypeList.size(); i++) {
+            stringBuilder.append(singleTypeList.get(i).generatedCode());
+        }
+        return stringBuilder.toString();
     }
 }

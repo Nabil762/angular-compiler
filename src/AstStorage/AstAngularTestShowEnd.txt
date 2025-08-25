@@ -580,7 +580,8 @@ Type{
 singleTypeList = [
 SingleType{type= 'void'}]
 }
-, {[FunctionBody{identifier1='selectedProduct', identifier2='product', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null}]
+, {[FunctionBody{identifier1='selectedProduct', identifier2='product', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ this.render() }, objectExpression=null, functionBody1=[], functionBode2=[]}]
 }, 
 FunctionDeclaration{
 name='deleteProduct'
@@ -600,7 +601,9 @@ singleTypeList = [
 SingleType{type= 'void'}]
 }
 , {[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ event.stopPropagation() }, objectExpression=null}, FunctionBody{identifier1='products', identifier2='products', identifier3='filter', identifier4='product', identifier5='product', identifier6='id', identifier7='productId', valueExpression=null, objectExpression=null}]
+ ValueExpression{ event.stopPropagation() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='confirm('Are you sure to delete this product from list ?')', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='products', identifier2='products', identifier3='filter', identifier4='product', identifier5='product', identifier6='id', identifier7='productId', valueExpression=null, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='this.selectedProduct && this.selectedProduct.id === productId', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='selectedProduct', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ this.render() }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ this.render() }, objectExpression=null, functionBody1=[], functionBode2=[]}]}]
 }]
 }
 }]

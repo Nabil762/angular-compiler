@@ -167,10 +167,21 @@ export class AppComponent {
 
   selectProduct(product: Product): void {
     this .selectedProduct = product;
+    this.render();
   }
  deleteProduct( productId: number,event: MouseEvent): void {
     event.stopPropagation();
+     if (confirm('Are you sure to delete this product from list ?')){
     this .products = this .products . filter (product => product . id != productId);
+       if ('this.selectedProduct && this.selectedProduct.id === productId') {
+       this .selectedProduct = null;
+       }
+        this.render();
+        }
+        else
+        {
+        this.render();
+        }
   }
 
 }

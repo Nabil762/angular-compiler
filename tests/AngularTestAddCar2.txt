@@ -187,7 +187,7 @@ export class AppComponent {
     };
     event.stopPropagation();
     if (confirm('success added cars Do you want to show List cars?')) {
-        this.router.navigate('AngularTestShowEndCar');
+        this.router.navigate('AngularTestShowEndCaronly');
     }
   }
 }

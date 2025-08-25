@@ -1,6 +1,6 @@
 package AST;
 
-public  class SingleType extends AstNode {
+public class SingleType extends AstNode {
     String ID;
     String type;
 
@@ -31,9 +31,17 @@ public  class SingleType extends AstNode {
                 "type= '" + type + '\'' +
                 "}";
     }
+
     @Override
     public String generatedCode() {
-        return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        if (ID != null) {
+            stringBuilder.append(ID);
+        }
+        if (type != null) {
+            stringBuilder.append(type);
+        }
+        return stringBuilder.toString();
     }
 }
 

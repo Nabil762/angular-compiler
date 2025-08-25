@@ -2,6 +2,7 @@ package AST;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FunctionCall extends AstNode {
     String functionName;
@@ -36,6 +37,24 @@ public class FunctionCall extends AstNode {
 
     @Override
     public String generatedCode() {
-        return this.toString();
+        if (Objects.equals(functionName, "this.router.navigate")) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < arguments.size(); i++) {
+                stringBuilder.append(arguments.get(i).gethref());
+            }
+            return stringBuilder.toString();
+        } else if (functionName.contains(".sessionStorage.setItem")) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("sessionStorage.setItem( ");
+            for (int i = 0; i < arguments.size(); i++) {
+                stringBuilder.append(arguments.get(i).getsession());
+                if (i < arguments.size() - 1)
+                    stringBuilder.append(",");
+            }
+
+            stringBuilder.append(", JSON.stringify(").append(functionName.substring(0, functionName.indexOf("."))).append(")").append(");");
+            return stringBuilder.toString();
+        }
+        return this.toString() + ";";
     }
 }

@@ -86,4 +86,18 @@ public class ValueExpression extends AstNode {
         }
         return isBoolean;
     }
+
+    public String gethref() {
+        if (text != null)
+            return "window.location.href = " + text.substring(0, text.length() - 1) + ".html';";
+        return "";
+    }
+
+    public String getsession() {
+        if (text != null)
+            return text;
+        return "";
+    }
+
 }
+
