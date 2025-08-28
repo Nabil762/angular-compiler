@@ -42,9 +42,15 @@ public class Property_declaration extends ListDeclaration {
         }
         for (Type type : types) {
             String gen = type.generatedCode();
-            String n = gen.substring(gen.indexOf("sessionStorage.getItem.")+23);
-            stringBuilder.append("sessionStorage.getItem('").append(n).append("');\n");
-            stringBuilder.append("if(").append(ID).append(") {\n").append("app.").append(n).append(" = JSON.parse(").append(ID).append(");\n}\n");
+            if (gen.contains("sessionStorage.getItem.")) {
+                String n = gen.substring(gen.indexOf("sessionStorage.getItem.") + 23);
+                stringBuilder.append("sessionStorage.getItem('").append(n).append("');\n");
+                stringBuilder.append("if(").append(ID).append(") {\n").append("app.").append(n).append(" = JSON.parse(").append(ID).append(");\n}\n");
+            } else if (gen.contains("localStorage.getItem.")) {
+                String n = gen.substring(gen.indexOf("localStorage.getItem.") + 21);
+                stringBuilder.append("localStorage.getItem('").append(n).append("');\n");
+                stringBuilder.append("if(").append(ID).append(") {\n").append("app.").append(n).append(" = JSON.parse(").append(ID).append(");\n}\n");
+            }
         }
         return stringBuilder.toString();
     }

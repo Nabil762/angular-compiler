@@ -54,6 +54,26 @@ public class FunctionCall extends AstNode {
 
             stringBuilder.append(", JSON.stringify(").append(functionName.substring(0, functionName.indexOf("."))).append(")").append(");");
             return stringBuilder.toString();
+        } else if (functionName.contains("this.cars.push")) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("this.cars.push(");
+            for (int i = 0; i < arguments.size(); i++) {
+                stringBuilder.append(arguments.get(i).getsession().substring(1, arguments.get(i).getsession().length() - 1));
+                if (i < arguments.size() - 1)
+                    stringBuilder.append(",");
+            }
+
+            stringBuilder.append(");");
+            return stringBuilder.toString();
+        } else if (functionName.contains(".localStorage.setItem")) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("localStorage.setItem('").append(functionName.substring(0, functionName.indexOf("."))).append("'");
+            for (int i = 0; i < arguments.size(); i++) {
+                stringBuilder.append(", JSON.stringify(this.").append(functionName.substring(0, functionName.indexOf("."))).append(")").append(");");
+                if (i < arguments.size() - 1)
+                    stringBuilder.append(",");
+            }
+            return stringBuilder.toString();
         }
         return this.toString() + ";";
     }

@@ -198,6 +198,7 @@ export class AppComponent {
         event.stopPropagation();
     if (confirm('Are you sure to delete this car from list ?')){
     this .cars = this .cars . filter (car => car . id != carId);
+    cars.localStorage.setItem('cars');
    if ('this.selectedCar && this.selectedCar.id === carId') {
    this .selectedCar = null;
    }

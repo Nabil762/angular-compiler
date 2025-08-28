@@ -35,7 +35,8 @@ public class Main {
         }
 //        String[] source = {"tests/AngularTestShowEnd.txt", "tests/AngularTestAdd.txt"};
 //        String[] source = {"tests/AngularTestShowEndCar.txt", "tests/AngularTestAddCar.txt"};
-        String[] source = {"tests/AngularTestShowEndCaronly.txt", "tests/AngularTestShowEndCardetails.txt", "tests/AngularTestAddCar2.txt"};
+//        String[] source = {"tests/AngularTestShowEndCaronly.txt", "tests/AngularTestShowEndCardetails.txt", "tests/AngularTestAddCar2.txt"};
+        String[] source = {"tests/AngularTestShowEndCaronly.txt", "tests/AngularTestShowEndCardetails.txt", "tests/AngularTestAddCar2.txt", "tests/AngularTestUpdateCar.txt"};
 //        String[] source = {"tests/AngularTest.txt"};
 //        String[] source = {"tests/AngularTest2.txt"};
 //        String[] source = {"tests/AngularTestErrors.txt"};
@@ -62,6 +63,12 @@ public class Main {
             } else if (source.length == 3) {
                 fileNameReplace = source[2 - i - i % 2].substring(6, source[2 - i - i % 2].indexOf(".txt"));
 
+            } else if (source.length == 4) {
+                if (i == 0) {
+                    fileNameReplace = source[2].substring(6, source[2].indexOf(".txt"));
+                } else {
+                    fileNameReplace = source[0].substring(6, source[0].indexOf(".txt"));
+                }
             }
 
             StringBuilder content = new StringBuilder();

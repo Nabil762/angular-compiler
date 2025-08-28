@@ -630,6 +630,20 @@ public class AngularVisitor extends angularParserBaseVisitor {
     }
 
     @Override
+    public FunctionBody visitSimpleAssignment2(angularParser.SimpleAssignment2Context ctx) {
+        FunctionBody simpleAssignment = new FunctionBody();
+        if (ctx.IDENTIFIER(1) != null && ctx.IDENTIFIER(0) != null && ctx.IDENTIFIER(2) != null) {
+            simpleAssignment.setIdentifier1(ctx.IDENTIFIER(0).getText() + "[" + ctx.IDENTIFIER(1).getText() + "]");
+            simpleAssignment.setIdentifier2(ctx.IDENTIFIER(2).getText());
+        } else if (ctx.TYPE() != null && ctx.IDENTIFIER(0) != null && ctx.IDENTIFIER(1) != null) {
+            simpleAssignment.setIdentifier1(ctx.IDENTIFIER(0).getText() + "[" + ctx.IDENTIFIER(1).getText() + "]");
+            simpleAssignment.setIdentifier2(ctx.TYPE().getText());
+        }
+        return simpleAssignment;
+    }
+//   | IDENTIFIER LBRACKET IDENTIFIER RBRACKET EQUAL (IDENTIFIER|TYPE) SEMICOLON           # SimpleAssignment2
+
+    @Override
     public FunctionBody visitComplexAssignment(angularParser.ComplexAssignmentContext ctx) {
         FunctionBody complexAssignment = new FunctionBody();
         if (ctx.valueExpression() != null && ctx.IDENTIFIER() != null) {
@@ -650,6 +664,18 @@ public class AngularVisitor extends angularParserBaseVisitor {
             complexAssignment2.setIdentifier5(ctx.IDENTIFIER(4).getText());
             complexAssignment2.setIdentifier6(ctx.IDENTIFIER(5).getText());
             complexAssignment2.setIdentifier7(ctx.IDENTIFIER(6).getText());
+        }
+        if (ctx.NOT_EQUAL() != null)
+            complexAssignment2.setEq(ctx.NOT_EQUAL().getText());
+        else {
+            complexAssignment2.setEq(ctx.EQUALEQUAL().getText());
+        }
+        if (ctx.THIS().size() == 2) {
+            complexAssignment2.setIdentifier1("this." + ctx.IDENTIFIER(0).getText());
+
+        } else {
+            complexAssignment2.setIdentifier1("const " + ctx.IDENTIFIER(0).getText());
+
         }
         return complexAssignment2;
     }
@@ -680,7 +706,7 @@ public class AngularVisitor extends angularParserBaseVisitor {
         if (ctx.CONFIRM() != null) {
             functionBody.setIdentifier1(ctx.CONFIRM().getText() + "(" + ctx.STRING().getText() + ")");
         } else {
-            functionBody.setIdentifier1(ctx.STRING().getText().substring(1,ctx.STRING().getText().length()-1));
+            functionBody.setIdentifier1(ctx.STRING().getText().substring(1, ctx.STRING().getText().length() - 1));
         }
         return functionBody;
     }

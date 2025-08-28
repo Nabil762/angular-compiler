@@ -389,6 +389,13 @@ public class angularParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> imp
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitSimpleAssignment2(angularParser.SimpleAssignment2Context ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitIFELSE(angularParser.IFELSEContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

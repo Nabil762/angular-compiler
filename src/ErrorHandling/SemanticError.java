@@ -179,6 +179,9 @@ public class SemanticError {
                     numberObjectExpressionList = Integer.parseInt(attributeSymbolTable.getRows().get(i).getValue());
             }
         }
+        if (listAttributeInInterface.isEmpty() && listAttributeInFunction.size() == 1 && Objects.equals(listAttributeInFunction.get(0).getValue(), "id")) {
+            return true;
+        }
         for (Row funcAttr : listAttributeInFunction) {
             if (!listAttributeInInterface.stream().anyMatch(obj -> funcAttr.getValue().equals(obj.getValue()))) {
                 error.getErrors().add("At Line " + funcAttr.getLine() + " in position " + funcAttr.getPosition() + " Attribute " + funcAttr.getValue() + " not found in interface");
@@ -351,7 +354,7 @@ public class SemanticError {
             error.getErrors().add("No AttributeCssSymbolTable tables provided");
             return false;
         }
-        List<String> CssAttr = Arrays.asList("display", "width", "gap", "border-right", "list-style-type", "padding", "align-items", "border-bottom", "cursor", "height", "object-fit", "margin-bottom", "margin", "min-height", "padding-right", "background", "border-radius", "flex", "flex-direction", "border", "max-width", "font-size", "box-shadow", "text-align", "margin-top", "color", "justify-content", "direction", "overflow", "font-weight", "unicode-bidi", "outline", "resize", "padding-left", "padding-right","border-color");
+        List<String> CssAttr = Arrays.asList("display", "width", "gap", "border-right", "list-style-type", "padding", "align-items", "border-bottom", "cursor", "height", "object-fit", "margin-bottom", "margin", "min-height", "padding-right", "background", "border-radius", "flex", "flex-direction", "border", "max-width", "font-size", "box-shadow", "text-align", "margin-top", "color", "justify-content", "direction", "overflow", "font-weight", "unicode-bidi", "outline", "resize", "padding-left", "padding-right", "border-color");
         boolean checkError = true;
         List<Row> listAttr = new ArrayList<>();
         for (int i = 0; i < attributeCssSymbolTable.getRows().size(); i++) {

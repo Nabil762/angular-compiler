@@ -13,10 +13,19 @@ public class FunctionBody extends AstNode {
     String identifier5;
     String identifier6;
     String identifier7;
+    String eq;
     ValueExpression valueExpression;
     ObjectExpression objectExpression;
     List<FunctionBody> functionBody1 = new ArrayList<>();
     List<FunctionBody> functionBody2 = new ArrayList<>();
+
+    public String getEq() {
+        return eq;
+    }
+
+    public void setEq(String eq) {
+        this.eq = eq;
+    }
 
     public String getIdentifier1() {
         return identifier1;
@@ -146,13 +155,13 @@ public class FunctionBody extends AstNode {
                 stringBuilder.append("const new").append(identifier1).append(" = {\n");
                 stringBuilder.append(objectExpression.getAsinment());
                 stringBuilder.append("};\n");
-                stringBuilder.append("this.").append(identifier1).append(".push(new").append(identifier1).append(");\n");
-                stringBuilder.append("localStorage.setItem('").append(identifier1).append("', JSON.stringify(this.").append(identifier1).append("));\n");
+//                stringBuilder.append("this.").append(identifier1).append(".push(new").append(identifier1).append(");\n");
+//                stringBuilder.append("localStorage.setItem('").append(identifier1).append("', JSON.stringify(this.").append(identifier1).append("));\n");
 //                stringBuilder.append("if (confirm('success added ").append(identifier1).append("\\nDo you want to show List ").append(identifier1).append("?')) {\nsetTimeout(() => {\nwindow.location.href = '").append("ignore.html';\n}, 0);\n" + "}");
             } else if (identifier7 != null) {
 //                stringBuilder.append("if (confirm('Are you sure to do it ?')) {\n");
-                stringBuilder.append("this.").append(identifier1).append(" = this.").append(identifier2).append(".").append(identifier3).append("(").append(identifier4).append(" => ").append(identifier5).append(".").append(identifier6).append(" !== ").append(identifier7).append(");\n");
-                stringBuilder.append("localStorage.setItem('").append(identifier1).append("', JSON.stringify(this.").append(identifier1).append("));\n");
+                stringBuilder.append(identifier1).append(" = this.").append(identifier2).append(".").append(identifier3).append("(").append(identifier4).append(" => ").append(identifier5).append(".").append(identifier6).append(" ").append(eq).append("= ").append(identifier7).append(");\n");
+//                stringBuilder.append("localStorage.setItem('").append(identifier1).append("', JSON.stringify(this.").append(identifier1).append("));\n");
                 StringBuilder sb = new StringBuilder(identifier4);
                 sb.setCharAt(0, Character.toUpperCase(sb.charAt(0)));
 //                String xxx = sb.toString();

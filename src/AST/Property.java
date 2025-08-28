@@ -47,10 +47,17 @@ public class Property extends AstNode {
     public String getAsinment() {
 
         String ret = "";
-        if (Objects.equals(ID, "id"))
-            ret = "id: this.nextId++,\n";
-        else
-            ret = ID + ",\n";
+        if (valueExpression.text != null && valueExpression.text.equals("")) {
+            if (Objects.equals(ID, "id"))
+                ret = "id: this.nextId++,\n";
+            else
+                ret = ID + ",\n";
+        } else if (valueExpression.text != null && !valueExpression.text.equals("")) {
+            if (Objects.equals(ID, "id"))
+                ret = "id:" + valueExpression.text.substring(1, valueExpression.text.length() - 1) + ",\n";
+            else
+                ret = ID + ",\n";
+        }
         return ret;
     }
 

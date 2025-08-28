@@ -653,6 +653,18 @@ public class angularParserBaseListener implements angularParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSimpleAssignment2(angularParser.SimpleAssignment2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSimpleAssignment2(angularParser.SimpleAssignment2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIFELSE(angularParser.IFELSEContext ctx) { }
 	/**
 	 * {@inheritDoc}
