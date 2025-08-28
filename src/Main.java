@@ -33,9 +33,9 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String[] source = {"tests/AngularTestShowEnd.txt", "tests/AngularTestAdd.txt"};
+//        String[] source = {"tests/AngularTestShowEnd.txt", "tests/AngularTestAdd.txt"};
 //        String[] source = {"tests/AngularTestShowEndCar.txt", "tests/AngularTestAddCar.txt"};
-//        String[] source = {"tests/AngularTestShowEndCaronly.txt", "tests/AngularTestShowEndCardetails.txt", "tests/AngularTestAddCar2.txt"};
+        String[] source = {"tests/AngularTestShowEndCaronly.txt", "tests/AngularTestShowEndCardetails.txt", "tests/AngularTestAddCar2.txt"};
 //        String[] source = {"tests/AngularTest.txt"};
 //        String[] source = {"tests/AngularTest2.txt"};
 //        String[] source = {"tests/AngularTestErrors.txt"};
@@ -136,7 +136,7 @@ public class Main {
 
     public static void generateHtmlFile(String fileName, String fileNameOther) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("<!DOCTYPE html>\n" + "<html lang=\"en\">\n" + "<head>\n" + "    <meta charset=\"UTF-8\"/>\n" + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" + "    <title>Angular compiler</title>\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n" + "    <link rel=\"stylesheet\" href=\"").append(fileName).append(".css\"/>\n").append("</head>\n").append("<body>\n").append("<div class=\"fixed top-4 right-4\">\n").append("    <button id=\"goToOtherPage\" class=\"bg-blue-500 hover:bg-blue-600 text-white text-sm py-1 px-3 rounded shadow\">\n");
+        stringBuilder.append("<!DOCTYPE html>\n" + "<html lang=\"en\">\n" + "<head>\n" + "    <meta charset=\"UTF-8\"/>\n" + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n" + "    <title>Angular compiler</title>\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n" + "    <link rel=\"stylesheet\" href=\"").append(fileName).append(".css\"/>\n").append("</head>\n").append("<body>\n").append("<div class=\"fixed top-4 right-4\">\n").append("    <button id=\"goToOtherPage\" class=\"bg-blue-500 hover:bg-green-600 text-white text-sm py-1 px-3 rounded shadow\">\n");
         stringBuilder.append("    Go to ").append(fileNameOther).append("Page \n");
         stringBuilder.append("    </button>\n").append("</div>\n").append("<script src=\"").append(fileName).append(".js\" defer></script>\n").append("<script>\n").append("document.addEventListener('DOMContentLoaded', function() {\n").append("const goToOtherPageBtn = document.getElementById('goToOtherPage');\n").append("goToOtherPageBtn.addEventListener('click', function() {\n").append("        window.location.href = '").append(fileNameOther).append(".html';\n").append("    });\n").append("});\n").append("</script>\n").append("</body>\n").append("<div id=\"app\"></div>\n").append("</html>");
         String filePath = "src/generatedCode/" + fileName + ".html";
