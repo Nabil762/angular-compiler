@@ -17,6 +17,7 @@ public class AngularVisitor extends angularParserBaseVisitor {
     DeclarationObjectInInterfaceSymbolTable declarationObjectInInterfaceSymbolTable = new DeclarationObjectInInterfaceSymbolTable();
     AttributeCssSymbolTable attributeCssSymbolTable = new AttributeCssSymbolTable();
     ClassDeclarationAndStandaloneSymbolTable classDeclarationAndStandaloneSymbolTable = new ClassDeclarationAndStandaloneSymbolTable();
+    TagsSymbolTable tagsSymbolTable = new TagsSymbolTable();
 
     @Override
     public Program visitProgram(angularParser.ProgramContext ctx) {
@@ -24,7 +25,7 @@ public class AngularVisitor extends angularParserBaseVisitor {
         for (int i = 0; i < ctx.statement().size(); i++) {
             program.getStatementList().add(visitStatement(ctx.statement(i)));
         }
-        SemanticError semanticError = new SemanticError(attributeSymbolTable, detectCompositionSymbolTable, detectSelectorSymbolTable, detectTemplateSymbolTable, declarationFunctionSymbolTable, declarationObjectInInterfaceSymbolTable, attributeCssSymbolTable, classDeclarationAndStandaloneSymbolTable);
+        SemanticError semanticError = new SemanticError(attributeSymbolTable, detectCompositionSymbolTable, detectSelectorSymbolTable, detectTemplateSymbolTable, declarationFunctionSymbolTable, declarationObjectInInterfaceSymbolTable, attributeCssSymbolTable, classDeclarationAndStandaloneSymbolTable, tagsSymbolTable);
         semanticError.check();
         semanticError.printErrors();
         program.generatedCode();
@@ -232,52 +233,219 @@ public class AngularVisitor extends angularParserBaseVisitor {
 
     @Override
     public Tag visitStandardTag(angularParser.StandardTagContext ctx) {
+
         StandardTag standardTag = new StandardTag();
         if (!ctx.H1().isEmpty()) {
             standardTag.setTag_name(ctx.H1(0).toString());
+            if (ctx.H1().size() != 2) {
+                Row row = new Row();
+                if (ctx.getChild(1) == ctx.H1(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.H1(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.H2().isEmpty()) {
             standardTag.setTag_name(ctx.H2(0).toString());
+            if (ctx.H2().size() != 2) {
+                Row row = new Row();
+                if (ctx.getChild(1) == ctx.H2(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.H2(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.H3().isEmpty()) {
             standardTag.setTag_name(ctx.H3(0).toString());
+            if (ctx.H3().size() != 2) {
+                Row row = new Row();
+                if (ctx.getChild(1) == ctx.H3(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.H3(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.H4().isEmpty()) {
             standardTag.setTag_name(ctx.H4(0).toString());
+            if (ctx.H4().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.H4(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.H4(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.H5().isEmpty()) {
             standardTag.setTag_name(ctx.H5(0).toString());
+            if (ctx.H5().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.H5(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.H5(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.H6().isEmpty()) {
             standardTag.setTag_name(ctx.H6(0).toString());
+            if (ctx.H6().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.H6(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.H6(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.P().isEmpty()) {
             standardTag.setTag_name(ctx.P(0).toString());
+            if (ctx.P().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.P(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.P(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.UL().isEmpty()) {
             standardTag.setTag_name(ctx.UL(0).toString());
+            if (ctx.UL().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.UL(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.UL(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.DIV().isEmpty()) {
             standardTag.setTag_name(ctx.DIV(0).toString());
+            if (ctx.DIV().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.DIV(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.DIV(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.STRONG().isEmpty()) {
             standardTag.setTag_name(ctx.STRONG(0).toString());
+            if (ctx.STRONG().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.STRONG(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.STRONG(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.LI().isEmpty()) {
             standardTag.setTag_name(ctx.LI(0).toString());
+            if (ctx.LI().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.LI(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.LI(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.BUTTON().isEmpty()) {
             standardTag.setTag_name(ctx.BUTTON(0).toString());
+            if (ctx.BUTTON().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.BUTTON(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.BUTTON(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.FORM().isEmpty()) {
             standardTag.setTag_name(ctx.FORM(0).toString());
+            if (ctx.FORM().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.FORM(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.FORM(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.LABLE().isEmpty()) {
             standardTag.setTag_name(ctx.LABLE(0).toString());
+            if (ctx.LABLE().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.LABLE(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.LABLE(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
         if (!ctx.INPUT().isEmpty()) {
             standardTag.setTag_name(ctx.INPUT(0).toString());
+            if (ctx.INPUT().size() != 2) {
+                Row row = new Row();
+                 if (ctx.getChild(1) == ctx.INPUT(0))
+                    row.setType("TagOpen");
+                else
+                    row.setType("TagClose");
+                row.setValue(ctx.INPUT(0).getText());
+                row.setLine(ctx.getStart().getLine());
+                row.setPosition(ctx.getStart().getCharPositionInLine());
+                tagsSymbolTable.getRows().add(row);
+            }
         }
+
         if (ctx.attributes() != null) {
             for (int i = 0; i < ctx.attributes().size(); i++) {
                 if (ctx.attributes(i) != null) {

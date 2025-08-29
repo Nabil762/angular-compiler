@@ -169,11 +169,9 @@ background: green  ;
 `,
 })
 export class AppComponent {
-  cars:localStorage.getItem.cars;
-  carJson: sessionStorage.getItem.selectedCarToUpdate;
   onSubmit(): void {
     this .cars = {
-      id: "this.selectedCarToUpdate",
+      id: " this.nextId++",
       car_image: "",
       car_name: "",
       car_price: "",
@@ -187,15 +185,11 @@ export class AppComponent {
       car_horsepower : "",
       car_description : ""
     };
-         const index = this .cars .findIndex (car => car . id == newcars.id);
-            if ('index !== -1') {
-                    cars[index] = newcars;
-                   cars.localStorage.setItem('cars');
-        this.router.navigate('AngularTestShowEndCaronly');
-                }
-                alert('success update this car');
+    this.cars.push('newcars');
+    cars.localStorage.setItem('cars');
     event.stopPropagation();
-        sessionStorage.clear();
-
+    if (confirm('success added cars Do you want to show List cars?')) {
+        this.router.navigate('ListCar');
+    }
   }
 }

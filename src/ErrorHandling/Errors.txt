@@ -1,6 +1,8 @@
-AngularTestShowEndCaronly
+ListCarOnly
 No Error in this test
-AngularTestShowEndCardetails
+DetailsCarOnly
 No Error in this test
-AngularTestAddCar2
+AddCarToList
+No Error in this test
+UpdateCar
 No Error in this test

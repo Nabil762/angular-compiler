@@ -170,24 +170,26 @@ background: green  ;
 })
 export class AppComponent {
   onSubmit(): void {
-    this .cars = {
-      id: "",
-      car_image: "",
-      car_name: "",
-      car_price: "",
-      car_brand : "",
-      car_model : "",
-      car_year : "",
-      car_category : "",
-      car_color : "",
-      car_engin_size : "",
-      car_engin_type : "",
-      car_horsepower : "",
-      car_description : ""
-    };
-    event.stopPropagation();
-    if (confirm('success added cars Do you want to show List cars?')) {
-        this.router.navigate('AngularTestShowEndCar');
-    }
-  }
+     this .cars = {
+       id: " this.nextId++",
+       car_image: "",
+       car_name: "",
+       car_price: "",
+       car_brand : "",
+       car_model : "",
+       car_year : "",
+       car_category : "",
+       car_color : "",
+       car_engin_size : "",
+       car_engin_type : "",
+       car_horsepower : "",
+       car_description : ""
+     };
+     this.cars.push('newcars');
+     cars.localStorage.setItem('cars');
+     event.stopPropagation();
+     if (confirm('success added cars Do you want to show List cars?')) {
+         this.router.navigate('ListCarWithDetails');
+     }
+   }
 }

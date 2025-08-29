@@ -15,6 +15,7 @@ public class SemanticError {
     private DeclarationObjectInInterfaceSymbolTable declarationObjectInInterfaceSymbolTable;
     private AttributeCssSymbolTable attributeCssSymbolTable;
     private ClassDeclarationAndStandaloneSymbolTable classDeclarationAndStandaloneSymbolTable;
+    private TagsSymbolTable tagsSymbolTable;
     private final Error error;
 
     public SemanticError() {
@@ -27,9 +28,10 @@ public class SemanticError {
         this.declarationObjectInInterfaceSymbolTable = new DeclarationObjectInInterfaceSymbolTable();
         this.attributeCssSymbolTable = new AttributeCssSymbolTable();
         this.classDeclarationAndStandaloneSymbolTable = new ClassDeclarationAndStandaloneSymbolTable();
+        this.tagsSymbolTable = new TagsSymbolTable();
     }
 
-    public SemanticError(AttributeSymbolTable attributeSymbolTable, DetectCompositionSymbolTable detectCompositionSymbolTable, DetectSelectorSymbolTable detectSelectorSymbolTable, DetectTemplateSymbolTable detectTemplateSymbolTable, DeclarationFunctionSymbolTable declarationFunctionSymbolTable, DeclarationObjectInInterfaceSymbolTable declarationObjectInInterfaceSymbolTable, AttributeCssSymbolTable attributeCssSymbolTable, ClassDeclarationAndStandaloneSymbolTable classDeclarationAndStandaloneSymbolTable) {
+    public SemanticError(AttributeSymbolTable attributeSymbolTable, DetectCompositionSymbolTable detectCompositionSymbolTable, DetectSelectorSymbolTable detectSelectorSymbolTable, DetectTemplateSymbolTable detectTemplateSymbolTable, DeclarationFunctionSymbolTable declarationFunctionSymbolTable, DeclarationObjectInInterfaceSymbolTable declarationObjectInInterfaceSymbolTable, AttributeCssSymbolTable attributeCssSymbolTable, ClassDeclarationAndStandaloneSymbolTable classDeclarationAndStandaloneSymbolTable, TagsSymbolTable tagsSymbolTable) {
         this.error = new Error();
         this.attributeSymbolTable = attributeSymbolTable;
         this.detectCompositionSymbolTable = detectCompositionSymbolTable;
@@ -39,6 +41,7 @@ public class SemanticError {
         this.declarationObjectInInterfaceSymbolTable = declarationObjectInInterfaceSymbolTable;
         this.attributeCssSymbolTable = attributeCssSymbolTable;
         this.classDeclarationAndStandaloneSymbolTable = classDeclarationAndStandaloneSymbolTable;
+        this.tagsSymbolTable = tagsSymbolTable;
     }
 
     public Error getError() {
@@ -109,6 +112,14 @@ public class SemanticError {
         this.classDeclarationAndStandaloneSymbolTable = classDeclarationAndStandaloneSymbolTable;
     }
 
+    public TagsSymbolTable getTagsSymbolTable() {
+        return tagsSymbolTable;
+    }
+
+    public void setTagsSymbolTable(TagsSymbolTable tagsSymbolTable) {
+        this.tagsSymbolTable = tagsSymbolTable;
+    }
+
     public boolean check() {
         boolean isValid = true;
         if (!IncorrectAttribute(this.attributeSymbolTable)) {
@@ -141,6 +152,10 @@ public class SemanticError {
         }
         if (!ClassDeclarationAndStandalone(this.classDeclarationAndStandaloneSymbolTable)) {
             error.getErrors().add("Exception IncorrectBodyComponent");
+            isValid = false;
+        }
+        if (!Tags(this.tagsSymbolTable)) {
+            error.getErrors().add("Exception Tage incorrect open and close");
             isValid = false;
         }
         return isValid;
@@ -354,7 +369,13 @@ public class SemanticError {
             error.getErrors().add("No AttributeCssSymbolTable tables provided");
             return false;
         }
-        List<String> CssAttr = Arrays.asList("display", "width", "gap", "border-right", "list-style-type", "padding", "align-items", "border-bottom", "cursor", "height", "object-fit", "margin-bottom", "margin", "min-height", "padding-right", "background", "border-radius", "flex", "flex-direction", "border", "max-width", "font-size", "box-shadow", "text-align", "margin-top", "color", "justify-content", "direction", "overflow", "font-weight", "unicode-bidi", "outline", "resize", "padding-left", "padding-right", "border-color");
+        List<String> CssAttr = Arrays.asList(
+                "display", "width", "gap", "border-right", "list-style-type", "padding", "align-items", "border-bottom",
+                "cursor", "height", "object-fit", "margin-bottom", "margin", "min-height", "padding-right", "background",
+                "border-radius", "flex", "flex-direction", "border", "max-width", "font-size", "box-shadow", "text-align",
+                "margin-top", "color", "justify-content", "direction", "overflow", "font-weight", "unicode-bidi", "outline",
+                "resize", "padding-left", "padding-right", "border-color");
+
         boolean checkError = true;
         List<Row> listAttr = new ArrayList<>();
         for (int i = 0; i < attributeCssSymbolTable.getRows().size(); i++) {
@@ -410,6 +431,25 @@ public class SemanticError {
         return checkError && checkStandalone;
     }
 
+    private boolean Tags(TagsSymbolTable tagsSymbolTable) {
+        if (tagsSymbolTable == null) {
+            error.getErrors().add("No tagsSymbolTable tables provided");
+            return false;
+        }
+        boolean checkError = true;
+        for (int i = 0; i < tagsSymbolTable.getRows().size(); i++) {
+            if (tagsSymbolTable.getRows().get(i) != null) {
+                if (tagsSymbolTable.getRows().get(i).getType().contains("TagOpen")) {
+                    error.getErrors().add("At Line " + tagsSymbolTable.getRows().get(i).getLine() + " in position " + tagsSymbolTable.getRows().get(i).getPosition() + " Tags  Error the " + tagsSymbolTable.getRows().get(i).getValue() + " tag not close in the same tage");
+                    checkError = false;
+                } else {
+                    error.getErrors().add(" Tags  Error the " + tagsSymbolTable.getRows().get(i).getValue() + " tag not open in the same tage");
+                    checkError = false;
+                }
+            }
+        }
+        return checkError;
+    }
 
     public void printErrors() {
         error.print();

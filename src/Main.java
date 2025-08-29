@@ -34,9 +34,9 @@ public class Main {
             throw new RuntimeException(e);
         }
 //        String[] source = {"tests/AngularTestShowEnd.txt", "tests/AngularTestAdd.txt"};
-//        String[] source = {"tests/AngularTestShowEndCar.txt", "tests/AngularTestAddCar.txt"};
-        String[] source = {"tests/AngularTestShowEndCaronly.txt", "tests/AngularTestShowEndCardetails.txt", "tests/AngularTestAddCar2.txt"};
-//        String[] source = {"tests/AngularTestShowEndCaronly1.txt", "tests/AngularTestShowEndCardetails1.txt", "tests/AngularTestAddCar2.txt", "tests/AngularTestUpdateCar.txt"};
+//        String[] source = {"tests/ListCarWithDetails.txt", "tests/AddCar.txt"};
+//        String[] source = {"tests/ListCar.txt", "tests/DetailsCar.txt", "tests/AddCarToList2.txt"};
+        String[] source = {"tests/ListCarOnly.txt", "tests/DetailsCarOnly.txt", "tests/AddCarToList.txt", "tests/UpdateCar.txt"};
 //        String[] source = {"tests/AngularTest.txt"};
 //        String[] source = {"tests/AngularTest2.txt"};
 //        String[] source = {"tests/AngularTestErrors.txt"};

@@ -30,6 +30,9 @@ this.carlist.innerHTML += this.cars.map(car  => `
 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
 </svg>
 </button>
+<button class="update-btn" >
+Update
+</button>
 </div>
 `).join('');
 this.carlist.querySelectorAll('.car').forEach(item => {
@@ -38,6 +41,8 @@ this.selectCar(this.cars.find(p => p.id === parseInt(item.dataset.id)));
 });
 item.querySelector('.delete-btn').addEventListener('click', (e) => {
 this.deleteCar(parseInt(item.dataset.id), e);
+});item.querySelector('.update-btn').addEventListener('click', (e) => {
+this.updateCar(parseInt(item.dataset.id), e);
 });
 });
 }
@@ -47,7 +52,7 @@ this.rendercarlist()
 selectCar(car) {
 this.selectedCar = car;
 sessionStorage.setItem( 'selectedCar', JSON.stringify(car));
-window.location.href = 'AngularTestShowEndCardetails.html';
+window.location.href = 'DetailsCarOnly.html';
 }
 deleteCar(carId,event) {
 event.stopPropagation();
@@ -61,6 +66,14 @@ sessionStorage.clear();
 this.render();
 }
 else {
+this.render();
+}
+}
+updateCar(carId,event) {
+event.stopPropagation();
+if (confirm('Are you sure to update this car  ?')) {
+sessionStorage.setItem( 'selectedCarToUpdate', JSON.stringify(carId));
+window.location.href = 'UpdateCar.html';
 this.render();
 }
 }

@@ -189,7 +189,7 @@ export class AppComponent {
     cars.localStorage.setItem('cars');
     event.stopPropagation();
     if (confirm('success added cars Do you want to show List cars?')) {
-        this.router.navigate('AngularTestShowEndCaronly');
+        this.router.navigate('ListCar');
     }
   }
 }

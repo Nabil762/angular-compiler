@@ -225,7 +225,7 @@ const index = this.cars.findIndex(car => car.id === newcars.id);
 if (index !== -1) {
 this.cars[index] = newcars;
 localStorage.setItem('cars', JSON.stringify(this.cars));
-window.location.href = 'AngularTestShowEndCaronly.html';
+window.location.href = 'ListCarOnly.html';
 }
 }
 reader.readAsDataURL(car_image);
