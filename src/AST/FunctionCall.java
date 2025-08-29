@@ -51,7 +51,6 @@ public class FunctionCall extends AstNode {
                 if (i < arguments.size() - 1)
                     stringBuilder.append(",");
             }
-
             stringBuilder.append(", JSON.stringify(").append(functionName.substring(0, functionName.indexOf("."))).append(")").append(");");
             return stringBuilder.toString();
         } else if (functionName.contains("this.cars.push")) {
@@ -73,6 +72,17 @@ public class FunctionCall extends AstNode {
                 if (i < arguments.size() - 1)
                     stringBuilder.append(",");
             }
+            return stringBuilder.toString();
+        } else if (functionName.contains("alert")) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("alert(");
+            for (int i = 0; i < arguments.size(); i++) {
+                stringBuilder.append(arguments.get(i).getsession());
+                if (i < arguments.size() - 1)
+                    stringBuilder.append(",");
+            }
+
+            stringBuilder.append(");");
             return stringBuilder.toString();
         }
         return this.toString() + ";";

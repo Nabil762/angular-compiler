@@ -21,7 +21,7 @@ this.form.innerHTML = `
 </div>
 <div class = "label">
 <label for="car_imageInput">car_image</label>
-<input  type="text" name="car_image" class="form-input" required  placeholder="Enter car_image" id="car_imageInput" >
+<input  type="file" name="car_image" class="form-input" required  placeholder="Enter car_image" id="car_imageInput" >
 <div class="form-error" id="car_imageError"></div>
 </div>
 <div class = "label">
@@ -181,7 +181,7 @@ this.renderform()
 }
 onSubmit() {
 const car_imageInput = document.getElementById('car_imageInput');
-const car_image = car_imageInput.value.trim();
+const car_image = car_imageInput.files?.[0];
 const car_nameInput = document.getElementById('car_nameInput');
 const car_name = car_nameInput.value.trim();
 const car_priceInput = document.getElementById('car_priceInput');
@@ -204,9 +204,11 @@ const car_horsepowerInput = document.getElementById('car_horsepowerInput');
 const car_horsepower = car_horsepowerInput.value.trim();
 const car_descriptionInput = document.getElementById('car_descriptionInput');
 const car_description = car_descriptionInput.value.trim();
+const reader = new FileReader();
+reader.onload = (e) => { 
 const newcars = {
-id:this.selectedCarToUpdate.id,
-car_image,
+id:this.selectedCarToUpdate,
+car_image: e.target.result,
 car_name,
 car_price,
 car_brand,
@@ -223,12 +225,13 @@ const index = this.cars.findIndex(car => car.id === newcars.id);
 if (index !== -1) {
 this.cars[index] = newcars;
 localStorage.setItem('cars', JSON.stringify(this.cars));
-}
-event.stopPropagation();
-if (confirm('success added cars Do you want to show List cars?')) {
 window.location.href = 'AngularTestShowEndCaronly.html';
-sessionStorage.clear();
 }
+}
+reader.readAsDataURL(car_image);
+alert('success update this car');
+event.stopPropagation();
+sessionStorage.clear();
 }
 }
 document.addEventListener('DOMContentLoaded', () => {

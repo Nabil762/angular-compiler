@@ -4,5 +4,3 @@ AngularTestShowEndCardetails
 No Error in this test
 AngularTestAddCar2
 No Error in this test
-AngularTestUpdateCar
-No Error in this test

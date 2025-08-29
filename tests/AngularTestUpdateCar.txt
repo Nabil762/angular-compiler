@@ -119,7 +119,7 @@ background: green  ;
 
 <label class="label">
   car_image
-  <input type="text" (ngModel)="item.car_image" name="car_image" class="form-input" required></input>
+  <input type="file" (ngModel)="item.car_image" name="car_image" class="form-input" required></input>
 </label>
 <label class="label">
   car_price
@@ -173,7 +173,7 @@ export class AppComponent {
   carJson: sessionStorage.getItem.selectedCarToUpdate;
   onSubmit(): void {
     this .cars = {
-      id: "this.selectedCarToUpdate.id",
+      id: "this.selectedCarToUpdate",
       car_image: "",
       car_name: "",
       car_price: "",
@@ -191,11 +191,11 @@ export class AppComponent {
             if ('index !== -1') {
                     cars[index] = newcars;
                    cars.localStorage.setItem('cars');
-                }
-    event.stopPropagation();
-    if (confirm('success added cars Do you want to show List cars?')) {
         this.router.navigate('AngularTestShowEndCaronly');
-           sessionStorage.clear();
-    }
+                }
+                alert('success update this car');
+    event.stopPropagation();
+        sessionStorage.clear();
+
   }
 }
