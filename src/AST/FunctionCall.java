@@ -37,7 +37,27 @@ public class FunctionCall extends AstNode {
 
     @Override
     public String generatedCode() {
-        if (Objects.equals(functionName, "this.router.navigate")) {
+        if (functionName.contains(".JSON.stringify")) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("const ").append(functionName.substring(0, functionName.indexOf("."))).append(" = JSON.stringify(");
+            for (int i = 0; i < arguments.size(); i++) {
+                stringBuilder.append(arguments.get(i).getsession());
+                if (i < arguments.size() - 1)
+                    stringBuilder.append(",");
+            }
+            stringBuilder.append(");");
+            return stringBuilder.toString();
+        } else if (functionName.contains(".encodeURIComponent")) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("const ").append(functionName.substring(0, functionName.indexOf("."))).append(" = encodeURIComponent(");
+            for (int i = 0; i < arguments.size(); i++) {
+                stringBuilder.append(arguments.get(i).getsession());
+                if (i < arguments.size() - 1)
+                    stringBuilder.append(",");
+            }
+            stringBuilder.append(");");
+            return stringBuilder.toString();
+        } else if (Objects.equals(functionName, "this.router.navigate")) {
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < arguments.size(); i++) {
                 stringBuilder.append(arguments.get(i).gethref());

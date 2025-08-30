@@ -10,6 +10,9 @@ this.appContainer.appendChild(this.container);
 this.carlist = document.createElement('div');
 this.carlist.className = 'car-list';
 this.container.appendChild(this.carlist);
+this.cardetails = document.createElement('div');
+this.cardetails.className = 'car-details';
+this.container.appendChild(this.cardetails);
 }
 rendercarlist() {
 this.carlist.innerHTML = `<h2 class = "text-xl font-bold mb-4 text-center"style = "color: #f5f7fa;">Cars </h2>`;
@@ -30,9 +33,6 @@ this.carlist.innerHTML += this.cars.map(car  => `
 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
 </svg>
 </button>
-<button class="update-btn" >
-Update
-</button>
 </div>
 `).join('');
 this.carlist.querySelectorAll('.car').forEach(item => {
@@ -41,18 +41,45 @@ this.selectCar(this.cars.find(p => p.id === parseInt(item.dataset.id)));
 });
 item.querySelector('.delete-btn').addEventListener('click', (e) => {
 this.deleteCar(parseInt(item.dataset.id), e);
-});item.querySelector('.update-btn').addEventListener('click', (e) => {
-this.updateCar(parseInt(item.dataset.id), e);
 });
 });
+}
+rendercardetails() {
+this.cardetails.innerHTML = `<h2 class = "text-xl font-bold mb-4"style = "color: #f5f7fa;">Car Details </h2>`;
+if (this.selectedCar) {
+this.cardetails.innerHTML += `
+<div class = "car-details" >
+<h3 >${this.selectedCar.id} - ${this.selectedCar.car_name}</h3>
+<img src = "${this.selectedCar.car_image}" alt = "${this.selectedCar.car_name}">
+<p >car_price : ${this.selectedCar.car_price} </p>
+<p >car_brand : ${this.selectedCar.car_brand} </p>
+<p >car_model : ${this.selectedCar.car_model} </p>
+<p >car_year : ${this.selectedCar.car_year} </p>
+<p >car_category : ${this.selectedCar.car_category} </p>
+<p >car_color : ${this.selectedCar.car_color} </p>
+<p >car_engin_size : ${this.selectedCar.car_engin_size} </p>
+<p >car_engin_type : ${this.selectedCar.car_engin_type} </p>
+<p >car_horsepower : ${this.selectedCar.car_horsepower} </p>
+<p >car_description : ${this.selectedCar.car_description} </p>
+</div>
+`;
+}
+else {
+this.cardetails.innerHTML += `
+<div class="empty-message" >
+<h6 > selectedCar to view </h6 >
+<h6 ><small > selectedCar from the list to see its details here </small ></h6 >
+</div >
+`;
+}
 }
 render() {
 this.rendercarlist()
+this.rendercardetails()
 }
 selectCar(car) {
 this.selectedCar = car;
-sessionStorage.setItem( 'selectedCar', JSON.stringify(car));
-window.location.href = 'DetailsCarOnly.html';
+this.render();
 }
 deleteCar(carId,event) {
 event.stopPropagation();
@@ -62,18 +89,9 @@ localStorage.setItem('cars', JSON.stringify(this.cars));
 if (this.selectedCar && this.selectedCar.id === carId) {
 this.selectedCar = null;
 }
-sessionStorage.clear();
 this.render();
 }
 else {
-this.render();
-}
-}
-updateCar(carId,event) {
-event.stopPropagation();
-if (confirm('Are you sure to update this car  ?')) {
-sessionStorage.setItem( 'selectedCarToUpdate', JSON.stringify(carId));
-window.location.href = 'UpdateCar.html';
 this.render();
 }
 }

@@ -87,15 +87,32 @@ public class ValueExpression extends AstNode {
         return isBoolean;
     }
 
+    //https://api.whatsapp.com/send/?phone=${phone_number}&text=${encodedMessage}`;
+//            window.open(whatsappUrl, '_blank');
     public String gethref() {
-        if (text != null)
-            return "window.location.href = " + text.substring(0, text.length() - 1) + ".html';";
+        if (text != null) {
+            if (text.contains("http")) {
+                text = text.replace("'", "`");
+                return "const Url = " + text + ";\nwindow.open(Url, '_blank');";
+            } else {
+                return "window.location.href = " + text.substring(0, text.length() - 1) + ".html';";
+            }
+        }
         return "";
     }
 
     public String getsession() {
-        if (text != null)
-            return text;
+        if (text != null) {
+            if (text.contains("${")) {
+                return text.substring(3, text.length() - 2);
+            } else if (text.contains("[")) {
+                text=text.replace("'","");
+
+                return text;
+            } else {
+                return text;
+            }
+        }
         return "";
     }
 

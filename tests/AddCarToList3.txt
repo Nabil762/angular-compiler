@@ -1,0 +1,195 @@
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+@component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule],
+  imports: [ FormsModule],
+  styles: [`
+.body {
+background: #1e293b  ;
+min-height: 100vh  ;
+padding: 20px  ;
+display: flex  ;
+justify-content: center  ;
+align-items: center  ;
+direction: rtl  ;
+}
+.app {
+width: 100%  ;
+max-width: 600px  ;
+}
+.app-container {
+border-radius: 12px  ;
+border: 1px solid  ;
+overflow: hidden  ;
+}
+.app-header {
+background: blue  ;
+padding: 25px  ;
+text-align: center  ;
+}
+.app-header h1 {
+font-size: 2rem  ;
+margin-bottom: 10px  ;
+}
+.app-body {
+padding: 25px  ;
+}
+.form {
+background: #334155  ;
+border-radius: 10px  ;
+padding: 25px  ;
+box-shadow: 0 2px 10px  ;
+border: 1px solid #eee  ;
+}
+.label {
+margin-bottom: 25px  ;
+
+}
+.label label {
+text-align: left;
+display: block  ;
+font-weight: bold  ;
+margin-bottom: 10px  ;
+font-size: 1rem  ;
+}
+.form-input {
+color: #10b981   ;
+background: #4b5563  ;
+unicode-bidi: plaintext  ;
+width: 100%  ;
+padding: 14px 18px  ;
+border: 2px solid  ;
+border-radius: 8px  ;
+font-size: 1rem  ;
+}
+.form-input-hover {
+background: #ffffff  ;
+}
+.form-input-file-hover{
+background: #ffffff  ;
+}
+.form-input-placeholder {
+unicode-bidi: plaintext  ;
+    color: #10b981;
+}
+.form-input-focus {
+ border-color: red;
+ background:#ffffff;
+ color: #ef4444;
+ outline: none;
+}
+.textarea-form-input {
+min-height: 140px  ;
+resize: vertical  ;
+}
+.btn {
+padding: 14px 28px  ;
+background: #10b981  ;
+border: none  ;
+border-radius: 8px  ;
+cursor: pointer  ;
+font-size: 1rem  ;
+font-weight: bold  ;
+display: inline-flex  ;
+align-items: center  ;
+justify-content: center  ;
+width: 100%  ;
+margin-top: 10px  ;
+}
+.btn-hover {
+box-shadow: 0 6px 12px  ;
+background: green  ;
+}
+.btn-focus {
+box-shadow: 0 6px 12px  ;
+background: green  ;
+}
+     `
+  ],
+ template: `
+<div class="container">
+      <form (ngSubmit)="onSubmit()" class="form" id="form">
+  <label class="label">
+ car_name
+ <input type="text" (ngModel)="item.car_name" name="car_name" class="form-input" required ></input>
+       </label>
+
+<label class="label">
+  car_image
+  <input type="file" (ngModel)="item.car_image" name="car_image" class="form-input" required></input>
+</label>
+<label class="label">
+  car_price
+  <input type="text" (ngModel)="item.car_price" name="car_price" class="form-input" required></input>
+</label>
+<label class="label">
+  car_brand
+  <input type="text" (ngModel)="item.car_brand" name="car_brand" class="form-input" required></input>
+</label>
+<label class="label">
+  car_model
+  <input type="text" (ngModel)="item.car_model" name="car_model" class="form-input" required></input>
+</label>
+<label class="label">
+  car_year
+  <input type="text" (ngModel)="item.car_year" name="car_year" class="form-input" required></input>
+</label>
+<label class="label">
+  car_category
+  <input type="text" (ngModel)="item.car_category" name="car_category" class="form-input" ></input>
+</label>
+<label class="label">
+  car_color
+  <input type="text" (ngModel)="item.car_color" name="car_color" class="form-input" required></input>
+</label>
+<label class="label">
+  car_engin_size
+  <input type="text" (ngModel)="item.car_engin_size" name="car_engin_size" class="form-input" ></input>
+</label>
+<label class="label">
+  car_engin_type
+  <input type="text" (ngModel)="item.car_engin_type" name="car_engin_type" class="form-input" required></input>
+</label>
+<label class="label">
+  car_horsepower
+  <input type="text" (ngModel)="item.car_horsepower" name="car_horsepower" class="form-input" required></input>
+</label>
+<label class="label">
+  car_description
+  <input type="text" (ngModel)="item.car_description" name="car_description" class="form-input" ></input>
+</label>
+<button type="submit"  class="btn" id="submitBtn">
+  ADD
+</button>
+      </form>
+    </div>
+`,
+})
+export class AppComponent {
+  onSubmit(): void {
+    this .cars = {
+      id: " this.nextId++",
+      car_image: "",
+      car_name: "",
+      car_price: "",
+      car_brand : "",
+      car_model : "",
+      car_year : "",
+      car_category : "",
+      car_color : "",
+      car_engin_size : "",
+      car_engin_type : "",
+      car_horsepower : "",
+      car_description : ""
+    };
+    this.cars.push('newcars');
+    cars.localStorage.setItem('cars');
+    event.stopPropagation();
+    if (confirm('success added cars Do you want to show List cars?')) {
+        this.router.navigate('ListCarOnlyWithWhatsApp');
+    }
+  }
+}

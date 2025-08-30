@@ -16,7 +16,7 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[#00008b]}}, 
+identifiers=[#1e293b]}}, 
 BodyOfelement{
 identifier='min-height'
 ValueCss{
@@ -112,7 +112,7 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[#0000cd]}}, 
+identifiers=[#334155]}}, 
 BodyOfelement{
 identifier='border-radius'
 ValueCss{
@@ -168,11 +168,11 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='color'
 ValueCss{
-identifiers=[black]}}, 
+identifiers=[#10b981]}}, 
 BodyOfelement{
 identifier='background'
 ValueCss{
-identifiers=[#4169e1]}}, 
+identifiers=[#4b5563]}}, 
 BodyOfelement{
 identifier='unicode-bidi'
 ValueCss{
@@ -224,7 +224,7 @@ identifiers=[plaintext]}},
 BodyOfelement{
 identifier='color'
 ValueCss{
-identifiers=[black]}}]
+identifiers=[#10b981]}}]
 }, 
 ElementCss{
 identifier='form-input-focus 
@@ -232,7 +232,7 @@ bodyOfelementList=[
 BodyOfelement{
 identifier='border-color'
 ValueCss{
-identifiers=[#ef4444]}}, 
+identifiers=[red]}}, 
 BodyOfelement{
 identifier='background'
 ValueCss{
@@ -240,7 +240,7 @@ identifiers=[#ffffff]}},
 BodyOfelement{
 identifier='color'
 ValueCss{
-identifiers=[black]}}, 
+identifiers=[#ef4444]}}, 
 BodyOfelement{
 identifier='outline'
 ValueCss{
@@ -372,7 +372,7 @@ text='"label"'
 htmlAttribute='class'
 }]
 , elements=[
-Element{name}, 
+Element{phone_number}, 
 Element{
 StandardTag{
 tag_name='input'
@@ -382,79 +382,11 @@ text='"text"'
 htmlAttribute='type'
 }, 
 Attributes{
-text='"item.name"'
+text='"item.phone_number"'
 event='(ngModel)'
 }, 
 Attributes{
-text='"name"'
-htmlAttribute='name'
-}, 
-Attributes{
-text='"form-input"'
-htmlAttribute='class'
-}, 
-Attributes{
-htmlAttribute='required'
-}]
-, elements=[]}}]}}, 
-Element{
-StandardTag{
-tag_name='label'
-, attributes=[
-Attributes{
-text='"label"'
-htmlAttribute='class'
-}]
-, elements=[
-Element{image}, 
-Element{
-StandardTag{
-tag_name='input'
-, attributes=[
-Attributes{
-text='"file"'
-htmlAttribute='type'
-}, 
-Attributes{
-text='"item.image"'
-event='(ngModel)'
-}, 
-Attributes{
-text='"image"'
-htmlAttribute='name'
-}, 
-Attributes{
-text='"form-input"'
-htmlAttribute='class'
-}, 
-Attributes{
-htmlAttribute='required'
-}]
-, elements=[]}}]}}, 
-Element{
-StandardTag{
-tag_name='label'
-, attributes=[
-Attributes{
-text='"label"'
-htmlAttribute='class'
-}]
-, elements=[
-Element{details}, 
-Element{
-StandardTag{
-tag_name='input'
-, attributes=[
-Attributes{
-text='"text"'
-htmlAttribute='type'
-}, 
-Attributes{
-text='"item.details"'
-event='(ngModel)'
-}, 
-Attributes{
-text='"details"'
+text='"phone_number"'
 htmlAttribute='name'
 }, 
 Attributes{
@@ -474,10 +406,6 @@ text='"submit"'
 htmlAttribute='type'
 }, 
 Attributes{
-text='"!item.id || !item.image || !item.name || item.name.length < 3"'
-binding='[disabled]'
-}, 
-Attributes{
 text='"btn"'
 htmlAttribute='class'
 }, 
@@ -486,40 +414,46 @@ text='"submitBtn"'
 htmlAttribute='id'
 }]
 , elements=[
-Element{ADD}]}}]}}]}}`]
+Element{send}]}}]}}]}}`]
 }
 }
 ClassDeclaration{
 class_name = 'AppComponent'[
+Property_declaration{
+ID='cars'
+types=[
+Type{ 
+singleTypeList = [
+SingleType{ID= 'localStorage.getItem.cars'}]
+}]}, 
+Property_declaration{
+ID='carJson'
+types=[
+Type{ 
+singleTypeList = [
+SingleType{ID= 'sessionStorage.getItem.selectedCarToSend'}]
+}]}, 
 FunctionDeclaration {
 functionName =onSubmit,type =
 Type{ 
 singleTypeList = [
 SingleType{type= 'void'}]
 }
- {[FunctionBody{identifier1='products', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=
+ {[FunctionBody{identifier1='cars', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=
 ObjectExpression{ 
 PropertyList{ [
 Property{
-property='id'
- value of property=
- ValueExpression{ ""}}, 
-Property{
-property='image'
- value of property=
- ValueExpression{ ""}}, 
-Property{
-property='name'
- value of property=
- ValueExpression{ ""}}, 
-Property{
-property='details'
+property='phone_number'
  value of property=
  ValueExpression{ ""}}]}
-}, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ event.stopPropagation() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='confirm('success added products Do you want to show List products?')', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+}, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='const index', identifier2='cars', identifier3='findIndex', identifier4='car', identifier5='car', identifier6='id', identifier7='this.selectedCarToSend', valueExpression=null, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ message.JSON.stringify(
+ ValueExpression{ this.cars[index], null, 2}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ encodedMessage.encodeURIComponent(
+ ValueExpression{ '${message}'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
  ValueExpression{ this.router.navigate(
- ValueExpression{ 'AngularTestShowEnd'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[]}]
+ ValueExpression{ `https://api.whatsapp.com/send/?phone=${newcars.phone_number}&text=${encodedMessage}`}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ event.stopPropagation() }, objectExpression=null, functionBody1=[], functionBode2=[]}]
 }]
 }
 }]

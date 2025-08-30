@@ -1,0 +1,83 @@
+body {
+background: #1e293b  ;
+margin: 0  ;
+padding: 20px  ;
+}
+.container {
+display: flex  ;
+min-height: 100vh  ;
+}
+.car-list {
+background: #334155  ;
+width: 100%  ;
+padding: 20px  ;
+}
+.car {
+background: #4b5563  ;
+display: flex  ;
+align-items: center  ;
+justify-content: space-between  ;
+gap: 10px  ;
+padding: 10px  ;
+cursor: pointer  ;
+border-bottom: 1px solid #eee  ;
+margin-top: 10px  ;
+}
+.car:hover {
+background: #dcfce7  ;
+}
+.car-info {
+display: flex  ;
+align-items: center  ;
+gap: 10px  ;
+flex: 1  ;
+}
+.car img {
+width: 50px  ;
+height: 50px  ;
+object-fit: cover  ;
+border-radius: 4px  ;
+}
+.delete-btn {
+background: #10b981  ;
+color: white  ;
+border: none  ;
+border-radius: 4px  ;
+padding: 5px 10px  ;
+cursor: pointer  ;
+}
+.delete-btn:hover {
+background: #ff4d4d  ;
+}
+.update-btn {
+background: #10b981  ;
+color: white  ;
+border: none  ;
+border-radius: 4px  ;
+padding: 5px 10px  ;
+cursor: pointer  ;
+}
+.update-btn:hover {
+background: #e67e22  ;
+}
+.whatsApp-btn {
+background: #10b981  ;
+color: white  ;
+border: none  ;
+border-radius: 4px  ;
+padding: 5px 10px  ;
+cursor: pointer  ;
+}
+.whatsApp-btn:hover {
+background: #e67e22  ;
+}
+.empty-message {
+background: #bae6fd  ;
+text-align: center  ;
+padding: 40px  ;
+font-size: 18px  ;
+border: 1px dashed #ddd  ;
+border-radius: 8px  ;
+margin-top: 20px  ;
+color: red  ;
+}

@@ -225,7 +225,7 @@ this.cars.push(newcars);
 localStorage.setItem('cars', JSON.stringify(this.cars));
 event.stopPropagation();
 if (confirm('success added cars Do you want to show List cars?')) {
-window.location.href = 'ListCar.html';
+window.location.href = 'ListCarOnlyWithWhatsApp.html';
 }}
 reader.readAsDataURL(car_image);
 

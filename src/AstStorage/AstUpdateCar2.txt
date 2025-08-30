@@ -784,6 +784,20 @@ Element{ADD}]}}]}}]}}`]
 }
 ClassDeclaration{
 class_name = 'AppComponent'[
+Property_declaration{
+ID='cars'
+types=[
+Type{ 
+singleTypeList = [
+SingleType{ID= 'localStorage.getItem.cars'}]
+}]}, 
+Property_declaration{
+ID='carJson'
+types=[
+Type{ 
+singleTypeList = [
+SingleType{ID= 'sessionStorage.getItem.selectedCarToUpdate'}]
+}]}, 
 FunctionDeclaration {
 functionName =onSubmit,type =
 Type{ 
@@ -796,7 +810,7 @@ PropertyList{ [
 Property{
 property='id'
  value of property=
- ValueExpression{ " this.nextId++"}}, 
+ ValueExpression{ "this.selectedCarToUpdate"}}, 
 Property{
 property='car_image'
  value of property=
@@ -845,14 +859,15 @@ Property{
 property='car_description'
  value of property=
  ValueExpression{ ""}}]}
-}, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ this.cars.push(
- ValueExpression{ 'newcars'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+}, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='const index', identifier2='cars', identifier3='findIndex', identifier4='car', identifier5='car', identifier6='id', identifier7='newcars.id', valueExpression=null, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='index !== -1', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='cars[index]', identifier2='newcars', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
  ValueExpression{ cars.localStorage.setItem(
  ValueExpression{ 'cars'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ event.stopPropagation() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='confirm('success added cars Do you want to show List cars?')', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
  ValueExpression{ this.router.navigate(
- ValueExpression{ 'ListCar'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[]}]
+ ValueExpression{ 'ListCarOnlyWithWhatsApp'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ alert(
+ ValueExpression{ 'success update this car'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ event.stopPropagation() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ sessionStorage.clear() }, objectExpression=null, functionBody1=[], functionBode2=[]}]
 }]
 }
 }]

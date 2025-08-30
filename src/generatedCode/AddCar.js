@@ -207,7 +207,7 @@ const car_description = car_descriptionInput.value.trim();
 const reader = new FileReader();
 reader.onload = (e) => { 
 const newcars = {
-id:this.selectedCarToUpdate,
+id: this.nextId++,
 car_image: e.target.result,
 car_name,
 car_price,
@@ -221,29 +221,25 @@ car_engin_type,
 car_horsepower,
 car_description,
 };
-const index = this.cars.findIndex(car => car.id === newcars.id);
-if (index !== -1) {
-this.cars[index] = newcars;
+this.cars.push(newcars);
 localStorage.setItem('cars', JSON.stringify(this.cars));
-window.location.href = 'ListCarOnly.html';
-}
-}
-reader.readAsDataURL(car_image);
-alert('success update this car');
 event.stopPropagation();
-sessionStorage.clear();
+if (confirm('success added cars Do you want to show List cars?')) {
+window.location.href = 'ListCarWithDetails.html';
+}}
+reader.readAsDataURL(car_image);
+
 }
 }
 document.addEventListener('DOMContentLoaded', () => {
 const app = new AppComponent();
 app.createAppStructure();
-const cars = localStorage.getItem('cars');
-if(cars) {
-app.cars = JSON.parse(cars);
-}
-const carJson = sessionStorage.getItem('selectedCarToUpdate');
-if(carJson) {
-app.selectedCarToUpdate = JSON.parse(carJson);
+const stored = localStorage.getItem('cars');
+if (stored) {
+app.cars = JSON.parse(stored);
+app.nextId = app.cars.length > 0
+? Math.max(...app.cars.map(p => p.id)) + 1
+: 1;
 }
 app.render();
 });

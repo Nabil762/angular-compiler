@@ -1,0 +1,96 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+@component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule],
+  styles: [
+    `
+ .body {
+ background: #1e293b  ;
+ margin: 0  ;
+ padding: 20px  ;
+ }
+ .container {
+ display: flex  ;
+ min-height: 100vh  ;
+ }
+
+ .car-details {
+ padding: 20px  ;
+ background: #334155  ;
+ flex: 1  ;
+ display: flex  ;
+ flex-direction: column  ;
+ align-items: center  ;
+ }
+ .car-details img {
+background:  #10b981 ;
+padding: 10px  ;
+width: 1000px  ;
+height: auto  ;
+ }
+ .car-details h3 {
+ color:#ffffff;
+ background: #475569  ;
+ text-align: center  ;
+ width: 1000px  ;
+ height: auto  ;
+ }
+ .car-details p {
+ background: #475569  ;
+ box-shadow: 0 2px 2px  ;
+ text-align: left  ;
+ padding-left: 20px  ;
+ width: 1000px  ;
+ height: auto  ;
+  margin-top: 10px;
+ }
+ .empty-message {
+background: #bae6fd  ;
+text-align: center  ;
+padding: 40px  ;
+font-size: 18px  ;
+border: 1px dashed #ddd  ;
+border-radius: 8px  ;
+margin-top: 20px  ;
+color:red;
+ }
+ .update-btn {
+ background: #10b981  ;
+ color: white  ;
+ border: none  ;
+ border-radius: 4px  ;
+ padding: 5px 10px  ;
+ cursor: pointer  ;
+ }
+ .update-btn-hover {
+ background: #ff4d4d  ;
+ }
+    `,
+  ],
+
+
+   template: `
+        <div class="container">
+          <div class="car-details" *ngIf="selectedCar; else empty">
+            <h2 class="text-xl font-bold mb-4" style="color: #f5f7fa;">Car Details</h2>
+            <h3>{{ selectedCar.car_name }}</h3>
+            <img [src]="selectedCar.car_image" alt="{{selectedCar.car_name}}" />
+            <p>car_price : {{ selectedCar.car_price }}</p>
+            <p>car_brand : {{ selectedCar.car_brand }}</p>
+            <p>car_model : {{ selectedCar.car_model }}</p>
+            <p>car_year : {{ selectedCar.car_year }}</p>
+            <p>car_category : {{ selectedCar.car_category }}</p>
+            <p>car_color : {{ selectedCar.car_color }}</p>
+            <p>car_engin_size : {{ selectedCar.car_engin_size }}</p>
+            <p>car_engin_type : {{ selectedCar.car_engin_type }}</p>
+            <p>car_horsepower : {{ selectedCar.car_horsepower }}</p>
+            <p>car_description : {{ selectedCar.car_description }}</p>
+           </div>
+         </div>
+      `,
+})
+export class AppComponent {
+  carJson: sessionStorage.getItem.selectedCar;
+}

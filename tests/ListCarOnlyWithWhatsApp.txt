@@ -1,0 +1,264 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+interface Car {
+  id : number;
+  car_name : string;
+  car_image : string;
+  car_price : number;
+  car_brand : string;
+  car_model : string;
+  car_year : number;
+  car_category : string;
+  car_color : string;
+  car_engin_size : string;
+  car_engin_type : string;
+  car_horsepower : number;
+  car_description : string;
+}
+
+@component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule],
+  styles: [
+    `
+ .body {
+ background: #1e293b  ;
+ margin: 0  ;
+ padding: 20px  ;
+ }
+ .container {
+ display: flex  ;
+ min-height: 100vh  ;
+ }
+ .car-list {
+ background: #334155  ;
+ width: 100%  ;
+padding: 20px  ;
+ }
+ .car {
+ background:  #4b5563  ;
+ display: flex  ;
+ align-items: center  ;
+ justify-content: space-between  ;
+ gap: 10px  ;
+ padding: 10px  ;
+ cursor: pointer  ;
+ border-bottom: 1px solid #eee  ;
+ margin-top:10px;
+ }
+ .car-hover {
+ background: #dcfce7  ;
+ }
+ .car-info {
+ display: flex  ;
+ align-items: center  ;
+ gap: 10px  ;
+ flex: 1  ;
+ }
+ .car img {
+ width: 50px  ;
+ height: 50px  ;
+ object-fit: cover  ;
+ border-radius: 4px  ;
+  }
+ .delete-btn {
+ background: #10b981  ;
+ color: white  ;
+ border: none  ;
+ border-radius: 4px  ;
+ padding: 5px 10px  ;
+ cursor: pointer  ;
+ }
+ .delete-btn-hover {
+ background: #ff4d4d  ;
+ }
+  .update-btn {
+  background: #10b981  ;
+  color: white  ;
+  border: none  ;
+  border-radius: 4px  ;
+  padding: 5px 10px  ;
+  cursor: pointer  ;
+  }
+  .update-btn-hover {
+  background: #e67e22  ;
+  }
+  .whatsApp-btn {
+    background: #10b981  ;
+    color: white  ;
+    border: none  ;
+    border-radius: 4px  ;
+    padding: 5px 10px  ;
+    cursor: pointer  ;
+    }
+    .whatsApp-btn-hover {
+    background: #e67e22  ;
+    }
+ .empty-message {
+background: #bae6fd  ;
+text-align: center  ;
+padding: 40px  ;
+font-size: 18px  ;
+border: 1px dashed #ddd  ;
+border-radius: 8px  ;
+margin-top: 20px  ;
+color:red;
+ }
+
+    `,
+  ],
+
+
+   template: `
+        <div class="container">
+          <div class="car-list" >
+            <h2 class="text-xl font-bold mb-4 text-center" style="color: #f5f7fa;">
+            Cars
+            </h2>
+
+            <ul>
+              <li *ngFor="let car of cars" class="car">
+                <div class="car-info" (click)="selectCar(car)">
+                  <img [src]="car.car_image" alt="{{ car.car_name }}" />
+                  <p>{{ car.car_name }}</p>
+                </div>
+                <button class="delete-btn" (click)="deleteCar($event, car.id)">Delete</button>
+                <button class="update-btn" (click)="updateCar($event, car.id)">Update</button>
+                <button class="whatsApp-btn" (click)="whatsApp($event, car.id)">Send</button>
+              </li>
+            </ul>
+
+
+          </div>
+         </div>
+      `,
+})
+export class AppComponent {
+  cars: Car[] = [
+       {
+           id: 1,
+           car_name: "M5",
+           car_image:"/images/8.jpg",
+           car_price:4444000,
+           car_brand : "BMW",
+           car_model :"M5 series" ,
+           car_year : 2025,
+           car_category : "Sport",
+           car_color :"Black" ,
+           car_engin_size : "2.5L",
+           car_engin_type : "Gasoline",
+           car_horsepower : 400,
+           car_description : "Is very famous and Modern Car"
+       },
+       {
+           id: 2,
+           car_name: "G class",
+           car_image:"/images/12.jpg",
+           car_price:50544,
+           car_brand : "Mercedes",
+           car_model :"G class series" ,
+           car_year : 2018,
+           car_category : "Jeep",
+           car_color :"Purple" ,
+           car_engin_size : "3L",
+           car_engin_type : "Diesel",
+           car_horsepower : 450,
+           car_description : "Is very famous Car"
+       },
+       {
+           id: 3,
+           car_name: "Land Cruiser",
+           car_image:"/images/7.jpg",
+           car_price:25944,
+           car_brand : "Toyota",
+           car_model :"Land Cruiser series" ,
+           car_year : 2022,
+           car_category : "Jeep",
+           car_color :"White" ,
+           car_engin_size : "2L",
+           car_engin_type : "Gasoline",
+           car_horsepower : 350,
+           car_description : " Modern Car"
+       },
+       {
+           id: 4,
+           car_name: "Lexus TX",
+           car_image:"/images/9.jpg",
+           car_price:345435,
+           car_brand : "Lexus",
+           car_model :"TX series" ,
+           car_year : 2019,
+           car_category : "Jeep",
+           car_color :"White" ,
+           car_engin_size : "2.5L",
+           car_engin_type : "Electrical",
+           car_horsepower : 410,
+           car_description : "Is very famous and Modern Car"
+       },
+       {
+           id: 5,
+           car_name: "GLE",
+           car_image:"/images/10.jpg",
+           car_price:4444000,
+           car_brand : "Mercedes",
+           car_model :"GLE series" ,
+           car_year : 2023,
+           car_category : "SUV",
+           car_color :"Black" ,
+           car_engin_size : "3.5L",
+           car_engin_type : "Gasoline",
+           car_horsepower : 550,
+           car_description : "Is very famous and Modern Car"
+       }
+  ];
+
+  selectedCar: Car | null = null;
+
+  selectCar(car: Car): void {
+    this .selectedCar = car;
+    car.sessionStorage.setItem('selectedCar');
+    this.router.navigate('DetailsCarOnly2');
+  }
+
+
+ deleteCar( carId: number,event: MouseEvent): void {
+        event.stopPropagation();
+    if (confirm('Are you sure to delete this car from list ?')){
+    this .cars = this .cars . filter (car => car . id != carId);
+    cars.localStorage.setItem('cars');
+   if ('this.selectedCar && this.selectedCar.id === carId') {
+   this .selectedCar = null;
+   }
+   sessionStorage.clear();
+   this.render();
+    }
+    else
+    {
+    this.render();
+    }
+  }
+
+
+
+     updateCar( carId: number,event: MouseEvent): void {
+            event.stopPropagation();
+        if (confirm('Are you sure to update this car  ?')){
+            carId.sessionStorage.setItem('selectedCarToUpdate');
+                this.router.navigate('UpdateCar2');
+       this.render();
+        }
+
+      }
+        whatsApp( carId: number,event: MouseEvent): void {
+                  event.stopPropagation();
+              if (confirm('Are you sure to send this car in whatsapp?')){
+                  carId.sessionStorage.setItem('selectedCarToSend');
+                      this.router.navigate('FormWhatsApp');
+             this.render();
+              }
+
+            }
+
+}

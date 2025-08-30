@@ -852,7 +852,7 @@ property='car_description'
  ValueExpression{ 'cars'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
  ValueExpression{ event.stopPropagation() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='confirm('success added cars Do you want to show List cars?')', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
  ValueExpression{ this.router.navigate(
- ValueExpression{ 'ListCar'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[]}]
+ ValueExpression{ 'ListCarOnlyWithWhatsApp'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[]}]
 }]
 }
 }]

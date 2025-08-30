@@ -36,7 +36,8 @@ public class Main {
 //        String[] source = {"tests/AngularTestShowEnd.txt", "tests/AngularTestAdd.txt"};
 //        String[] source = {"tests/ListCarWithDetails.txt", "tests/AddCar.txt"};
 //        String[] source = {"tests/ListCar.txt", "tests/DetailsCar.txt", "tests/AddCarToList2.txt"};
-        String[] source = {"tests/ListCarOnly.txt", "tests/DetailsCarOnly.txt", "tests/AddCarToList.txt", "tests/UpdateCar.txt"};
+//        String[] source = {"tests/ListCarOnly.txt", "tests/DetailsCarOnly.txt", "tests/AddCarToList.txt", "tests/UpdateCar.txt"};
+        String[] source = {"tests/ListCarOnlyWithWhatsApp.txt", "tests/DetailsCarOnly2.txt", "tests/AddCarToList3.txt", "tests/UpdateCar2.txt", "tests/FormWhatsApp.txt"};
 //        String[] source = {"tests/AngularTest.txt"};
 //        String[] source = {"tests/AngularTest2.txt"};
 //        String[] source = {"tests/AngularTestErrors.txt"};
@@ -64,6 +65,13 @@ public class Main {
                 fileNameReplace = source[2 - i - i % 2].substring(6, source[2 - i - i % 2].indexOf(".txt"));
 
             } else if (source.length == 4) {
+                if (i == 0) {
+                    fileNameReplace = source[2].substring(6, source[2].indexOf(".txt"));
+                } else {
+                    fileNameReplace = source[0].substring(6, source[0].indexOf(".txt"));
+                }
+            }
+            else if (source.length == 5) {
                 if (i == 0) {
                     fileNameReplace = source[2].substring(6, source[2].indexOf(".txt"));
                 } else {
