@@ -118,7 +118,7 @@ name
 </label>
 <label class="label">
 image
-<input type="file" (ngModel)="item.image" name="image" class="form-input" required></input>
+<input type="text" (ngModel)="item.image" name="image" class="form-input" required></input>
 </label>
 <label class="label">
 details
@@ -135,12 +135,14 @@ export class AppComponent {
 
 onSubmit(): void {
 this .products = {
-id: "",
+id: " this.nextId++",
 image: "",
 name: "",
 details: ""
 };
- event.stopPropagation();
+     this.products.push('newproducts');
+     products.localStorage.setItem('products');
+     event.stopPropagation();
     if (confirm('success added products Do you want to show List products?')) {
         this.router.navigate('AngularTestShowEnd');
     }

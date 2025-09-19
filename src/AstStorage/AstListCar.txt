@@ -207,78 +207,6 @@ ValueCss{
 identifiers=[#ff4d4d]}}]
 }, 
 ElementCss{
-identifier='update-btn 
-bodyOfelementList=[
-BodyOfelement{
-identifier='background'
-ValueCss{
-identifiers=[#10b981]}}, 
-BodyOfelement{
-identifier='color'
-ValueCss{
-identifiers=[white]}}, 
-BodyOfelement{
-identifier='border'
-ValueCss{
-identifiers=[none]}}, 
-BodyOfelement{
-identifier='border-radius'
-ValueCss{
-identifiers=[4px]}}, 
-BodyOfelement{
-identifier='padding'
-ValueCss{
-identifiers=[5px, 10px]}}, 
-BodyOfelement{
-identifier='cursor'
-ValueCss{
-identifiers=[pointer]}}]
-}, 
-ElementCss{
-identifier='update-btn-hover 
-bodyOfelementList=[
-BodyOfelement{
-identifier='background'
-ValueCss{
-identifiers=[#e67e22]}}]
-}, 
-ElementCss{
-identifier='whatsApp-btn 
-bodyOfelementList=[
-BodyOfelement{
-identifier='background'
-ValueCss{
-identifiers=[#10b981]}}, 
-BodyOfelement{
-identifier='color'
-ValueCss{
-identifiers=[white]}}, 
-BodyOfelement{
-identifier='border'
-ValueCss{
-identifiers=[none]}}, 
-BodyOfelement{
-identifier='border-radius'
-ValueCss{
-identifiers=[4px]}}, 
-BodyOfelement{
-identifier='padding'
-ValueCss{
-identifiers=[5px, 10px]}}, 
-BodyOfelement{
-identifier='cursor'
-ValueCss{
-identifiers=[pointer]}}]
-}, 
-ElementCss{
-identifier='whatsApp-btn-hover 
-bodyOfelementList=[
-BodyOfelement{
-identifier='background'
-ValueCss{
-identifiers=[yellow]}}]
-}, 
-ElementCss{
 identifier='empty-message 
 bodyOfelementList=[
 BodyOfelement{
@@ -414,35 +342,7 @@ text='"deleteCar($event, car.id)"'
 event='(click)'
 }]
 , elements=[
-Element{Delete}]}}, 
-Element{
-StandardTag{
-tag_name='button'
-, attributes=[
-Attributes{
-text='"update-btn"'
-htmlAttribute='class'
-}, 
-Attributes{
-text='"updateCar($event, car.id)"'
-event='(click)'
-}]
-, elements=[
-Element{Update}]}}, 
-Element{
-StandardTag{
-tag_name='button'
-, attributes=[
-Attributes{
-text='"whatsApp-btn"'
-htmlAttribute='class'
-}, 
-Attributes{
-text='"whatsApp($event, car.id)"'
-event='(click)'
-}]
-, elements=[
-Element{Send}]}}]}}]}}]}}]}}`]
+Element{Delete}]}}]}}]}}]}}]}}`]
 }
 }
 ClassDeclaration{
@@ -757,7 +657,7 @@ SingleType{type= 'void'}]
  ValueExpression{ car.sessionStorage.setItem(
  ValueExpression{ 'selectedCar'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
  ValueExpression{ this.router.navigate(
- ValueExpression{ 'DetailsCarOnly2'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}]
+ ValueExpression{ 'DetailsCar'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}]
 }, 
 FunctionDeclaration{
 name='deleteCar'
@@ -783,56 +683,6 @@ SingleType{type= 'void'}]
  ValueExpression{ sessionStorage.clear() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
  ValueExpression{ this.render() }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
  ValueExpression{ this.render() }, objectExpression=null, functionBody1=[], functionBode2=[]}]}]
-}, 
-FunctionDeclaration{
-name='updateCar'
-ParameterList{
-parameters=[
-Parameter{
-parameterName='carId', Type=
-SingleType{type= 'number'}
-}, 
-Parameter{
-parameterName='event', Type=
-SingleType{ID= 'MouseEvent'}
-}]
-}
-Type{ 
-singleTypeList = [
-SingleType{type= 'void'}]
-}
-, {[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ event.stopPropagation() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='confirm('Are you sure to update this car  ?')', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ carId.sessionStorage.setItem(
- ValueExpression{ 'selectedCarToUpdate'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ this.router.navigate(
- ValueExpression{ 'UpdateCar2'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ this.render() }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[]}]
-}, 
-FunctionDeclaration{
-name='whatsApp'
-ParameterList{
-parameters=[
-Parameter{
-parameterName='carId', Type=
-SingleType{type= 'number'}
-}, 
-Parameter{
-parameterName='event', Type=
-SingleType{ID= 'MouseEvent'}
-}]
-}
-Type{ 
-singleTypeList = [
-SingleType{type= 'void'}]
-}
-, {[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ event.stopPropagation() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='confirm('Are you sure to send this car in whatsapp?')', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ carId.sessionStorage.setItem(
- ValueExpression{ 'selectedCarToSend'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ this.router.navigate(
- ValueExpression{ 'FormWhatsApp'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
- ValueExpression{ this.render() }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[]}]
 }]
 }
 }]

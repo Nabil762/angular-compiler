@@ -1,0 +1,368 @@
+Program{
+statementList=[
+Statement{
+importStatementList=[import { Component } from ''@angular/core'';, import { CommonModule } from ''@angular/common'';]
+interfaceDeclarationList=[interface Product {
+PropertyDeclaration{
+property=id
+type of property=number
+property=name
+type of property=string
+property=image
+type of property=string
+property=details
+type of property=string
+}}]
+ComponentDeclaration{
+ComponentConfig{
+propertyAssignmentList=[selector: ''app-root'', standalone: true, imports: [CommonModule], 
+Style{
+BodyOfCss{
+Objecte{
+elementCssList=[
+ElementCss{
+identifier='container 
+bodyOfelementList=[
+BodyOfelement{
+identifier='display'
+ValueCss{
+identifiers=[flex]}}, 
+BodyOfelement{
+identifier='gap'
+ValueCss{
+identifiers=[20px]}}]
+}, 
+ElementCss{
+identifier='product-list 
+bodyOfelementList=[
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[30%]}}, 
+BodyOfelement{
+identifier='border-right'
+ValueCss{
+identifiers=[1px, solid, #ddd]}}]
+}, 
+ElementCss{
+identifier='product-list ul 
+bodyOfelementList=[
+BodyOfelement{
+identifier='list-style-type'
+ValueCss{
+identifiers=[none]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[0]}}]
+}, 
+ElementCss{
+identifier='product-list li 
+bodyOfelementList=[
+BodyOfelement{
+identifier='display'
+ValueCss{
+identifiers=[flex]}}, 
+BodyOfelement{
+identifier='align-items'
+ValueCss{
+identifiers=[center]}}, 
+BodyOfelement{
+identifier='gap'
+ValueCss{
+identifiers=[10px]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[10px]}}, 
+BodyOfelement{
+identifier='cursor'
+ValueCss{
+identifiers=[pointer]}}, 
+BodyOfelement{
+identifier='border-bottom'
+ValueCss{
+identifiers=[1px, solid, #ddd]}}]
+}, 
+ElementCss{
+identifier='product-list img 
+bodyOfelementList=[
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[50px]}}, 
+BodyOfelement{
+identifier='height'
+ValueCss{
+identifiers=[50px]}}, 
+BodyOfelement{
+identifier='object-fit'
+ValueCss{
+identifiers=[cover]}}]
+}, 
+ElementCss{
+identifier='product-details 
+bodyOfelementList=[
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[70%]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[10px]}}]
+}, 
+ElementCss{
+identifier='product-details img 
+bodyOfelementList=[
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[200px]}}, 
+BodyOfelement{
+identifier='height'
+ValueCss{
+identifiers=[200px]}}, 
+BodyOfelement{
+identifier='object-fit'
+ValueCss{
+identifiers=[cover]}}, 
+BodyOfelement{
+identifier='margin-bottom'
+ValueCss{
+identifiers=[20px]}}]
+}]
+}}
+}, 
+template: `
+Element{
+StandardTag{
+tag_name='div'
+, attributes=[
+Attributes{
+text='"container"'
+htmlAttribute='class'
+}]
+, elements=[
+Element{
+StandardTag{
+tag_name='div'
+, attributes=[
+Attributes{
+text='"product-list"'
+htmlAttribute='class'
+}]
+, elements=[
+Element{
+StandardTag{
+tag_name='h3'
+, attributes=[]
+, elements=[
+Element{Products}]}}, 
+Element{
+StandardTag{
+tag_name='ul'
+, attributes=[]
+, elements=[
+Element{
+StandardTag{
+tag_name='li'
+, attributes=[
+Attributes{
+text='"let product of products"'
+structuralDir='*ngFor'
+}, 
+Attributes{
+text='"selectProduct(product)"'
+event='(click)'
+}]
+, elements=[
+Element{
+SelfClosingTag{tag_name='img'
+attributes=[
+Attributes{
+text='"product.image"'
+binding='[src]'
+}, 
+Attributes{
+text='"{{ product.name }}"'
+htmlAttribute='alt'
+}]
+}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{
+Interpolation{
+NAME_HTML='product.name
+}}]}}]}}]}}]}}, 
+Element{
+StandardTag{
+tag_name='div'
+, attributes=[
+Attributes{
+text='"product-details"'
+htmlAttribute='class'
+}, 
+Attributes{
+text='"selectedProduct;"'
+structuralDir='*ngIf'
+}]
+, elements=[
+Element{
+StandardTag{
+tag_name='h3'
+, attributes=[]
+, elements=[
+Element{Product}, 
+Element{Details}]}}, 
+Element{
+SelfClosingTag{tag_name='img'
+attributes=[
+Attributes{
+text='"selectedProduct!.image"'
+binding='[src]'
+}, 
+Attributes{
+text='"{{ selectedProduct!.name }}"'
+htmlAttribute='alt'
+}]
+}}, 
+Element{
+StandardTag{
+tag_name='h4'
+, attributes=[]
+, elements=[
+Element{
+Interpolation{
+NAME_HTML='selectedProduct!.name
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{
+StandardTag{
+tag_name='strong'
+, attributes=[]
+, elements=[
+Element{Price :}]}}, 
+Element{
+Interpolation{
+NAME_HTML='selectedProduct!.price
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{
+StandardTag{
+tag_name='strong'
+, attributes=[]
+, elements=[
+Element{Details :}]}}, 
+Element{
+Interpolation{
+NAME_HTML='selectedProduct!.details
+}}]}}]}}]}}`]
+}
+}
+ClassDeclaration{
+class_name = 'AppComponent'[
+ListStatement{
+array_name : 'products'
+name of object : 'Product'
+ArrayExpression{ 
+ObjectExpressionList{ [
+ObjectExpression{ 
+PropertyList{ [
+Property{
+property='id'
+ value of property=
+ ValueExpression{ 1}}, 
+Property{
+property='name'
+ value of property=
+ ValueExpression{ 'Product 1'}}, 
+Property{
+property='image'
+ value of property=
+ ValueExpression{ '/images/1.jpg'}}, 
+Property{
+property='details'
+ value of property=
+ ValueExpression{ 'Details about Product 1'}}]}
+}, 
+ObjectExpression{ 
+PropertyList{ [
+Property{
+property='id'
+ value of property=
+ ValueExpression{ 2}}, 
+Property{
+property='name'
+ value of property=
+ ValueExpression{ 'Product 2'}}, 
+Property{
+property='image'
+ value of property=
+ ValueExpression{ '/images/2.jpg'}}, 
+Property{
+property='details'
+ value of property=
+ ValueExpression{ 'Details about Product 2'}}]}
+}, 
+ObjectExpression{ 
+PropertyList{ [
+Property{
+property='id'
+ value of property=
+ ValueExpression{ 3}}, 
+Property{
+property='name'
+ value of property=
+ ValueExpression{ 'Product 3'}}, 
+Property{
+property='image'
+ value of property=
+ ValueExpression{ '/images/3.jpg'}}, 
+Property{
+property='details'
+ value of property=
+ ValueExpression{ 'Details about Product 3'}}]}
+}]}}
+}, 
+Property_declaration{
+ID='selectedProduct'
+types=[
+Type{ 
+singleTypeList = [
+SingleType{ID= 'Product'}, 
+SingleType{type= 'null'}]
+}, 
+Type{ 
+singleTypeList = [
+SingleType{type= 'null'}]
+}]}, 
+FunctionDeclaration{
+name='selectProduct'
+ParameterList{
+parameters=[
+Parameter{
+parameterName='product', Type=
+SingleType{ID= 'Product'}
+}]
+}
+Type{ 
+singleTypeList = [
+SingleType{ID= 'int'}]
+}
+, {[FunctionBody{identifier1='selectedProduct', identifier2='product', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[], functionBode2=[]}]
+}]
+}
+}]
+}

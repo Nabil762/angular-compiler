@@ -1,0 +1,391 @@
+Program{
+statementList=[
+Statement{
+importStatementList=[import { Component } from ''@angular/core'';, import { CommonModule } from ''@angular/common'';]
+interfaceDeclarationList=[]
+ComponentDeclaration{
+ComponentConfig{
+propertyAssignmentList=[selector: ''app-root'', standalone: true, imports: [CommonModule], 
+Style{
+BodyOfCss{
+Objecte{
+elementCssList=[
+ElementCss{
+identifier='body 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#1e293b]}}, 
+BodyOfelement{
+identifier='margin'
+ValueCss{
+identifiers=[0]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[20px]}}]
+}, 
+ElementCss{
+identifier='container 
+bodyOfelementList=[
+BodyOfelement{
+identifier='display'
+ValueCss{
+identifiers=[flex]}}, 
+BodyOfelement{
+identifier='min-height'
+ValueCss{
+identifiers=[100, vh]}}]
+}, 
+ElementCss{
+identifier='car-details 
+bodyOfelementList=[
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[20px]}}, 
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#334155]}}, 
+BodyOfelement{
+identifier='flex'
+ValueCss{
+identifiers=[1]}}, 
+BodyOfelement{
+identifier='display'
+ValueCss{
+identifiers=[flex]}}, 
+BodyOfelement{
+identifier='flex-direction'
+ValueCss{
+identifiers=[column]}}, 
+BodyOfelement{
+identifier='align-items'
+ValueCss{
+identifiers=[center]}}]
+}, 
+ElementCss{
+identifier='car-details img 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#10b981]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[10px]}}, 
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[1000px]}}, 
+BodyOfelement{
+identifier='height'
+ValueCss{
+identifiers=[auto]}}]
+}, 
+ElementCss{
+identifier='car-details h3 
+bodyOfelementList=[
+BodyOfelement{
+identifier='color'
+ValueCss{
+identifiers=[#ffffff]}}, 
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#475569]}}, 
+BodyOfelement{
+identifier='text-align'
+ValueCss{
+identifiers=[center]}}, 
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[1000px]}}, 
+BodyOfelement{
+identifier='height'
+ValueCss{
+identifiers=[auto]}}]
+}, 
+ElementCss{
+identifier='car-details p 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#475569]}}, 
+BodyOfelement{
+identifier='box-shadow'
+ValueCss{
+identifiers=[0, 2px, 2px]}}, 
+BodyOfelement{
+identifier='text-align'
+ValueCss{
+identifiers=[left]}}, 
+BodyOfelement{
+identifier='padding-left'
+ValueCss{
+identifiers=[20px]}}, 
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[1000px]}}, 
+BodyOfelement{
+identifier='height'
+ValueCss{
+identifiers=[auto]}}, 
+BodyOfelement{
+identifier='margin-top'
+ValueCss{
+identifiers=[10px]}}]
+}, 
+ElementCss{
+identifier='empty-message 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#bae6fd]}}, 
+BodyOfelement{
+identifier='text-align'
+ValueCss{
+identifiers=[center]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[40px]}}, 
+BodyOfelement{
+identifier='font-size'
+ValueCss{
+identifiers=[18px]}}, 
+BodyOfelement{
+identifier='border'
+ValueCss{
+identifiers=[1px, dashed, #ddd]}}, 
+BodyOfelement{
+identifier='border-radius'
+ValueCss{
+identifiers=[8px]}}, 
+BodyOfelement{
+identifier='margin-top'
+ValueCss{
+identifiers=[20px]}}, 
+BodyOfelement{
+identifier='color'
+ValueCss{
+identifiers=[red]}}]
+}, 
+ElementCss{
+identifier='update-btn 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#10b981]}}, 
+BodyOfelement{
+identifier='color'
+ValueCss{
+identifiers=[white]}}, 
+BodyOfelement{
+identifier='border'
+ValueCss{
+identifiers=[none]}}, 
+BodyOfelement{
+identifier='border-radius'
+ValueCss{
+identifiers=[4px]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[5px, 10px]}}, 
+BodyOfelement{
+identifier='cursor'
+ValueCss{
+identifiers=[pointer]}}]
+}, 
+ElementCss{
+identifier='update-btn-hover 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#ff4d4d]}}]
+}]
+}}
+}, 
+template: `
+Element{
+StandardTag{
+tag_name='div'
+, attributes=[
+Attributes{
+text='"container"'
+htmlAttribute='class'
+}]
+, elements=[
+Element{
+StandardTag{
+tag_name='div'
+, attributes=[
+Attributes{
+text='"car-details"'
+htmlAttribute='class'
+}, 
+Attributes{
+text='"selectedCar; else empty"'
+structuralDir='*ngIf'
+}]
+, elements=[
+Element{
+StandardTag{
+tag_name='h2'
+, attributes=[
+Attributes{
+text='"text-xl font-bold mb-4"'
+htmlAttribute='class'
+}, 
+Attributes{
+text='"color: #f5f7fa;"'
+htmlAttribute='style'
+}]
+, elements=[
+Element{Car}, 
+Element{Details}]}}, 
+Element{
+StandardTag{
+tag_name='h3'
+, attributes=[]
+, elements=[
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_name
+}}]}}, 
+Element{
+SelfClosingTag{tag_name='img'
+attributes=[
+Attributes{
+text='"selectedCar.car_image"'
+binding='[src]'
+}, 
+Attributes{
+text='"{{selectedCar.car_name}}"'
+htmlAttribute='alt'
+}]
+}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{car_price :}, 
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_price
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{car_brand :}, 
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_brand
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{car_model :}, 
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_model
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{car_year :}, 
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_year
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{car_category :}, 
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_category
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{car_color :}, 
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_color
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{car_engin_size :}, 
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_engin_size
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{car_engin_type :}, 
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_engin_type
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{car_horsepower :}, 
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_horsepower
+}}]}}, 
+Element{
+StandardTag{
+tag_name='p'
+, attributes=[]
+, elements=[
+Element{car_description :}, 
+Element{
+Interpolation{
+NAME_HTML='selectedCar.car_description
+}}]}}]}}]}}`]
+}
+}
+ClassDeclaration{
+class_name = 'AppComponent'[
+Property_declaration{
+ID='carJson'
+types=[
+Type{ 
+singleTypeList = [
+SingleType{ID= 'sessionStorage.getItem.selectedCar'}]
+}]}]
+}
+}]
+}

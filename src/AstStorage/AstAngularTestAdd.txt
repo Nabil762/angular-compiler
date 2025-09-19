@@ -1,0 +1,530 @@
+Program{
+statementList=[
+Statement{
+importStatementList=[import { Component } from ''@angular/core'';, import { FormsModule } from ''@angular/forms'';, import { CommonModule } from ''@angular/common'';]
+interfaceDeclarationList=[]
+ComponentDeclaration{
+ComponentConfig{
+propertyAssignmentList=[selector: ''app-root'', standalone: true, imports: [CommonModule], imports: [FormsModule], 
+Style{
+BodyOfCss{
+Objecte{
+elementCssList=[
+ElementCss{
+identifier='body 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#00008b]}}, 
+BodyOfelement{
+identifier='min-height'
+ValueCss{
+identifiers=[100, vh]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[20px]}}, 
+BodyOfelement{
+identifier='display'
+ValueCss{
+identifiers=[flex]}}, 
+BodyOfelement{
+identifier='justify-content'
+ValueCss{
+identifiers=[center]}}, 
+BodyOfelement{
+identifier='align-items'
+ValueCss{
+identifiers=[center]}}, 
+BodyOfelement{
+identifier='direction'
+ValueCss{
+identifiers=[rtl]}}]
+}, 
+ElementCss{
+identifier='app 
+bodyOfelementList=[
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[100%]}}, 
+BodyOfelement{
+identifier='max-width'
+ValueCss{
+identifiers=[600px]}}]
+}, 
+ElementCss{
+identifier='app-container 
+bodyOfelementList=[
+BodyOfelement{
+identifier='border-radius'
+ValueCss{
+identifiers=[12px]}}, 
+BodyOfelement{
+identifier='border'
+ValueCss{
+identifiers=[1px, solid]}}, 
+BodyOfelement{
+identifier='overflow'
+ValueCss{
+identifiers=[hidden]}}]
+}, 
+ElementCss{
+identifier='app-header 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[blue]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[25px]}}, 
+BodyOfelement{
+identifier='text-align'
+ValueCss{
+identifiers=[center]}}]
+}, 
+ElementCss{
+identifier='app-header h1 
+bodyOfelementList=[
+BodyOfelement{
+identifier='font-size'
+ValueCss{
+identifiers=[2rem]}}, 
+BodyOfelement{
+identifier='margin-bottom'
+ValueCss{
+identifiers=[10px]}}]
+}, 
+ElementCss{
+identifier='app-body 
+bodyOfelementList=[
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[25px]}}]
+}, 
+ElementCss{
+identifier='form 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#0000cd]}}, 
+BodyOfelement{
+identifier='border-radius'
+ValueCss{
+identifiers=[10px]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[25px]}}, 
+BodyOfelement{
+identifier='box-shadow'
+ValueCss{
+identifiers=[0, 2px, 10px]}}, 
+BodyOfelement{
+identifier='border'
+ValueCss{
+identifiers=[1px, solid, #eee]}}]
+}, 
+ElementCss{
+identifier='label 
+bodyOfelementList=[
+BodyOfelement{
+identifier='margin-bottom'
+ValueCss{
+identifiers=[25px]}}]
+}, 
+ElementCss{
+identifier='label label 
+bodyOfelementList=[
+BodyOfelement{
+identifier='text-align'
+ValueCss{
+identifiers=[left]}}, 
+BodyOfelement{
+identifier='display'
+ValueCss{
+identifiers=[block]}}, 
+BodyOfelement{
+identifier='font-weight'
+ValueCss{
+identifiers=[bold]}}, 
+BodyOfelement{
+identifier='margin-bottom'
+ValueCss{
+identifiers=[10px]}}, 
+BodyOfelement{
+identifier='font-size'
+ValueCss{
+identifiers=[1rem]}}]
+}, 
+ElementCss{
+identifier='form-input 
+bodyOfelementList=[
+BodyOfelement{
+identifier='color'
+ValueCss{
+identifiers=[black]}}, 
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#4169e1]}}, 
+BodyOfelement{
+identifier='unicode-bidi'
+ValueCss{
+identifiers=[plaintext]}}, 
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[100%]}}, 
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[14px, 18px]}}, 
+BodyOfelement{
+identifier='border'
+ValueCss{
+identifiers=[2px, solid]}}, 
+BodyOfelement{
+identifier='border-radius'
+ValueCss{
+identifiers=[8px]}}, 
+BodyOfelement{
+identifier='font-size'
+ValueCss{
+identifiers=[1rem]}}]
+}, 
+ElementCss{
+identifier='form-input-hover 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#ffffff]}}]
+}, 
+ElementCss{
+identifier='form-input-file-hover 
+bodyOfelementList=[
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#ffffff]}}]
+}, 
+ElementCss{
+identifier='form-input-placeholder 
+bodyOfelementList=[
+BodyOfelement{
+identifier='unicode-bidi'
+ValueCss{
+identifiers=[plaintext]}}, 
+BodyOfelement{
+identifier='color'
+ValueCss{
+identifiers=[black]}}]
+}, 
+ElementCss{
+identifier='form-input-focus 
+bodyOfelementList=[
+BodyOfelement{
+identifier='border-color'
+ValueCss{
+identifiers=[#ef4444]}}, 
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#ffffff]}}, 
+BodyOfelement{
+identifier='color'
+ValueCss{
+identifiers=[black]}}, 
+BodyOfelement{
+identifier='outline'
+ValueCss{
+identifiers=[none]}}]
+}, 
+ElementCss{
+identifier='textarea-form-input 
+bodyOfelementList=[
+BodyOfelement{
+identifier='min-height'
+ValueCss{
+identifiers=[140px]}}, 
+BodyOfelement{
+identifier='resize'
+ValueCss{
+identifiers=[vertical]}}]
+}, 
+ElementCss{
+identifier='btn 
+bodyOfelementList=[
+BodyOfelement{
+identifier='padding'
+ValueCss{
+identifiers=[14px, 28px]}}, 
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[#10b981]}}, 
+BodyOfelement{
+identifier='border'
+ValueCss{
+identifiers=[none]}}, 
+BodyOfelement{
+identifier='border-radius'
+ValueCss{
+identifiers=[8px]}}, 
+BodyOfelement{
+identifier='cursor'
+ValueCss{
+identifiers=[pointer]}}, 
+BodyOfelement{
+identifier='font-size'
+ValueCss{
+identifiers=[1rem]}}, 
+BodyOfelement{
+identifier='font-weight'
+ValueCss{
+identifiers=[bold]}}, 
+BodyOfelement{
+identifier='display'
+ValueCss{
+identifiers=[inline-flex]}}, 
+BodyOfelement{
+identifier='align-items'
+ValueCss{
+identifiers=[center]}}, 
+BodyOfelement{
+identifier='justify-content'
+ValueCss{
+identifiers=[center]}}, 
+BodyOfelement{
+identifier='width'
+ValueCss{
+identifiers=[100%]}}, 
+BodyOfelement{
+identifier='margin-top'
+ValueCss{
+identifiers=[10px]}}]
+}, 
+ElementCss{
+identifier='btn-hover 
+bodyOfelementList=[
+BodyOfelement{
+identifier='box-shadow'
+ValueCss{
+identifiers=[0, 6px, 12px]}}, 
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[green]}}]
+}, 
+ElementCss{
+identifier='btn-focus 
+bodyOfelementList=[
+BodyOfelement{
+identifier='box-shadow'
+ValueCss{
+identifiers=[0, 6px, 12px]}}, 
+BodyOfelement{
+identifier='background'
+ValueCss{
+identifiers=[green]}}]
+}]
+}}
+}, 
+template: `
+Element{
+StandardTag{
+tag_name='div'
+, attributes=[
+Attributes{
+text='"container"'
+htmlAttribute='class'
+}]
+, elements=[
+Element{
+StandardTag{
+tag_name='form'
+, attributes=[
+Attributes{
+text='"onSubmit()"'
+event='(ngSubmit)'
+}, 
+Attributes{
+text='"form"'
+htmlAttribute='class'
+}, 
+Attributes{
+text='"form"'
+htmlAttribute='id'
+}]
+, elements=[
+Element{
+StandardTag{
+tag_name='label'
+, attributes=[
+Attributes{
+text='"label"'
+htmlAttribute='class'
+}]
+, elements=[
+Element{name}, 
+Element{
+StandardTag{
+tag_name='input'
+, attributes=[
+Attributes{
+text='"text"'
+htmlAttribute='type'
+}, 
+Attributes{
+text='"item.name"'
+event='(ngModel)'
+}, 
+Attributes{
+text='"name"'
+htmlAttribute='name'
+}, 
+Attributes{
+text='"form-input"'
+htmlAttribute='class'
+}, 
+Attributes{
+htmlAttribute='required'
+}]
+, elements=[]}}]}}, 
+Element{
+StandardTag{
+tag_name='label'
+, attributes=[
+Attributes{
+text='"label"'
+htmlAttribute='class'
+}]
+, elements=[
+Element{image}, 
+Element{
+StandardTag{
+tag_name='input'
+, attributes=[
+Attributes{
+text='"text"'
+htmlAttribute='type'
+}, 
+Attributes{
+text='"item.image"'
+event='(ngModel)'
+}, 
+Attributes{
+text='"image"'
+htmlAttribute='name'
+}, 
+Attributes{
+text='"form-input"'
+htmlAttribute='class'
+}, 
+Attributes{
+htmlAttribute='required'
+}]
+, elements=[]}}]}}, 
+Element{
+StandardTag{
+tag_name='label'
+, attributes=[
+Attributes{
+text='"label"'
+htmlAttribute='class'
+}]
+, elements=[
+Element{details}, 
+Element{
+StandardTag{
+tag_name='input'
+, attributes=[
+Attributes{
+text='"text"'
+htmlAttribute='type'
+}, 
+Attributes{
+text='"item.details"'
+event='(ngModel)'
+}, 
+Attributes{
+text='"details"'
+htmlAttribute='name'
+}, 
+Attributes{
+text='"form-input"'
+htmlAttribute='class'
+}, 
+Attributes{
+htmlAttribute='required'
+}]
+, elements=[]}}]}}, 
+Element{
+StandardTag{
+tag_name='button'
+, attributes=[
+Attributes{
+text='"submit"'
+htmlAttribute='type'
+}, 
+Attributes{
+text='"!item.id || !item.image || !item.name || item.name.length < 3"'
+binding='[disabled]'
+}, 
+Attributes{
+text='"btn"'
+htmlAttribute='class'
+}, 
+Attributes{
+text='"submitBtn"'
+htmlAttribute='id'
+}]
+, elements=[
+Element{ADD}]}}]}}]}}`]
+}
+}
+ClassDeclaration{
+class_name = 'AppComponent'[
+FunctionDeclaration {
+functionName =onSubmit,type =
+Type{ 
+singleTypeList = [
+SingleType{type= 'void'}]
+}
+ {[FunctionBody{identifier1='products', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=
+ObjectExpression{ 
+PropertyList{ [
+Property{
+property='id'
+ value of property=
+ ValueExpression{ " this.nextId++"}}, 
+Property{
+property='image'
+ value of property=
+ ValueExpression{ ""}}, 
+Property{
+property='name'
+ value of property=
+ ValueExpression{ ""}}, 
+Property{
+property='details'
+ value of property=
+ ValueExpression{ ""}}]}
+}, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ this.products.push(
+ ValueExpression{ 'newproducts'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ products.localStorage.setItem(
+ ValueExpression{ 'products'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ event.stopPropagation() }, objectExpression=null, functionBody1=[], functionBode2=[]}, FunctionBody{identifier1='confirm('success added products Do you want to show List products?')', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=null, objectExpression=null, functionBody1=[FunctionBody{identifier1='null', identifier2='null', identifier3='null', identifier4='null', identifier5='null', identifier6='null', identifier7='null', valueExpression=
+ ValueExpression{ this.router.navigate(
+ ValueExpression{ 'AngularTestShowEnd'}) }, objectExpression=null, functionBody1=[], functionBode2=[]}], functionBode2=[]}]
+}]
+}
+}]
+}

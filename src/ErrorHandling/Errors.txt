@@ -1,10 +1,4 @@
-ListCarOnlyWithWhatsApp
+AngularTestShowEnd
 No Error in this test
-DetailsCarOnly2
-No Error in this test
-AddCarToList3
-No Error in this test
-UpdateCar2
-No Error in this test
-FormWhatsApp
+AngularTestAdd
 No Error in this test

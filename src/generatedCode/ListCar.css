@@ -49,28 +49,6 @@ cursor: pointer  ;
 .delete-btn:hover {
 background: #ff4d4d  ;
 }
-.update-btn {
-background: #10b981  ;
-color: white  ;
-border: none  ;
-border-radius: 4px  ;
-padding: 5px 10px  ;
-cursor: pointer  ;
-}
-.update-btn:hover {
-background: #e67e22  ;
-}
-.whatsApp-btn {
-background: #10b981  ;
-color: white  ;
-border: none  ;
-border-radius: 4px  ;
-padding: 5px 10px  ;
-cursor: pointer  ;
-}
-.whatsApp-btn:hover {
-background: yellow  ;
-}
 .empty-message {
 background: #bae6fd  ;
 text-align: center  ;

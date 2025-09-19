@@ -94,7 +94,7 @@ padding: 20px  ;
     cursor: pointer  ;
     }
     .whatsApp-btn-hover {
-    background: #e67e22  ;
+    background: yellow  ;
     }
  .empty-message {
 background: #bae6fd  ;
@@ -117,7 +117,6 @@ color:red;
             <h2 class="text-xl font-bold mb-4 text-center" style="color: #f5f7fa;">
             Cars
             </h2>
-
             <ul>
               <li *ngFor="let car of cars" class="car">
                 <div class="car-info" (click)="selectCar(car)">
@@ -129,8 +128,6 @@ color:red;
                 <button class="whatsApp-btn" (click)="whatsApp($event, car.id)">Send</button>
               </li>
             </ul>
-
-
           </div>
          </div>
       `,

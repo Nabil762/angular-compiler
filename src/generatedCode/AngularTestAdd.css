@@ -1,0 +1,99 @@
+body {
+background: #00008b  ;
+min-height: 100vh  ;
+padding: 20px  ;
+display: flex  ;
+justify-content: center  ;
+align-items: center  ;
+direction: rtl  ;
+}
+#app {
+width: 100%  ;
+max-width: 600px  ;
+}
+.app-container {
+border-radius: 12px  ;
+border: 1px solid  ;
+overflow: hidden  ;
+}
+.app-header {
+background: blue  ;
+padding: 25px  ;
+text-align: center  ;
+}
+.app-header h1 {
+font-size: 2rem  ;
+margin-bottom: 10px  ;
+}
+.app-body {
+padding: 25px  ;
+}
+.form {
+background: #0000cd  ;
+border-radius: 10px  ;
+padding: 25px  ;
+box-shadow: 0 2px 10px  ;
+border: 1px solid #eee  ;
+}
+.label {
+margin-bottom: 25px  ;
+}
+.label label {
+text-align: left  ;
+display: block  ;
+font-weight: bold  ;
+margin-bottom: 10px  ;
+font-size: 1rem  ;
+}
+.form-input {
+color: black  ;
+background: #4169e1  ;
+unicode-bidi: plaintext  ;
+width: 100%  ;
+padding: 14px 18px  ;
+border: 2px solid  ;
+border-radius: 8px  ;
+font-size: 1rem  ;
+}
+.form-input:hover {
+background: #ffffff  ;
+}
+.form-input-file:hover {
+background: #ffffff  ;
+}
+.form-input::placeholder {
+unicode-bidi: plaintext  ;
+color: black  ;
+}
+.form-input:focus {
+border-color: #ef4444  ;
+background: #ffffff  ;
+color: black  ;
+outline: none  ;
+}
+.textarea-form-input {
+min-height: 140px  ;
+resize: vertical  ;
+}
+.btn {
+padding: 14px 28px  ;
+background: #10b981  ;
+border: none  ;
+border-radius: 8px  ;
+cursor: pointer  ;
+font-size: 1rem  ;
+font-weight: bold  ;
+display: inline-flex  ;
+align-items: center  ;
+justify-content: center  ;
+width: 100%  ;
+margin-top: 10px  ;
+}
+.btn:hover {
+box-shadow: 0 6px 12px  ;
+background: green  ;
+}
+.btn:focus {
+box-shadow: 0 6px 12px  ;
+background: green  ;
+}
